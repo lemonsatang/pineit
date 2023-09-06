@@ -1,0 +1,16 @@
+/* _dark.scss */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clr-base: 9, 33, 34;
+        --clr-highlight: ;
+        --clr-text: 209, 209, 209;
+        --clr-text-highlight: 255, 255, 255;
+        --clr-text-anti: 51, 65, 85;
+
+        --clr-inter-pane: 0, 0, 0;
+        --clr-inter-shade: 255, 255, 255;
+    }
+}
+
+/* _dark.scss */

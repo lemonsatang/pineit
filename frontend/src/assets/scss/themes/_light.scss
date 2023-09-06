@@ -1,0 +1,16 @@
+/* _light.scss */
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --clr-base: 250, 248, 255;
+        --clr-highlight: ;
+        --clr-text: 51, 65, 85;
+        --clr-text-highlight: 0, 0, 0;
+        --clr-text-anti: 209, 209, 209;
+
+        --clr-inter-pane: 255, 255, 255;
+        --clr-inter-shade: 0, 0, 0;
+    }
+}
+
+/* _light.scss */

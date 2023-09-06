@@ -1,0 +1,37 @@
+@use 'sass:list';
+@use 'sass:math';
+
+// 0. Reset
+@import
+    'vendors/normalize';
+
+// 1. Base
+@import
+    'base/default', // Default
+    'base/setup', // Set Basic Styles
+    'base/Common'; // Common Styles
+
+// 2. Abstracts
+@import
+    'abstracts/functions', // SASS Functions
+    'abstracts/variables', // CSS Animations
+    'abstracts/keyframes'; // Global Variables
+
+// 3. Themes
+// @import
+    // 'themes/light', // System Light Theme
+    // 'themes/dark'; // System Dark Theme
+
+// 4. Views
+@import
+    'views/Main',
+    'views/ItemDetail', // ItemDetail.vue
+    'views/CsNotice',
+    'views/portfolioCase';
+
+// 5. Components
+@import
+    'components/ReactiveModal'; // ReactiveModal.vue
+
+
+// 6. Repeating Items

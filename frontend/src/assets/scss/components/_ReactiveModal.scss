@@ -1,0 +1,14 @@
+/* _ReactiveComponents.scss */
+
+[data-modal-window] {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: max(100% - .4rem, 16rem);
+}
+
+[data-modal-innards] {
+    background-color: rgb(var(--color-pane));
+}
+
+/* _ReactiveComponents.scss */

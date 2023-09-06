@@ -1,0 +1,44 @@
+//구축사례 영역
+
+.portfolio-title {
+    @apply flex items-center gap-1 py-2 cursor-pointer font-bold;
+}
+
+.portfolio-list {
+    @apply grid gap-2 items-center;
+
+    grid-template-columns: repeat(auto-fill, minmax(309px, 1fr));
+}
+
+.portfolio-img {
+    @apply rounded-md relative overflow-hidden cursor-pointer;
+
+    aspect-ratio: 16/9;
+}
+
+[data-portfolio-text] {
+    @apply p-3 absolute bottom-0 backdrop-blur-sm w-full leading-3;
+
+    color: rgb(var(--clr-inter-pane));
+    background-color: rgba(var(--clr-inter-shade), .2);
+}
+
+[data-portfolio-subTitle-tag] {
+    color: rgb(var(--clr-id-main));
+}
+
+@media screen and (max-width: 720px) {
+    .portfolio-list{
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    }
+
+    .portfolio-title{
+        > h4{
+            font-size: var(--fnt-md);
+        }
+    }
+
+    [data-portfolio-text]{
+        @apply p-2.5;
+    }
+}

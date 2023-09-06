@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'SUIT';
+    src:
+        local('SUIT Variable'),
+        url('@/assets/fonts/SUIT-Variable.woff2') format('woff2-variations');
+	font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+// @font-face {
+//     font-family: 'NS-Neo';
+//     src:
+//         local('NanumSquareNeo Variable'),
+//         url('@/assets/fonts/NanumSquareNeo-Variable.woff2') format('woff2-variations');
+// 	font-weight: 100 900;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+@font-face {
+    font-family: 'NS-Neo';
+    src:
+        local('PretendardVariable'),
+        url('/public/fonts/PretendardVariable.woff2') format('woff2-variations');
+	font-weight: 100 900;
+    font-style: normal;
+    font-display: swap; // 폰트 다운로드 전 텍스트 미리보기
+}
+
+:root {
+    font-family: 'NS-Neo', 'SUIT', sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+/* _default.scss */
