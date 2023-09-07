@@ -1,29 +1,32 @@
 <template>
-    <div id="loginBody">
-        <hgroup>
-            <h1><span class="color-impact">P</span>INEIT</h1>
-            <h1>LOGIN<span class="color-impact">.</span></h1>
-        </hgroup>
-        
-        <p class="login-sub-header">Sign in and Start your solution management</p>
-        <!--<form method="post" action="/login"> -->
-            <div class="login-input-body">
-                <input type="text" name="username" placeholder="ID..." v-model="userData.username" @keyup.enter="loginChk()" maxlength="30">
-                <input type="text" name="password" placeholder="PASSWORD..." v-model="userData.password" maxlength="30">
-            </div>
-            <div class="common-button-container">
-                <button @click="loginChk()" class="gradient-button" type="button"><p>Login</p></button>
-                <button @click="backButton()" class="line-gradient-button" type="button"><p>Back</p></button>
-            </div>
-            <div>
-                <span v-if="loginMsgState">아이디 또는 비밀번호가 일치하지 않습니다. 입력하신 사항을 다시 확인해 주세요.</span>
-            </div>
-        <!--</form> -->
-    </div>
+    <section :class="{'login-background': useRoute().name == 'Login'}" id="loginWrap">
+        <div id="loginBody">
+            <hgroup>
+                <h1><span class="color-impact">P</span>INEIT</h1>
+                <h1>LOGIN<span class="color-impact">.</span></h1>
+            </hgroup>
+            
+            <p class="login-sub-header">Sign in and Start your solution management</p>
+            <!--<form method="post" action="/login"> -->
+                <div class="login-input-body">
+                    <input type="text" name="username" placeholder="ID..." v-model="userData.username" @keyup.enter="loginChk()" maxlength="30">
+                    <input type="text" name="password" placeholder="PASSWORD..." v-model="userData.password" maxlength="30">
+                </div>
+                <div class="common-button-container">
+                    <button @click="loginChk()" class="gradient-button" type="button"><p>Login</p></button>
+                    <button @click="backButton()" class="line-gradient-button" type="button"><p>Back</p></button>
+                </div>
+                <div>
+                    <span v-if="loginMsgState">아이디 또는 비밀번호가 일치하지 않습니다. 입력하신 사항을 다시 확인해 주세요.</span>
+                </div>
+            <!--</form> -->
+        </div>
+    </section>
+    
 </template>
 <script setup>
     
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { toast } from 'vue3-toastify'
 import axios from 'axios'
 
@@ -139,5 +142,19 @@ function backButton() {
 
     .common-button-container {
         flex-direction: column;
+    }
+
+    .login-background:after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100vw;
+        background-image: url(/public/image/login_back_temp0.jpg);  
+        background-size: cover;
+        background-position: top center;
+        height: 100vh;
+        z-index: -1;
     }
 </style>

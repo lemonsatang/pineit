@@ -189,6 +189,23 @@ export const useNewsStore = defineStore('news', () => {
                         <p>참여하신 모든 분들 수고많으셨습니다.</p>
                     `
                 },
+
+                {
+                    number: 10,
+                    thumImg: '/image/news/BTIS_02.jpg',
+                    category: '기타',
+                    title: '부산과학기술정보서비스(BTIS) 기능 고도화 착수보고회',
+                    date: '2023.09.07',
+                    views: '47',
+                    imgAll: [
+                        {img: '/image/news/BTIS_01.jpg'},
+                        {img: '/image/news/BTIS_02.jpg'},
+                    ],
+                    textAll: `
+                        <p>부산산업과학혁신원 참여 하에 부산과학기술정보서비스 기능 고도화 사업의 착수보고회가 진행되었습니다.</p>
+                        <p>고생해주신 모든분들께 감사의 인사를 전합니다.</p>
+                    `
+                },
             ]
             
         },

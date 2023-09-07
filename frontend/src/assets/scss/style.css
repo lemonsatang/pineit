@@ -1261,6 +1261,8 @@ input[type=text]:focus {
 }
 .div-main-text p {
   @apply leading-4;
+  font-size: var(--fnt-M);
+  line-height: 1.5;
 }
 @media screen and (max-width: 1024px) {
   .div-main-text {

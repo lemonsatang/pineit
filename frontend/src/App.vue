@@ -1,8 +1,8 @@
 <template>
-    <div id="wrap" :class="{'spt-white-back': useRoute().name.includes('Support')}">
+    <div id="wrap">
         <HeadPrimary />
 
-        <main id="contentView" :class="{'login-background': useRoute().name == 'Login'}">
+        <main id="contentView">
             <router-view :key="$route.path"></router-view>
         </main>
 
@@ -23,7 +23,7 @@
 </template> <!-- Template Ends -->
 
 <script setup>
-    import { useRoute} from 'vue-router'
+    import { useRoute } from 'vue-router'
     import HeadPrimary from './components/HeadPrimary.vue'
     import FootPrimary from './components/FootPrimary.vue'
 
@@ -31,8 +31,7 @@
         window.scrollTo(0, 0)
     }
 
-    const getName = useRoute().name
-    console.log(getName)
+    
 </script> <!-- Logic Ends -->
 
 <style lang="scss">
@@ -45,20 +44,6 @@
             background-color: rgb(var(--clr-inter-pane));
             font-size: var(--fnt-title-lg);
         }
-    }
-
-    .login-background:after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100vw;
-        background-image: url(/public/image/login_back_temp0.jpg);  
-        background-size: cover;
-        background-position: top center;
-        height: 100vh;
-        z-index: -1;
     }
 
     @media screen and (width < 720px) {
