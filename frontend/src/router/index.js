@@ -119,22 +119,22 @@ const routes = [
     },
 
     {
-        path: '/sptAdm/',
+        path: '/admin/sptAdm/',
         name: 'SupportAdm',
         component: () => import( /* webpackChunkName: 'SupportAdm' */ '@/views/CsSupportAdm.vue' )
     },
     {
-        path: '/sptCs/',
+        path: '/cs/sptCs/',
         name: 'SupportCs',
         component: () => import( /* webpackChunkName: 'SupportCs' */ '@/views/CsSupportCs.vue' )
     },
     {
-        path: '/spt/:id',
+        path: '/cs/spt/:id',
         name: 'SupportDt',
         component: () => import( /* webpackChunkName: 'SupportDt' */ '@/views/CsSupportDt.vue' )
     },
     {
-        path: '/spt/write/',
+        path: '/cs/spt/write/',
         name: 'SupportWr',
         component: () => import( /* webpackChunkName: 'SupportWr' */ '@/views/CsSupportWr.vue' )
     },
