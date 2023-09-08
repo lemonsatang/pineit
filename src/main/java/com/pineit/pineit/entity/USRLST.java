@@ -27,7 +27,7 @@ public class USRLST extends BaseEntity {
     private String usrnm;
 
     @Column(name = "PASSWD", length = 100)
-    private String password;
+    private String passwd;
 
     @Column(name = "USEYN", columnDefinition = "CHAR(1)")
     private String useyn;
@@ -77,23 +77,23 @@ public class USRLST extends BaseEntity {
     @Column(name = "MUSER", columnDefinition = "CHAR(5)")
     private String muser;
 
-    private USRLST(Long usrcd, String usrid, String password, String uslvl) {
+    private USRLST(Long usrcd, String usrid, String passwd, String uslvl) {
         this.usrcd = usrcd;
         this.usrid = usrid;
-        this.password = password;
+        this.passwd = passwd;
         this.uslvl = uslvl;
     }
 
-    public static USRLST createUser(String usrid, String password, String roles, PasswordEncoder passwordEncoder) {
-        return new USRLST(null, usrid, passwordEncoder.encode(password), roles);
+    public static USRLST createUser(String usrid, String passwd, String roles, PasswordEncoder passwordEncoder) {
+        return new USRLST(null, usrid, passwordEncoder.encode(passwd), roles);
     }
 
     public void setUsername(String usrnm) {
         this.usrnm = usrnm;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String passwd) {
+        this.passwd = passwd;
     }
 
     public void setRoles(String uslvl) {

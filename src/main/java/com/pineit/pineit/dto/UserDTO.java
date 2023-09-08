@@ -5,26 +5,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class UserDTO {
-    private Long usrcd;
+    private String usrcd;
     private String usrid;
+    private String usrnm;
     private String passwd;
+    private String useyn;
+    private String conly;
+    private String qonly;
     private String insano;
+    private String uslvl;
     private String deptcd;
     private String jkwicd;
-    private String jkmucd;
     private String jkmunm;
+    private String email;
     private String moblno;
+    private String newyn;
+    private String jcode;
+    private String usign;
     private String rk;
-    private String entdt;
-    private String roles;
-
-    private LocalDateTime cdate;
-    private LocalDateTime mdate;
+    private String cuser;
+    private String muser;
 }
