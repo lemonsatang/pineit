@@ -30,7 +30,7 @@ public class SpringSecurityConfig {
                                 "/css/**", "/img/**",
                                 "/static/**", "/assets/**", "/login/**")
                         .permitAll()
-                        // .requestMatchers("/admin/**").hasRole("1")
+                        .requestMatchers("/admin/**").hasRole("0")
                         .anyRequest().authenticated() // 어떠한 요청이라도 인증필요
                 )
                 .formLogin(login -> login // form 방식 로그인 사용

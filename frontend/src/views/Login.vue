@@ -17,7 +17,7 @@
                     <button @click="backButton()" class="line-gradient-button" type="button"><p>Back</p></button>
                 </div>
                 <div>
-                    <span v-if="loginMsgState">아이디 또는 비밀번호가 일치하지 않습니다. 입력하신 사항을 다시 확인해 주세요.</span>
+                    <span v-if="loginMsg">아이디 또는 비밀번호가 일치하지 않습니다. 입력하신 사항을 다시 확인해 주세요.</span>
                 </div>
             <!--</form> -->
         </div>
@@ -35,8 +35,7 @@ const router = useRouter()
 const userData = ref({})
 const { username, password } = userData.value
 // 로그인 메세지
-const loginMsg = ref('')
-const loginMsgState = ref(false)
+const loginMsg = ref(false)
 
 // 로그인 버튼
 async function loginChk() {
@@ -46,61 +45,43 @@ async function loginChk() {
         return toast.error('비밀번호를 입력하세요.', { position: 'top-center' })
     }
 
-    console.log(userData)
-
     try {
         loginMsg.value = ''
 
-        console.log(userData.value.username)
-
         const response = await axios({
-                method: 'post',
-                url: '/api/loginChk',
-                params: {
-                    username: userData.value.username,
-                    password: userData.value.password
-                }
-            })
-
-            if (response.status === 200) {
-                if (response.data.result == "Success") {
-                    // 로그인에 성공한 사용자를 스토어에 저장
-
-
-                    toast.success('로그인에 성공했습니다.')
-
-                    axios.post('/api/login/test')
-                    .then(res => console.log(res.data))
-                } else {
-                    loginMsg.value = true
-                    setTimeout(() => {
-                        loginMsg.value = false
-                    }, 4000)
-
-                    return toast.error('로그인에 실패하였습니다.', { position: 'top-center' })
-                }
+            method: 'post',
+            url: '/api/loginChk',
+            params: {
+                username: userData.value.username,
+                password: userData.value.password
             }
+        })
 
-        // axios.post('/api/loginChk', {
-        //     username: userData.value.username,
-        //     password: userData.value.password
-        // })
-        // .then(res => {
-        //     if(res.data.result == 'Success') {
-        //         console.log(res.data)
-        //         // 세션 작업 필요
-        //         //router.push({ name: 'SupportAdm' })
-        //     } else {
-        //         loginMsg.value = true
-        //         setTimeout(() => {
-        //             loginMsg.value = false
-        //         }, 4000)
+        if (response.status === 200) {
+            if (response.data.result == "Success") {
+                // 로그인에 성공한 사용자를 스토어에 저장
 
-        //         return toast.error('로그인에 실패하였습니다.', { position: 'top-center' })
-        //     }
-        // })
-        // .catch(error => {toast.error('로그인하던 도중 오류가 발생하였습니다.'); console.warn('Error : ' + error)}
-        // )
+                toast.success('로그인에 성공했습니다.')
+
+                // 로그인 정보 가져오기
+                axios.post('/api/login/getUserInfo')
+                .then(res => {
+                    console.log(res.data)
+                    // 여기서 url 이동(uslvl이 0일시 관리자, 나머지는 고객사)
+                })
+                .catch (error => { // 로그인 정보 가져오기 실패시, 페이지 이동 X
+                    toast.success('로그인 정보를 가져오던 도중 오류가 발생했습니다.')
+                    return
+                })
+            } else {
+                loginMsg.value = true
+                setTimeout(() => {
+                    loginMsg.value = false
+                }, 5000)
+
+                return toast.error('로그인에 실패하였습니다.', { position: 'top-center' })
+            }
+        }
     } catch (error) {
         console.warn('Error : ' + error)
     }
