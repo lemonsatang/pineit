@@ -1,5 +1,5 @@
 <template>
-    <div id="bizContact" :class="{'common-ui-hide': useRoute().name == 'Login'}">
+    <div id="bizContact" :class="{'common-ui-hide': useRoute().name == 'Login', 'common-cs-footer': useRoute().path.split('/')[1] == 'admin' || 'cs'}">
         <div class="flex flex-col justify-center items-center gap-8 container mx-auto">
             <h4>문의하실 내용을 메일로 남겨 주세요. <span data-line-break>빠른 시일 내에 연락 드리겠습니다.</span></h4>
 
@@ -84,6 +84,8 @@
 <script setup>
     import { useRoute} from 'vue-router'
     const currentYear = ref(new Date().getFullYear())
+    let chk = useRoute().path.split('/')[1]
+    console.log(chk)
 </script> <!-- Logic Ends -->
 
 <style lang="scss">
@@ -172,6 +174,10 @@
         width: 2rem;
         height: 2rem;
         border-radius: .15rem;
+    }
+
+    #bizContact.common-cs-footer {
+        margin-top: 0;
     }
 
     @media screen and (max-width: 1024px) {

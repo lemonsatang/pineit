@@ -2,6 +2,17 @@
 
     <section class="common-board-wrap div-main-text">
         <div class="common-board-container">
+            <div v-for="item in usrData" class="spt-header">
+                <p>
+                    <font-awesome-icon icon="fa-circle-user" />
+                    <span class="spt-header-usrname">{{ item.usrnm }}</span> 님 안녕하세요.
+                </p>
+                <button class="spt-header-logout" type="button">
+                    <router-link :to="{name: 'Login'}">
+                        Logout
+                    </router-link>
+                </button>
+            </div>
             <h1 class="spt-page-title">고객 문의</h1>
             <!-- 검색영역 -->
             <div class="spt-search-line">
@@ -97,12 +108,18 @@
 
 </template>
 <script setup>
+
+    import { toast } from 'vue3-toastify'
+    import axios from 'axios'
+
     //store에서 영역별 데이터 import
     import { useSptStore } from '@/stores/sptSt'
     import { storeToRefs } from 'pinia';
 
     const sptStore = useSptStore()
     const { sptAdmGroup } = storeToRefs(sptStore)
+
+    const usrData = ref([])
 
     const copyOfData = ref([...sptAdmGroup.value])
 
@@ -225,9 +242,26 @@
         }
     }
 
+
+
+    axios.post('/api/login/getUserInfo')
+        .then(res => {
+            console.log(res.data.info)
+
+            usrData.value.push(res.data.info)// let userData = ({...res.data.info})
+
+            console.log(usrData.value)
+
+        })
+        .catch (error => { 
+            toast.success('정보를 가져오던 도중 오류가 발생했습니다.')
+            return
+        })
+
 </script>
 <style lang="scss" scoped>
     .spt-texts-head, .spt-item-line {
         grid-template-columns: 3rem 5rem 3fr 8rem 5rem 4rem;
     }
+
 </style>

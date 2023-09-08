@@ -10,16 +10,20 @@
             <!--<form method="post" action="/login"> -->
                 <div class="login-input-body">
                     <input type="text" name="username" placeholder="ID..." v-model="userData.username" @keyup.enter="loginChk()" maxlength="30">
-                    <input type="text" name="password" placeholder="PASSWORD..." v-model="userData.password" maxlength="30">
+                    <input type="password" name="password" placeholder="PASSWORD..." v-model="userData.password" maxlength="30">
                 </div>
                 <div class="common-button-container">
                     <button @click="loginChk()" class="gradient-button" type="button"><p>Login</p></button>
                     <button @click="backButton()" class="line-gradient-button" type="button"><p>Back</p></button>
                 </div>
-                <div>
-                    <span v-if="loginMsg">아이디 또는 비밀번호가 일치하지 않습니다. 입력하신 사항을 다시 확인해 주세요.</span>
+                <div class="login-msg-body">
+                    <span v-if="loginMsg">
+                        <font-awesome-icon icon="fa-circle-exclamation" />
+                        아이디 또는 비밀번호가 일치하지 않습니다. 입력하신 사항을 다시 확인해 주세요.
+                    </span>
                 </div>
             <!--</form> -->
+            <p class="login-sub-bottom">Copyright © 2023 소나무정보기술, All Rights Reserved.</p>
         </div>
     </section>
     
@@ -66,8 +70,19 @@ async function loginChk() {
                 // 로그인 정보 가져오기
                 axios.post('/api/login/getUserInfo')
                 .then(res => {
-                    console.log(res.data)
+                    console.log(res.data.info)
                     // 여기서 url 이동(uslvl이 0일시 관리자, 나머지는 고객사)
+                    if ( res.data.info.uslvl == '0' ) {
+                        router.push({
+                            name: 'SupportAdm'
+                        })
+                        console.log('관리자 로그인')
+                    } else {
+                        router.push({
+                            name: 'SupportCs'
+                        })
+                        console.log('고객사 로그인')
+                    }
                 })
                 .catch (error => { // 로그인 정보 가져오기 실패시, 페이지 이동 X
                     toast.success('로그인 정보를 가져오던 도중 오류가 발생했습니다.')
@@ -100,14 +115,15 @@ function backButton() {
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: rgba(var(--white), .75);
-        border-radius: 2rem;
-        padding: 4.5rem 2rem;
+        border-radius: 1rem;
+        padding: 4.5rem 2rem 1.5rem;
+        min-width: 15.5rem;
 
         hgroup {
             display: flex;
             flex-direction: column;
             gap: .5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.35rem;
         }
 
         h1 {
@@ -119,6 +135,13 @@ function backButton() {
     .login-sub-header {
         opacity: .7;
         margin-bottom: 3rem;
+        line-height: 1.5;
+    }
+
+    .login-sub-bottom {
+        opacity: .7;
+        margin-top: 2rem;
+        line-height: 1.5;
     }
 
     .common-button-container {
@@ -137,5 +160,48 @@ function backButton() {
         background-position: top center;
         height: 100vh;
         z-index: -1;
+    }
+
+    .login-msg-body {
+        height: 1.5rem;
+        margin-top: .75rem;
+        
+        span {
+            display: block;
+            line-height: 1.5;
+            color: rgba(var(--alertred), 1);
+
+            svg {
+                margin-right: .25rem;
+            }
+        }
+    }
+
+    .login-input-body {
+        display: flex;
+        gap: .35rem;
+    }
+
+    #loginBody input {
+        font-size: var(--fnt-lg);
+        background-color: rgba(var(--deepblue), .15);
+
+        &::placeholder {
+            color: rgba(var(--deepblue), .35);
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        #loginBody {
+            padding: 3.5rem 1rem 1.5rem;
+
+            h1 {
+                font-size: var(--fnt-subt);
+            }
+        }
+
+        .login-input-body {
+            flex-direction: column;
+        }
     }
 </style>

@@ -10,7 +10,7 @@
                         <span class="spt-dt-status">{{ item.STATUS }}</span>
                         {{ item.TITLE }}
                     </h1>
-                    <p>
+                    <p class="spt-dt-wrinfo">
                         <span class="spt-dt-username">{{ item.WRITER }}</span>
                         <span class="spt-dt-date">{{ item.DATE }} {{ item.TIME }}</span>
                     </p>
@@ -42,10 +42,8 @@
 
             <!-- 버튼영역 -->
             <div class="common-button-container">
-                <button type="button">
-                    <router link :to="{name: 'SupportAdm'}">
-                        목록
-                    </router>
+                <button @click="goList" type="button">
+                    목  록
                 </button>
                 <button type="button">
                     <router-link :to="{name: 'SupportWr'}">
@@ -80,7 +78,10 @@
     </section>
 </template>
 <script setup>
-    import { useRoute } from 'vue-router'
+    import { useRoute, useRouter } from 'vue-router'    
+    import axios from 'axios'
+
+    const router = useRouter()
 
     const getParams = useRoute().params.id
 
@@ -88,13 +89,12 @@
     import { useSptStore } from '@/stores/sptSt'
     import { storeToRefs } from 'pinia';
 
+//    import router from '@/router:';
+
     const sptStore = useSptStore()
     const { sptAdmGroup, replyGroup } = storeToRefs(sptStore)
 
-    // const getData = ref(sptAdmGroup.value[getParams])
     const getData = ref([...sptAdmGroup.value.filter((x) => x.bindIdx == getParams)])
-
-    // const prevData = ref([...sptAdmGroup.value.filter((x) => x.bindIdx == getParams - 1)])
     const nextData = ref([...sptAdmGroup.value.filter((x) => x.bindIdx == getParams + 1)])
 
     //현재 페이지의 데이터가 몇번째 데이터인지 구하기
@@ -105,10 +105,36 @@
     
     const getReply = [...replyGroup.value.filter(x => x.NO === getData.value[0].NO )];
 
+    //로긔인한 유저 정보
+    const usrData = ref([])
+
+    axios.post('/api/login/getUserInfo')
+        .then(res => {
+            console.log(res.data.info)
+
+            usrData.value.push(res.data.info)
+
+            console.log(usrData.value[0])
+
+        })
+        .catch (error => { 
+            toast.success('정보를 가져오던 도중 오류가 발생했습니다.')
+            return
+        })
     
-    console.log(getReply)
-    
-    
+    function goList() {
+        console.log(usrData.value)
+
+        if( usrData.value[0].uslvl == '0' ) {
+            router.push({
+                name: 'SupportAdm'
+            })
+        } else {
+            router.push({
+                name: 'SupportCs'
+            })
+        }
+    }
 
 </script>
 <style lang="scss" scoped>

@@ -1,5 +1,5 @@
 <template>
-    <header id="headPrimary" :class="{'common-ui-hide': useRoute().name == 'Login'}">
+    <header id="headPrimary" :class="{'common-ui-hide': useRoute().name == 'Login', 'cs-header-background': useRoute().path.split('')[1] == 'cs' || 'adm'}">
         <div class="container flex justify-between items-center px-2 h-full">
             <h1 id="mainLogo">
                 <router-link to="/">
@@ -115,6 +115,10 @@
         color: rgb(var(--clr-text-highlight));
         transition: background-color .15s, backdrop-filter .15s, box-shadow .15s;
         backdrop-filter: blur(2px);
+
+        &.cs-header-background {
+            background-color: rgba(var(--white), .5);
+        }
 
         &::before {
             display: block;
