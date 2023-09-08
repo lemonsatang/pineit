@@ -28,11 +28,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* 원하는 아이콘을 개별적으로 import */
-import { faCheck, faBell, faChevronLeft, faChevronRight, faPen } from '@fortawesome/free-solid-svg-icons'
+import { faCircleExclamation, faCheck, faBell, faChevronLeft, faChevronRight, faPen, faUser, faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import {  } from '@fortawesome/free-regular-svg-icons'
 
 /* 위에서 import한 아이콘들을 Core library에 등록 */
-library.add( fas, far, fab, faChevronLeft, faChevronRight, faBell, faCheck, faPen )
+library.add( fas, far, fab, faChevronLeft, faChevronRight, faBell, faCheck, faPen, faCircleExclamation, faUser, faCircleUser )
 
 /* font awesome 컴포넌트를 전역으로 등록 */
 app.component('font-awesome-icon', FontAwesomeIcon)
