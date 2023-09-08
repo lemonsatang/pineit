@@ -17,7 +17,7 @@
         </div>
 
         <!-- 모든 게시글 -->
-        <div v-for="item in newsGroup" class="div-news-texts news-main-board">
+        <div v-for="item in getData" class="div-news-texts news-main-board">
             <div v-for="subItem in item.children">
                 
                 <router-link :to="{name: 'NewsDetail', params: {id: subItem.number}}"><!-- 반복구간 시작 -->
@@ -110,6 +110,7 @@
 
     const newsStore = useNewsStore()
     const { newsGroup } = storeToRefs(newsStore)
+    const getData = [...newsGroup.value]
 
     //검색 230621
     const resultList = ref()

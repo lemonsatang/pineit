@@ -14,8 +14,7 @@ import 'remixicon/fonts/remixicon.css'
 import './assets/scss/style.css'
 import 'vue3-toastify/dist/index.css'
 
-// import CKEditor from 'ckeditor/ckeditor5-vue';
-// createApp( App ).use( CKEditor ).mount( '#app' );
+
 
 // Initializing
 const pinia = createPinia()

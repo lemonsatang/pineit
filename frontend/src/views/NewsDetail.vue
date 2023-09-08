@@ -30,13 +30,15 @@
 
             <div id="divDetailText"><!-- 본문영역 -->
                 <div id="imgContainers">
-                    <swiper :pagination="{ clickable: true }" watch-slides-progress @swiper="setThumbsSwiper" v-bind="swiperOptions01" class="recent-article-slider"> 
+                    <swiper-container ref="swiperEl" v-bind="swiperOptions01" class="recent-article-slider"> 
                         <swiper-slide v-for="subImg in newsGroup[0].children[getId]?.imgAll" class="div-work-ing">
                             <img :src="subImg.img" />
+                            
                         </swiper-slide>
+                        
                         <div class="arr-right-report"></div>
                         <div class="arr-left-report"></div>
-                    </swiper>
+                    </swiper-container>
 
                     <div class="recent-article-pagination">
                         <button type="button">
@@ -57,6 +59,7 @@
                 <p v-html="newsGroup[0].children[getId]?.textAll">
                     
                 </p>
+                
             </div>
 
             <div id="divMileStone">
@@ -111,6 +114,7 @@
 </template>
 
 <script setup>
+
     import SubPageHero from '@/components/SubPageHero.vue'
     import { useRoute } from 'vue-router'
 
@@ -136,7 +140,7 @@
 
     const swiperOptions01 = {
         // Install modules
-        modules: [Navigation, Pagination, Scrollbar, Autoplay],
+        // modules: [Navigation, Pagination, Scrollbar, Autoplay],
         spaceBetween: 10,
         slidesPerView: 1,
         loop: true,
@@ -149,15 +153,37 @@
             prevEl: '.arr-left-news',
         },
         breakpoints: {
+            1024: {
+                slidesPerView: 1
+            },
             768: {
                 slidesPerView: 2,
             }
         }
     }
 
+
+    const swiperEl = ref()
+    console.log(swiperEl)
+    
+    function testChk() {
+        swiperEl.value.slidesPerView = 3;
+    }
+
+    // const swiper = new Swiper(swiperEl, {
+    //     slidesPerView: 3,
+    // })
+
+    onMounted(() => {
+        
+    })
+    
+
+    
+
     const thumbsSwiper = ref(null);
     const setThumbsSwiper = (swiper) => {
-        thumbsSwiper.value = swiper;
+        // thumbsSwiper.value = swiper;
     };
 
     const getParams = useRoute()
