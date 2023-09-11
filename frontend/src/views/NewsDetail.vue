@@ -126,7 +126,7 @@
     const { newsGroup } = storeToRefs(newsStore)
 
     // import Swiper core and required modules
-    import { Navigation, Pagination, Scrollbar, Autoplay, Controller, Thumbs } from 'swiper';
+    // import { Navigation, Pagination, Scrollbar, Autoplay, Controller, Thumbs } from 'swiper';
 
     // Import Swiper
     import { ref } from 'vue';
@@ -163,12 +163,10 @@
     }
 
 
-    const swiperEl = ref()
-    console.log(swiperEl)
+    // const swiperEl = ref()
+    // console.log(swiperEl)
     
-    function testChk() {
-        swiperEl.value.slidesPerView = 3;
-    }
+    
 
     // const swiper = new Swiper(swiperEl, {
     //     slidesPerView: 3,
