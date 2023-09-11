@@ -154,7 +154,7 @@
                     </div>
                 </div>
 
-                <swiper v-bind="swiperOptions01" class="recent-article-slider">
+                <swiper-container v-bind="swiperOptions01" class="recent-article-slider">
                     <swiper-slide v-for="reportItem in reportGroup" class="recent-article-item">
                         <router-link :to="{name: 'ReportDetail', params: {id: reportItem.number}}">
                             <div class="recent-article-picture">
@@ -174,7 +174,7 @@
                         </router-link>
                     </swiper-slide>
 
-                </swiper>
+                </swiper-container>
             </div>
         </section>
 
@@ -197,7 +197,7 @@
                         </div>
                     </div>
 
-                    <swiper v-bind="swiperOptions02" class="recent-article-slider">
+                    <swiper-container v-bind="swiperOptions01" class="recent-article-slider">
                         <swiper-slide v-for="newsItem in newsGroup" class="recent-article-item">
                             <router-link :to="{name: 'NewsDetail', params: {id:newsItem.number}}">
                                 <div class="recent-article-picture">
@@ -216,7 +216,7 @@
                                 </dl>
                             </router-link>
                         </swiper-slide>
-                    </swiper>
+                    </swiper-container>
                 </div>
         </section>
 
@@ -239,22 +239,25 @@
     const { reportGroup } = storeToRefs(reportStore)
 
     // import Swiper core and required modules
-    import { Navigation, Pagination, Scrollbar, Autoplay, Controller } from 'swiper';
+    // import { Navigation, Pagination, Scrollbar, Autoplay, Controller } from 'swiper';
 
     // Import Swiper
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import 'swiper/css';
     import 'swiper/css/controller';
     import 'swiper/css/autoplay';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
+    import 'swiper/css/thumbs';
 
     const swiperOptions01 = {
         // Install modules
-        modules: [Navigation, Pagination, Scrollbar, Autoplay],
+        // modules: [Navigation, Pagination, Scrollbar, Autoplay],
         spaceBetween: 10,
-        slidesPerView: 1,
+        slidesPerView: 3,
         loop: true,
         navigation: true,
-
+        autoplay: true,
         pagination: {
             el: '.swiper-pagination',
             type: 'bullets',
@@ -272,17 +275,18 @@
 
     const swiperOptions02 = {
         // Install modules
-        modules: [Navigation, Pagination, Scrollbar, Autoplay],
+        // modules: [Navigation, Pagination, Scrollbar, Autoplay],
         spaceBetween: 10,
-        slidesPerView: 1,
+        slidesPerView: 3,
         loop: true,
+        autoplay: true,
         navigation: {
             nextEl: '.arr-right-news',
             prevEl: '.arr-left-news',
         },
         breakpoints: {
             1024: {
-                slidesPerView: 4,
+                slidesPerView: 3,
             }
         }
     }
@@ -334,8 +338,29 @@
             thumImg: '/image/news/news_05_02.jpg',
         }
     ])
+
+    console.log(newsGroup.value)
 </script> <!-- Logic Ends -->
 
 <style lang="scss" scoped>
+    .recent-article-item {
+        width: 33% !important;
 
+    }
+
+    #mainNews, #mainGallery {
+        overflow: hidden;
+    }
+
+    .recent-article-slider {
+        width: 100%;
+    }
+
+    #bizContact.common-cs-footer {
+        margin-top: 7rem !important;
+    }
+
+    .overflow-hidden {
+        padding-bottom: 7rem;
+    }
 </style> <!-- Stylesheet Ends -->
