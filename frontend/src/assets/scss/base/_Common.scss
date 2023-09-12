@@ -602,3 +602,85 @@ input[type=password] {
         background-color: rgba(var(--deepblue), .35);
     }
 }
+
+
+
+/* 파일 업로드 영역 */
+
+#divUploadedFiles {
+    @apply grid;
+
+    grid-template-columns: 15rem 1fr;
+
+    .button-dark {
+        margin-left: 0;
+        padding: .5rem .75rem;
+    }
+}
+
+
+.section-upload-drag {
+    @apply mr-4 rounded flex flex-col gap-1 justify-center items-center p-2 h-fit;
+
+    background: rgba(var(--deepblue), .035);
+}
+
+[data-uploaded-file] {
+    @apply border-b items-center;
+
+    border-bottom: 1px solid rgba(var(--deepblue), .15);
+}
+
+.button-trash-basket {
+    @apply ml-auto;
+}
+
+#buttonUploadOrigin {
+    @apply hidden;
+}
+
+.title-sub-strong {
+    @apply mt-2;
+
+    // color: rgba(var(--clr-inter-shade), 1);
+    font-family: 'NS-Neo';
+    font-weight: 700;
+}
+
+.button-dark {
+    @apply ml-0 cursor-pointer;
+
+}
+
+.dotline-inner-drag {
+    @apply border-dashed border w-full flex flex-col items-center gap-0;
+
+    border: 2px dashed rgba(var(--deepblue), .2);
+    gap: .5rem;
+    padding: 2rem 0 3rem;
+    color: rgb(var(--deepblue));
+
+    > svg {
+        @apply my-1;
+
+        color: rgb(var(--deepblue));
+    }
+
+    > .button-dark {
+        @apply px-1.5 py-1.5 mt-1;
+
+        filter: drop-shadow(0 0 8px rgba(var(--deepblue), .45));
+        background-color: rgba(var(--deepblue), 1);
+    }
+}
+
+.section-upload-list {
+
+    > p{
+        @apply mb-1 py-0 font-semibold;
+
+        font-family: 'NS-Neo';
+        color: rgba(var(--clr-inter-shade), 1);
+        font-size: var(--fnt-title-sm);
+    }
+}
