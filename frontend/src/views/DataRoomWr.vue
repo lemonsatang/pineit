@@ -234,59 +234,11 @@
         @apply mt-2;
     }
 
-/* 파일 업로드 영역 */
-
-    #divUploadedFiles {
-        @apply grid;
-
-        grid-template-columns: 9rem 1fr;
-    }
-
-    .section-upload-drag {
-        @apply mr-4 rounded flex flex-col gap-1 justify-center items-center p-2 h-fit;
-
-        background: rgba(var(--clr-inter-shade), .05);
-    }
-
-    [data-uploaded-file] {
-        @apply border-b items-center;
-
-        border-bottom: 1px solid rgba(var(--clr-inter-shade), .15);
-    }
-
-    .button-trash-basket {
-        @apply ml-auto;
-    }
-
-    #buttonUploadOrigin {
-        @apply hidden;
-    }
-
-    .title-sub-strong {
-        @apply font-black mt-2;
-
-        color: rgba(var(--clr-inter-shade), 1);
-        font-family: 'NS-Neo';
-    }
-
-    .button-dark {
-        @apply ml-0 cursor-pointer;
-
-    }
-
-    .dotline-inner-drag {
-        @apply border-dashed border w-full flex flex-col items-center py-4 gap-0;
-
-        border: 2px dashed rgba(var(--clr-inter-shade), .2);
-
-        > svg {
-            @apply my-1;
-        }
-
-        > .button-dark {
-            @apply px-1.5 py-1.5 mt-1;
-
-            filter: drop-shadow(0 0 8px rgba(var(--clr-inter-shade), .45));
+    .section-upload-list {
+        > p {
+            font-size: var(--fnt-title-sm);
         }
     }
+
+
 </style>

@@ -124,7 +124,7 @@ input[type=text] {
 #divUploadedFiles {
     @apply py-2 px-2 mt-6 rounded;
 
-    background: rgba(var(--clr-inter-shade), .05);
+    background: rgba(var(--deepblue), .035);
 
     li {
         &:hover {
@@ -139,16 +139,6 @@ input[type=text] {
         color: rgba(var(--clr-inter-shade), 1);
 
         
-    }
-}
-
-.section-upload-list {
-
-    > p{
-        @apply mb-1 py-0 font-semibold;
-
-        font-family: 'NS-Neo';
-        color: rgba(var(--clr-inter-shade), 1);
     }
 }
 
