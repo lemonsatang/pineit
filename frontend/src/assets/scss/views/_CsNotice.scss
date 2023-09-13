@@ -119,62 +119,7 @@ input[type=text] {
     @apply pl-3 pr-1;
 }
 
-/* 업로드파일목록 */
 
-#divUploadedFiles {
-    @apply py-2 px-2 mt-6 rounded;
-
-    background: rgba(var(--deepblue), .035);
-
-    li {
-        &:hover {
-            font-weight: bold;
-        }
-    }
-
-    > p{
-        @apply mb-1 py-0 font-semibold;
-
-        font-family: 'NS-Neo';
-        color: rgba(var(--clr-inter-shade), 1);
-
-        
-    }
-}
-
-[data-uploaded-list] {
-    @apply flex flex-col;
-}
-
-[data-uploaded-file] {
-    @apply flex py-1 cursor-pointer items-center;
-
-    > svg {
-        @apply mr-1;
-    }
-}
-
-[data-uploaded-title] {
-    @apply py-0;
-
-    color: rgba(var(--clr-inter-shade), 1);
-    font-weight: 300;
-}
-
-[data-uploaded-size] {
-
-    &:before {
-        @apply inline-block;
-
-        content: '(';
-    }
-
-    &:after {
-        @apply inline-block;
-
-        content: ')';
-    }
-}
 
 /* 제목영역 */
 

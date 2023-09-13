@@ -301,48 +301,6 @@
 
     //※주의 : 보도자료 = reportGroup, 소나무 소식 = newsGroup
 
-    // const newsGroup = ref([
-    //     {
-    //         number: '1',
-    //         thumImg: '/image/news/news_01.jpg',
-    //         category: '행사',
-    //         title: '22년도 1분기 워크샵-캠프파이어가 있는 밤',
-    //         date: '2022.03.20',
-    //         views: '172',
-    //     },
-    //     {
-    //         number: '2',
-    //         thumImg: '/image/news/news_02.jpg',
-    //         category: '행사',
-    //         title: '22년도 하반기 스마트가드레일 성과공유회 워크샵 with 동의과학대학교 산학협력단',
-    //         date: '2022.07.03',
-    //         views: '148',
-    //     },
-    //     {
-    //         number: '3',
-    //         thumImg: '/image/news/news_03.jpg',
-    //         category: '기타',
-    //         title: '22년도 산업안전보건교육',
-    //         date: '2022.08.17',
-    //         views: '105',
-    //     },
-    //     {
-    //         number: '4',
-    //         category: '행사',
-    //         title: '[3분기 워크샵]늦여름밤이 저물어가는 워크샵 현장에서',
-    //         date: '2022.08.28',
-    //         views: '120',
-    //         thumImg: '/image/news/news_04.jpg',
-    //     },
-    //     {
-    //         number: '5',
-    //         category: '회의',
-    //         title: '커브길 스마트 가드레일 우수조달신청 진행을 위한 조달청 주최 컨설팅 회의',
-    //         date: '2022.10.16',
-    //         views: '77',
-    //         thumImg: '/image/news/news_05_02.jpg',
-    //     }
-    // ])
 
     console.log(newsGroup.value)
 </script> <!-- Logic Ends -->
