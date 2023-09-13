@@ -563,6 +563,7 @@ video {
 
 .spt-input-title {
   font-size: var(--fnt-md);
+  width: 2rem;
 }
 
 .spt-texts-container {
@@ -861,11 +862,18 @@ input[type=password] {
 .spt-header {
   display: flex;
   justify-content: flex-end;
-  gap: 0.75rem;
 }
 .spt-header p {
   display: flex;
   align-items: center;
+}
+.spt-header p:after {
+  display: inline-block;
+  content: "";
+  width: 1px;
+  height: 0.85rem;
+  margin-left: 0.75rem;
+  background-color: rgba(var(--deepblue), 0.35);
 }
 .spt-header svg {
   margin-right: 0.35rem;
@@ -877,38 +885,48 @@ input[type=password] {
 .spt-header-usrname {
   color: rgba(var(--deepblue), 0.5);
   font-weight: 700;
-  margin-right: 0.35rem;
 }
 
 .spt-header-logout {
   display: flex;
   align-items: center;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.25rem;
 }
 .spt-header-logout:hover {
-  font-weight: 700;
+  background-color: rgba(var(--deepblue), 0.1);
+  border-radius: 0.5rem;
 }
-.spt-header-logout:before {
-  display: inline-block;
-  content: "";
-  width: 1px;
-  height: 0.85rem;
-  margin-right: 0.75rem;
-  background-color: rgba(var(--deepblue), 0.35);
+
+#divTitleWrite {
+  background-color: rgb(var(--white));
+  border: 1px solid rgba(var(--black), 0.2);
 }
 
 /* 파일 업로드 영역 */
 #divUploadedFiles {
   @apply grid;
-  grid-template-columns: 15rem 1fr;
+  grid-template-columns: 14rem 1fr;
+  border: 1px solid rgba(var(--black), 0.2);
 }
 #divUploadedFiles .button-dark {
   margin-left: 0;
   padding: 0.5rem 0.75rem;
 }
 
+.section-upload-list {
+  padding: 0 1rem;
+  height: 14.5rem;
+  overflow-y: scroll;
+}
+
 .section-upload-drag {
-  @apply mr-4 rounded flex flex-col gap-1 justify-center items-center p-2 h-fit;
-  background: rgba(var(--deepblue), 0.035);
+  @apply mr-4 rounded flex flex-col gap-1 justify-center items-center h-fit;
+  background: rgba(var(--white), 1);
+  padding: 0.25rem;
+}
+.section-upload-drag.drag-color {
+  background: rgba(var(--deepblue), 0.15);
 }
 
 [data-uploaded-file] {
@@ -918,8 +936,8 @@ input[type=password] {
 
 .button-trash-basket {
   @apply ml-auto;
+  cursor: pointer;
 }
-
 #buttonUploadOrigin {
   @apply hidden;
 }
@@ -956,6 +974,82 @@ input[type=password] {
   font-family: "NS-Neo";
   color: rgba(var(--clr-inter-shade), 1);
   font-size: var(--fnt-title-sm);
+}
+
+/* 업로드파일목록 */
+#divUploadedFiles {
+  @apply py-2 px-2 mt-2 rounded;
+  background-color: rgba(var(--white), 1);
+}
+#divUploadedFiles li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.25rem;
+}
+#divUploadedFiles li:hover {
+  background-color: rgba(var(--deepblue), 0.15);
+}
+#divUploadedFiles > p {
+  @apply mb-1 py-0 font-semibold;
+  font-family: "NS-Neo";
+  color: rgba(var(--clr-inter-shade), 1);
+}
+
+[data-uploaded-list] {
+  @apply flex flex-col;
+}
+
+[data-uploaded-file] {
+  @apply flex py-1 cursor-pointer items-center;
+}
+[data-uploaded-file] > svg {
+  @apply mr-1;
+}
+
+[data-uploaded-title] {
+  @apply py-0;
+  color: rgba(var(--clr-inter-shade), 1);
+  font-weight: 300;
+}
+
+[data-uploaded-size]:before {
+  @apply inline-block;
+  content: "(";
+}
+[data-uploaded-size]:after {
+  @apply inline-block;
+  content: ")";
+}
+
+.spt-one-notice {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 5.5rem 1fr 6rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(var(--deepblue), 0.15);
+}
+.spt-one-notice:hover {
+  background-color: rgba(var(--deepblue), 0.035);
+}
+.spt-one-notice p {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.spt-one-notice-head {
+  color: rgba(var(--deepblue), 0.75);
+  background-color: rgba(var(--deepblue), 0.15);
+  padding: 0.25rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.spt-one-notice p.spt-one-notice-title {
+  padding: 0 0.5rem 0 1rem;
 }
 
 /* _functions.scss */
@@ -1516,46 +1610,6 @@ input[type=text]:focus {
 
 .arr-right {
   @apply pl-3 pr-1;
-}
-
-/* 업로드파일목록 */
-#divUploadedFiles {
-  @apply py-2 px-2 mt-6 rounded;
-  background: rgba(var(--deepblue), 0.035);
-}
-#divUploadedFiles li:hover {
-  font-weight: bold;
-}
-#divUploadedFiles > p {
-  @apply mb-1 py-0 font-semibold;
-  font-family: "NS-Neo";
-  color: rgba(var(--clr-inter-shade), 1);
-}
-
-[data-uploaded-list] {
-  @apply flex flex-col;
-}
-
-[data-uploaded-file] {
-  @apply flex py-1 cursor-pointer items-center;
-}
-[data-uploaded-file] > svg {
-  @apply mr-1;
-}
-
-[data-uploaded-title] {
-  @apply py-0;
-  color: rgba(var(--clr-inter-shade), 1);
-  font-weight: 300;
-}
-
-[data-uploaded-size]:before {
-  @apply inline-block;
-  content: "(";
-}
-[data-uploaded-size]:after {
-  @apply inline-block;
-  content: ")";
 }
 
 /* 제목영역 */

@@ -2,17 +2,7 @@
 
     <section class="common-board-wrap div-main-text">
         <div class="common-board-container">
-            <div v-for="item in usrData" class="spt-header">
-                <p>
-                    <font-awesome-icon icon="fa-circle-user" />
-                    <span class="spt-header-usrname">{{ item.usrnm }}</span> 님 안녕하세요.
-                </p>
-                <button class="spt-header-logout" type="button">
-                    <router-link :to="{name: 'Login'}">
-                        Logout
-                    </router-link>
-                </button>
-            </div>
+            <SptHeader />
             <h1 class="spt-page-title">고객 문의</h1>
             <!-- 검색영역 -->
             <div class="spt-search-line">
@@ -108,7 +98,7 @@
 
 </template>
 <script setup>
-
+    import SptHeader from '@/components/SptHeader.vue';
     import { toast } from 'vue3-toastify'
     import axios from 'axios'
 
@@ -251,7 +241,7 @@
             usrData.value.push(res.data.info)// let userData = ({...res.data.info})
 
             console.log(usrData.value)
-
+            return
         })
         .catch (error => { 
             toast.success('정보를 가져오던 도중 오류가 발생했습니다.')

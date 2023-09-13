@@ -10,7 +10,7 @@
             <!--<form method="post" action="/login"> -->
                 <div class="login-input-body">
                     <input type="text" name="username" placeholder="ID..." v-model="userData.username" @keyup.enter="loginChk()" maxlength="30">
-                    <input type="password" name="password" placeholder="PASSWORD..." v-model="userData.password" maxlength="30">
+                    <input @keyup.enter="loginChk()" type="password" name="password" placeholder="PASSWORD..." v-model="userData.password" maxlength="30">
                 </div>
                 <div class="common-button-container">
                     <button @click="loginChk()" class="gradient-button" type="button"><p>Login</p></button>

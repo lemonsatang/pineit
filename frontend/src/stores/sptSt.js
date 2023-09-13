@@ -342,6 +342,18 @@ export const useSptStore = defineStore('support', () => {
         },
     ])
 
-    return { sptAdmGroup, replyGroup }
+    const onelineNotices = ref([
+        {
+            customer: '테스트',
+            title: '"테스트" 고객사의 한줄 공지사항입니다.',
+            texts: `
+                고객사명 "테스트"의 공지사항입니다.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus voluptate, commodi deserunt dolor veritatis veniam recusandae cum accusamus assumenda consectetur corrupti quos eius voluptatum alias ab modi nesciunt distinctio reprehenderit?
+            `,
+            date: '2023.09.10'
+        }
+    ])
+
+    return { sptAdmGroup, replyGroup, onelineNotices }
 
 })
