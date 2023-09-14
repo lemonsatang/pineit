@@ -7,12 +7,12 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"/></svg>
                     <span>게시물 작성</span>
                 </p>
-
+                <input type="text" placeholder="이름을 입력해주세요." maxlength="25">
                 <div id="divTitleWrite">
-                    <input data-title-input type="text" placeholder="제목을 입력하세요...">
+                    <input data-title-input type="text" placeholder="제목을 입력하세요..." ref="titleEl" v-model="title" maxlength="25">
                 </div>
                 <div id="editorWr">
-                    <QuillEditor ref="qe" :options="editorOption" theme="snow" v-model="content" content-type="html"/>
+                    <QuillEditor ref="qe" :options="editorOption" theme="snow" content-type="html"/>
                 </div>
                 <div id="divUploadedFiles">
 
@@ -53,7 +53,7 @@
                     <p>목 록</p>
                 </button>
                 
-                    <button @click="wrComp">
+                    <button @click="saveSupport">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="rgba(255,255,255,1)"/></svg>
                         <p>작성완료</p>
                     </button>
@@ -63,10 +63,10 @@
         </div>
         
     </section>
-
 </template>
 
-<script>
+
+<script> // quill 에디터
     import { QuillEditor } from '@vueup/vue-quill'
     import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
@@ -110,19 +110,22 @@
 
 <script setup>   
     import { useRouter } from 'vue-router'
+    import axios from 'axios'
+    import { toast } from 'vue3-toastify'
 
     const router = useRouter()
 
     const uploadSection = ref()
     const btnUpload = ref()
     const tempUploaded = ref([])
-        
+
     const inputFile = ref()
 
+    const titleEl = ref()
+    let title = ''
     const content = ref()
-    const qe = ref()
 
-    
+    const qe = ref()
 
     /* 드래그 to 파일 업로드 */
 
@@ -173,7 +176,7 @@
 
         for (let i=0; i < data.length; i++) {
             console.log(data[i])
-            tempUploaded.value.push({"uploadedName": data[i].name, "uploadedSize": data[i].size + "kb"})
+            tempUploaded.value.push({"uploadedName": data[i].name, "uploadedSize": data[i].size + "kb", "file": data[i]})
         }
     }
 
@@ -182,9 +185,6 @@
     }
 
     function delThis(e) {
-        console.log(tempUploaded.value)
-        console.log(e)
-
         tempUploaded.value.splice(e, 1)
 
     }
@@ -192,12 +192,38 @@
     function wrComp() {
         //작성된 내용
         let getTexts = qe.value.getContents()
-        console.log(getTexts)
         
-        
+        return getTexts;
     }
     
 
+    // 게시물 등록
+    function saveSupport() {
+        console.log(tempUploaded.value)
+
+        if(!!title.trim() === false) {
+            toast.warning('제목을 입력해주세요.')
+            titleEl.value.focus()
+            return
+        }
+
+        let jtext = wrComp(); // 작업내용
+
+        if(jtext.length < 20) {
+            toast.warning('작성 내용은 10글자 이상 써주세요.')
+            return
+        }
+        let data = {}
+        data['title'] = title
+        data['jtext'] = jtext
+
+
+        let formData = new FormData();
+        formData.append('data',JSON.stringify(data))
+            formData.append('file', inputFile.value.value)
+        console.log(inputFile.value.value)
+        console.log(formData.get('file'))
+    }
 
 </script>
 
