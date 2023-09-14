@@ -1,6 +1,6 @@
 .common-board-wrap.div-main-text {
     margin: 4rem auto 0 auto;
-    padding-bottom: 7rem;
+    // padding-bottom: 7rem;
 
     &:after {
         content: '';
@@ -10,7 +10,7 @@
         left: 0;
         z-index: -1;
         width: 100vw;
-        height: calc(100% + 4rem);
+        height: calc(100% + 11rem);
         background-image: url(/public/image/login_back_temp0.jpg);
         opacity: .075;
         background-size: cover;
@@ -81,29 +81,44 @@
 
 .common-spt-pager-container {
     display: flex;
-    gap: 1rem;
     width: fit-content;
     justify-content: center;
     width: 100%;
 
     button, li {
         cursor: pointer;
+
+        &:hover {
+            background-color: rgba(var(--deepblue), .2);
+        }
     }
+
+    button {
+        padding: .25rem;
+    }
+
 }
 
 .spt-pager-list {
     display: flex;
+    gap: .25rem;
+    width: 6rem;
+    justify-content: center;
+    margin: 0 .5rem;
 
     li {
         padding: .25rem;
         font-size: var(--fnt-md);
+        width: 1rem;
+        text-align: center;
+        border-radius: .25rem;
 
         &.pager-recent-page {
-            background-color: rgba(var(--deepblue), .1)
+            background-color: rgba(var(--deepblue), .2)
         }
 
         &:hover {
-            background-color: rgba(var(--deepblue), .2);
+            background-color: rgba(var(--deepblue), .1);
         }
     }
 }
@@ -233,7 +248,7 @@
     border-top: 1px solid rgba(var(--black) 1);
     border-bottom: 2px solid rgba(var(--black), 1);
     width: 100%;
-    min-height: 35vh;
+    height: 24.75rem;
     margin-bottom: 1rem;
 }
 
@@ -260,6 +275,7 @@
 .spt-texts-body {
     font-size: var(--fnt-md);
     display: grid;
+    // height: 22.5rem;
 }
 
 .spt-item-line {
@@ -267,6 +283,7 @@
     padding: .5rem 0;
     cursor: pointer;
     border-bottom: 1px solid rgba(var(--black), .1);
+    height: 2.25rem;
 
     p {
         text-align: center;
