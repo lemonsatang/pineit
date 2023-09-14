@@ -368,7 +368,6 @@ video {
 /* _setup.scss */
 .common-board-wrap.div-main-text {
   margin: 4rem auto 0 auto;
-  padding-bottom: 7rem;
 }
 .common-board-wrap.div-main-text:after {
   content: "";
@@ -378,7 +377,7 @@ video {
   left: 0;
   z-index: -1;
   width: 100vw;
-  height: calc(100% + 4rem);
+  height: calc(100% + 11rem);
   background-image: url(/public/image/login_back_temp0.jpg);
   opacity: 0.075;
   background-size: cover;
@@ -442,7 +441,6 @@ video {
 
 .common-spt-pager-container {
   display: flex;
-  gap: 1rem;
   width: -moz-fit-content;
   width: fit-content;
   justify-content: center;
@@ -451,13 +449,29 @@ video {
 .common-spt-pager-container button, .common-spt-pager-container li {
   cursor: pointer;
 }
+.common-spt-pager-container button:hover, .common-spt-pager-container li:hover {
+  background-color: rgba(var(--deepblue), 0.2);
+}
+.common-spt-pager-container button {
+  padding: 0.25rem;
+}
 
 .spt-pager-list {
   display: flex;
+  gap: 0.25rem;
+  width: 6rem;
+  justify-content: center;
+  margin: 0 0.5rem;
 }
 .spt-pager-list li {
   padding: 0.25rem;
   font-size: var(--fnt-md);
+  width: 1rem;
+  text-align: center;
+  border-radius: 0.25rem;
+}
+.spt-pager-list li.pager-recent-page {
+  background-color: rgba(var(--deepblue), 0.2);
 }
 .spt-pager-list li:hover {
   background-color: rgba(var(--deepblue), 0.1);
@@ -570,7 +584,7 @@ video {
   border-top: 1px solid rgba(var(--black) 1);
   border-bottom: 2px solid rgba(var(--black), 1);
   width: 100%;
-  min-height: 35vh;
+  height: 24.75rem;
   margin-bottom: 1rem;
 }
 
@@ -600,6 +614,7 @@ video {
   padding: 0.5rem 0;
   cursor: pointer;
   border-bottom: 1px solid rgba(var(--black), 0.1);
+  height: 2.25rem;
 }
 .spt-item-line p {
   text-align: center;

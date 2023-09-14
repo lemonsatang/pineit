@@ -86,6 +86,7 @@
     const currentYear = ref(new Date().getFullYear())
     let chk = useRoute().path.split('/')[1]
     console.log(chk)
+
 </script> <!-- Logic Ends -->
 
 <style lang="scss">

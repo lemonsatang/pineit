@@ -52,7 +52,7 @@
                     <p>조회</p>
                 </div>
                 <div class="spt-texts-body">
-                    <router-link :to="{ name: 'SupportDt', params: { id: item.bindIdx } }" v-for="item in copyOfData" class="spt-item-line">
+                    <router-link :to="{ name: 'SupportDt', params: { id: item.bindIdx } }" v-for="item in recentPgData" class="spt-item-line">
                         <p>{{ item.NO }}</p>
                         <p :class="{'spt-stat-red': item.STATUS === '확인예정' }">{{ item.STATUS }}</p>
                         <p class="item-title-left">{{ item.TITLE }}</p>
@@ -63,23 +63,20 @@
                 </div>
             </div> 
             <div class="common-spt-pager-container">
-                <button type="button">
+                <button type="button" @click="prevPgList">
+                    <font-awesome-icon icon="fa-angles-left" />
+                </button>
+                <button type="button" @click="prevPg">
                     <font-awesome-icon icon="fa-chevron-left" />
                 </button>
                 <ul class="spt-pager-list">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
+                    <li v-for="pageNum in recentViewPages" @click="selectPgNumber(pageNum)" :class="{'pager-recent-page': pageNum === recentPage + 1 }">{{ pageNum }}</li>
                 </ul>
-                <button type="button">
+                <button type="button" @click="nextPg">
                     <font-awesome-icon icon="fa-chevron-right" />
+                </button>
+                <button type="button" @click="nextPgList">
+                    <font-awesome-icon icon="fa-angles-right" />
                 </button>
             </div>
         </div>
@@ -247,6 +244,98 @@
             toast.success('정보를 가져오던 도중 오류가 발생했습니다.')
             return
         })
+
+        const perPage = 10; //페이지당 글 수
+        const pageMax = 5; //한번에 보이는 페이지 갯수 제한
+        const totalPage = Math.ceil(copyOfData.value.length / perPage) // 총 몇 페이지 나올지 계산(max페이지)
+        
+        const allPages = Array.from({length: totalPage}, (v, i) => i + 1);  // 나올 페이지들 분리{ 예) < 1, 2, 3, 4, 5 > }
+        
+        const pagerList = Math.ceil(allPages.length / pageMax) // 현재 보이는 페이지번호 리스트(pageMax개씩 보이는 리스트가 이만큼 있다)
+        const dividedPgListNumber = Array.from({length: pagerList}, (v, i) => i + 1) // 보이는 페이지들 분리 { 예) 0: 1, 2, 3, 4, 5, 1: 6, 7, 8, 9, 10, 3: 11, 12, 13, 14, 15  }
+
+        let recentPage = reactive(Number(0)) //현재페이지
+        let recentListIndex = reactive(Number(0)) // 리스트 중 0번째 인덱스부터 보이게 해라(0번쨰 인덱스 : 1, 2, 3, 4, 5 / 1번째 인덱스 : 6, 7, 8, 9, 10)
+
+        const dataArr = reactive([])
+
+        const recentPagerList = reactive([])
+
+        //데이터 페이지별로 분리
+        function chunk() {
+
+            for (let i=0; i<copyOfData.value.length; i += perPage) {
+                dataArr.push(copyOfData.value.slice(i, i + perPage));
+            }
+
+            for (let j = 0; j < allPages.length; j += pageMax ) {
+                recentPagerList.push(allPages.slice(j, j + pageMax));
+            }
+                        
+            console.log(recentPagerList)
+            return dataArr, recentPagerList;
+        }
+
+        chunk()
+
+        //페이지 선택
+        function selectPgNumber(e) {
+            recentPage = e - 1
+
+            recentPgData.value = [...dataArr[recentPage]]
+        }
+
+        //최근 페이지 데이터 초기화 = 1페이지(인덱스 0)으로 시작
+        const recentPgData = ref([...dataArr[0]])
+
+        //지금 보이고있는 페이지리스트 초기화 = 1페이지(인덱스0)으로 시작{ 예) < 1, 2, 3, 4, 5 > }
+        const recentViewPages = ref([...recentPagerList[0]])
+
+        //다음 페이지리스트 버튼
+        function nextPgList() {
+            if ( recentListIndex = pagerList) {
+                console.log(pagerList)
+            } else {
+                recentListIndex = recentListIndex + 1
+
+                recentViewPages.value = [...recentPagerList[recentListIndex]]
+            }
+        }
+
+        //이전 페이지리스트 버튼
+        function prevPgList() {
+            if ( recentListIndex <= 0) {
+                console.log(pagerList)
+            } else {
+                recentListIndex = recentListIndex - 1
+
+                recentViewPages.value = [...recentPagerList[recentListIndex]]
+            }
+        }
+
+        //////////////
+
+        //다음 페이지 버튼
+        function nextPg() {
+            if ( recentPage == totalPage) {
+                console.log(totalPage)
+            } else {
+                recentPage = recentPage + 1
+
+                recentPgData.value = [...dataArr[recentPage]]
+            }
+        }
+
+        //이전 페이지 버튼
+        function prevPg() {
+            if ( recentPage <= 0) {
+                console.log(totalPage)
+            } else {
+                recentPage = recentPage - 1
+
+                recentPgData.value = [...dataArr[recentPage]]
+            }
+        }
 
 </script>
 <style lang="scss" scoped>
