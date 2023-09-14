@@ -98,8 +98,12 @@
         padding: .25rem;
         font-size: var(--fnt-md);
 
+        &.pager-recent-page {
+            background-color: rgba(var(--deepblue), .1)
+        }
+
         &:hover {
-            background-color: rgba(var(--deepblue), .1);
+            background-color: rgba(var(--deepblue), .2);
         }
     }
 }

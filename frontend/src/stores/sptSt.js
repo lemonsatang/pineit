@@ -151,7 +151,86 @@ export const useSptStore = defineStore('support', () => {
             TIME: '13:25:09',
             COUNT: '2', //조회수
             TEXTS: `
-                전원코드를 꼭 꽂아야만 켤 수 있나요? 너무 번거로워요 수정가능할까요?
+                전원코드를 꼭 꽂아야만 켤 수 있나요? 너무 번거로워요 사용자의 편의를 위해 수정바랍니다
+            `
+        },
+
+        {
+            bindIdx: 10,
+            NO: '11', //글번호
+            STATUS: '확인예정', //현황
+            TITLE: '테스트용 타이틀11', //제목
+            WRITER: 'SBS', //작성자
+            DATE: '2023.09.10', //작성일자
+            TIME: '13:25:09',
+            COUNT: '2', //조회수
+            TEXTS: `
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias iusto esse dignissimos est sed, rem libero provident voluptatum voluptatibus illo sunt, dolor inventore maiores magnam, saepe debitis ipsa. Repudiandae, magni.
+            `
+        },
+        {
+            bindIdx: 11,
+            NO: '12', //글번호
+            STATUS: '확인예정', //현황
+            TITLE: '테스트용 타이틀12', //제목
+            WRITER: 'SBS', //작성자
+            DATE: '2023.09.10', //작성일자
+            TIME: '13:25:09',
+            COUNT: '2', //조회수
+            TEXTS: `
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias iusto esse dignissimos est sed, rem libero provident voluptatum voluptatibus illo sunt, dolor inventore maiores magnam, saepe debitis ipsa. Repudiandae, magni.
+            `
+        },
+        {
+            bindIdx: 12,
+            NO: '13', //글번호
+            STATUS: '확인예정', //현황
+            TITLE: '테스트용 타이틀13', //제목
+            WRITER: 'SBS', //작성자
+            DATE: '2023.09.10', //작성일자
+            TIME: '13:25:09',
+            COUNT: '2', //조회수
+            TEXTS: `
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias iusto esse dignissimos est sed, rem libero provident voluptatum voluptatibus illo sunt, dolor inventore maiores magnam, saepe debitis ipsa. Repudiandae, magni.
+            `
+        },
+        {
+            bindIdx: 13,
+            NO: '14', //글번호
+            STATUS: '확인예정', //현황
+            TITLE: '테스트용 타이틀14', //제목
+            WRITER: 'SBS', //작성자
+            DATE: '2023.09.10', //작성일자
+            TIME: '13:25:09',
+            COUNT: '2', //조회수
+            TEXTS: `
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias iusto esse dignissimos est sed, rem libero provident voluptatum voluptatibus illo sunt, dolor inventore maiores magnam, saepe debitis ipsa. Repudiandae, magni.
+            `
+        },
+        {
+            bindIdx: 14,
+            NO: '15', //글번호
+            STATUS: '확인예정', //현황
+            TITLE: '테스트용 타이틀15', //제목
+            WRITER: 'SBS', //작성자
+            DATE: '2023.09.10', //작성일자
+            TIME: '13:25:09',
+            COUNT: '2', //조회수
+            TEXTS: `
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias iusto esse dignissimos est sed, rem libero provident voluptatum voluptatibus illo sunt, dolor inventore maiores magnam, saepe debitis ipsa. Repudiandae, magni.
+            `
+        },
+        {
+            bindIdx: 15,
+            NO: '16', //글번호
+            STATUS: '확인예정', //현황
+            TITLE: '테스트용 타이틀16', //제목
+            WRITER: 'SBS', //작성자
+            DATE: '2023.09.10', //작성일자
+            TIME: '13:25:09',
+            COUNT: '2', //조회수
+            TEXTS: `
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias iusto esse dignissimos est sed, rem libero provident voluptatum voluptatibus illo sunt, dolor inventore maiores magnam, saepe debitis ipsa. Repudiandae, magni.
             `
         },
 

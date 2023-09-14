@@ -53,11 +53,11 @@
                     <p>조회</p>
                 </div>
                 <div class="spt-texts-body">
-                    <router-link :to="{ name: 'SupportDt', params: { id: item.bindIdx } }" v-for="item in copyOfData" class="spt-item-line">
+                    <!-- <router-link :to="{ name: 'SupportDt', params: { id: item.bindIdx } }" v-for="item in copyOfData" class="spt-item-line"> -->
+                    <router-link :to="{ name: 'SupportDt', params: { id: item.bindIdx } }" v-for="item in recentPgData" class="spt-item-line">
                         <p>{{ item.NO }}</p>
                         <p :class="{'spt-stat-red': item.STATUS === '확인예정' }">{{ item.STATUS }}</p>
                         <p class="item-title-left">{{ item.TITLE }}</p>
-                        <!-- <p>{{ item.WRITER }}</p> -->
                         <p>{{ item.DATE }}</p>
                         <p>{{ item.COUNT }}</p>
                     </router-link>
@@ -71,25 +71,19 @@
                 </button>
             </div>
             <div class="common-spt-pager-container">
-                <button type="button">
+                <button type="button" @click="prevPg">
                     <font-awesome-icon icon="fa-chevron-left" />
                 </button>
                 <ul class="spt-pager-list">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
+                    <li v-for="pageNum in allPages" :class="{'pager-recent-page': pageNum === recentPage.value }">{{ pageNum }}</li>
                 </ul>
-                <button type="button">
+                <button type="button" @click="nextPg">
                     <font-awesome-icon icon="fa-chevron-right" />
                 </button>
             </div>
+            <!-- <button @click="chunk" type="button">
+                테스트용
+            </button> -->
         </div>
     </section>
     <section v-show="isShowNotify === true" @click="notifyClose" class="spt-floating-notify" ref="floatingNote">
@@ -97,12 +91,15 @@
             <p class="notify-texts-head">
                 <font-awesome-icon icon="fa-bell" />
                 Note!
-                <span class="notify-texts-subhead">게시글을 확인해주세요</span>
+                <span class="notify-texts-subhead">댓글을 확인해주세요</span>
             </p>
             <!-- <p></p> -->
-            <h2>확인예정 문의글이 <span class="not-read-count">{{ copyOfData.filter((x) => x.STATUS === '확인예정').length }}</span> 있습니다.</h2>
+            <h2>확인하지 않은 댓글이 <span class="not-read-count">{{ copyOfData.filter((x) => x.STATUS === '확인예정').length }}</span> 있습니다.</h2>
         </div>
     </section>
+    <p>
+        
+    </p>
 
 </template>
 <script setup>
@@ -231,17 +228,72 @@
 
     axios.post('/api/login/getUserInfo')
         .then(res => {
-            console.log(res.data.info)
 
             usrData.value.push(res.data.info)// let userData = ({...res.data.info})
 
-            console.log(usrData.value)
             return
         })
         .catch (error => { 
             toast.success('정보를 가져오던 도중 오류가 발생했습니다.')
             return
         })
+
+        const perPage = 5; //페이지당 글 수
+        const totalPage = Math.ceil(copyOfData.value.length / perPage) // 총 몇 페이지 나올지 계산(max페이지)
+        
+        const allPages = Array.from({length: totalPage}, (v, i) => i + 1);  // 나올 페이지들 분리(예) < 1, 2, 3, 4, 5 >)
+
+        let recentPage = reactive(Number(0)) //현재페이지
+
+        const dataArr = reactive([])
+
+        //데이터 페이지별로 분리
+        function chunk() {
+
+            for (let i=0; i<copyOfData.value.length; i += perPage) {
+                dataArr.push(copyOfData.value.slice(i, i + perPage));
+            }
+                        
+            return dataArr;
+        }
+
+        chunk()
+
+        //최근 페이지 데이터 초기화 = 1페이지(인덱스 0)으로 시작
+        const recentPgData = ref([...dataArr[0]])
+
+        //다음페이지 버튼
+        function nextPg() {
+            if ( recentPage >= totalPage) {
+                console.log(totalPage)
+            } else {
+                recentPage = recentPage + 1
+
+                console.log('현재 페이지는' +recentPage)
+                
+
+                recentPgData.value = [...dataArr[recentPage]]
+
+            }
+        }
+
+        //이전페이지 버튼
+        function prevPg() {
+            if ( recentPage <= 0 ) {
+                
+            } else {
+                recentPage = recentPage - 1
+                
+                recentPgData.value = [...dataArr[recentPage]]
+            }
+            
+        }
+        
+
+        
+
+        console.log(copyOfData.value)
+        console.log(recentPgData.value)
 
 </script>
 <style lang="scss" scoped>

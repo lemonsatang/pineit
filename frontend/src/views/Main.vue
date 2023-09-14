@@ -306,6 +306,10 @@
 </script> <!-- Logic Ends -->
 
 <style lang="scss" scoped>
+    h2 {
+        font-size: var(--fnt-subt);
+        margin-top: .5rem;
+    }
     .recent-article-item {
         width: 33% !important;
 

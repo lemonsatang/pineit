@@ -1,5 +1,5 @@
 <template>
-    <div id="bizContact" :class="{'common-ui-hide': useRoute().name == 'Login', 'common-cs-footer': useRoute().path.split('/')[1] == 'admin' || 'cs'}">
+    <div id="bizContact" :class="{'common-ui-hide': useRoute().name == 'Login', 'common-cs-footer': useRoute().path.split('/')[1] == 'admin', 'common-cs-footer': useRoute().path.split('/')[1] == 'cs'}">
         <div class="flex flex-col justify-center items-center gap-8 container mx-auto">
             <h4>문의하실 내용을 메일로 남겨 주세요. <span data-line-break>빠른 시일 내에 연락 드리겠습니다.</span></h4>
 
