@@ -15,10 +15,14 @@
 
 .hero-text-small {
     font-size: 5vmin;
+    opacity: .85;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
 }
 
 .hero-text-large {
     font-size: 15vmin;
+    font-weight: 800;
 }
 
 .hero-video {
@@ -68,8 +72,7 @@
 }
 
 .catch-phrase-2 {
-    @apply mt-2;
-
+    margin-top: .75rem;
     font-size: var(--fnt-md);
 
     @media (max-width: 1024px) {
