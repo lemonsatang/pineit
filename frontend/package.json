@@ -16,7 +16,6 @@
         "@fortawesome/free-solid-svg-icons": "^6.4.2",
         "@fortawesome/vue-fontawesome": "^3.0.3",
         "@vueup/vue-quill": "^1.2.0",
-        "@xstate/vue": "^2.0.0",
         "animejs": "^3.2.1",
         "autoprefixer": "^10.4.15",
         "axios": "^1.5.0",
