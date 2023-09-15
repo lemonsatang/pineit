@@ -2,7 +2,6 @@
     <SubPageHero />
 
     <section class="container div-main-text">
-
         <div id="divSearchLine">
             <select data-totalsearch-select>
                 <option value="cd-total">전체</option>
@@ -15,8 +14,8 @@
             <button data-search-button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
-
         </div>
+
         <div id="divNoticeDetail">
             <p class="text-write-top">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"/></svg>
@@ -29,8 +28,8 @@
             <div id="editorWr">
                 <QuillEditor :options="editorOption" theme="snow"/>
             </div>
-
         </div>
+
         <div class="detail-btm-buttons"><!-- 목록 하단 버튼라인 -->
             <router-link :to="{name: 'Notice'}">
                 <button class="button-white">
@@ -45,20 +44,10 @@
             </router-link>
         </div>
     </section>
-
 </template>
 
 <script setup>
     import SubPageHero from '@/components/SubPageHero.vue'
-
-
-
-    // import { QuillEditor } from '@/node_modules/quill'
-    // import '@/node_modules/quill/dist/quill.snow.css';
-
-    // const app = createApp()
-    // app.component('QuillEditor', QuillEditor)
-
 </script>
 
 <script>
@@ -70,38 +59,37 @@
             QuillEditor
         },
         data() {
-    return {
-        editorOption: {
-            placeholder: "place holder test",
-            modules: {
-                toolbar: [
-                    ["bold", "italic", "underline", "strike"], // <strong>, <em>, <u>, <s>
-                    ["blockquote", "code-block"], // <blockquote>, <pre class="ql-syntax" spellcheck="false">
-                    [{ header: 1 }, { header: 2 }], // <h1>, <h2>
-                    [{ list: "ordered" }, { list: "bullet" }],
-                    [{ script: "sub" }, { script: "super" }], // <sub>, <sup>
-                    [{ indent: "-1" }, { indent: "+1" }], // class제어
-                    [{ direction: "rtl" }], //class 제어
-                    [{ size: ["small", false, "large", "huge"] }], //class 제어 - html로 되도록 확인
-                    [{ header: [1, 2, 3, 4, 5, 6, false] }], // <h1>, <h2>, <h3>, <h4>, <h5>, <h6>, normal
-                    [{ font: [] }], // 글꼴 class로 제어
-                    [{ color: [] }, { background: [] }], //style="color: rgb(230, 0, 0);", style="background-color: rgb(230, 0, 0);"
-                    [{ align: [] }], // class
-                    // ["clean"],
-                    ["link", "image", "video"],
-                ],
-                syntax: {
-                    highlight: (text) => hljs.highlightAuto(text).value,
+            return {
+                editorOption: {
+                    placeholder: "place holder test",
+                    modules: {
+                        toolbar: [
+                            ["bold", "italic", "underline", "strike"], // <strong>, <em>, <u>, <s>
+                            ["blockquote", "code-block"], // <blockquote>, <pre class="ql-syntax" spellcheck="false">
+                            [{ header: 1 }, { header: 2 }], // <h1>, <h2>
+                            [{ list: "ordered" }, { list: "bullet" }],
+                            [{ script: "sub" }, { script: "super" }], // <sub>, <sup>
+                            [{ indent: "-1" }, { indent: "+1" }], // class제어
+                            [{ direction: "rtl" }], //class 제어
+                            [{ size: ["small", false, "large", "huge"] }], //class 제어 - html로 되도록 확인
+                            [{ header: [1, 2, 3, 4, 5, 6, false] }], // <h1>, <h2>, <h3>, <h4>, <h5>, <h6>, normal
+                            [{ font: [] }], // 글꼴 class로 제어
+                            [{ color: [] }, { background: [] }], //style="color: rgb(230, 0, 0);", style="background-color: rgb(230, 0, 0);"
+                            [{ align: [] }], // class
+                            // ["clean"],
+                            ["link", "image", "video"],
+                        ],
+                        syntax: {
+                            highlight: (text) => hljs.highlightAuto(text).value,
+                        },
+                    },
+                    placeholder: '내용을 입력해주세요...',
                 },
-                },
-                placeholder: '내용을 입력해주세요...',
-            },
-            content: "",
+                content: "",
             }
         },
     }
 </script>
-
 
 <style lang="scss" scoped>
     #divNoticeDetail {

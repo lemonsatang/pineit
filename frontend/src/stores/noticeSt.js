@@ -3,7 +3,6 @@
 import { defineStore } from 'pinia'
 
 export const useNoticeStore = defineStore('notice', () => {
-
     const noticeGroup = ref({
         url: '/notice/',
         children: [
@@ -59,10 +58,7 @@ export const useNoticeStore = defineStore('notice', () => {
                 `
             }
         ]
-
     })
 
     return { noticeGroup }
-
-
 })

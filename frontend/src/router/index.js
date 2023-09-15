@@ -1,14 +1,12 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import Main from '@/views/Main.vue'
 
-
 const routes = [
-
     {
         path: '/',
         name: 'Main',
         component: Main
-    }, // Nomal Route
+    },
     {
         path: '/uc',
         name: 'UnderConstruction',
@@ -94,7 +92,6 @@ const routes = [
         name: 'ReportDetail',
         component: () => import( /* webpackChunkName: 'ReportDetail' */ '@/views/ReportDetail.vue')
     },
-
     {
         path: '/dataroom/wr',
         name: 'DataRoomWr',
@@ -105,7 +102,6 @@ const routes = [
         name: 'NewsWr',
         component: () => import( /* webpackChunkName: 'NewsWr' */ '@/views/NewsWr.vue' )
     },
-    
     {
         path: '/reportdata/wr/',
         name: 'ReportWr',
@@ -117,7 +113,6 @@ const routes = [
         name: 'NoticeWr',
         component: () => import( /* webpackChunkName: 'NoticeWr' */ '@/views/CsNoticeWr.vue' )
     },
-
     {
         path: '/admin/sptAdm/',
         name: 'SupportAdm',
@@ -154,8 +149,6 @@ const routes = [
         name: 'scs',
         component: () => import( /* webpackChunkName: 'scs' */ '@/views/SCS.vue' )
     },
-
-
 ]
 
 const router = createRouter({

@@ -23,15 +23,12 @@
 </template> <!-- Template Ends -->
 
 <script setup>
-    import { useRoute } from 'vue-router'
     import HeadPrimary from './components/HeadPrimary.vue'
     import FootPrimary from './components/FootPrimary.vue'
 
     const gotoTop = function() {
         window.scrollTo(0, 0)
     }
-
-    
 </script> <!-- Logic Ends -->
 
 <style lang="scss">

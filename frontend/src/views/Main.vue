@@ -45,42 +45,42 @@
                 </div>
             </article> <!-- 사업분야 아이템 -->
 
-        <article class="portfolio-category">
-            <dl class="portfolio-description">
-                <dd data-pf-category-subtext>전사적자원관리시스템</dd>
-                <dt data-pf-category-name>
-                    <h2 data-main-headTitles>ERP</h2>
-                </dt>
-                <dd data-pf-category-maintext>
-                    조직이 최적의 능력을 발휘할 수 있는 체계화된 시스템을 구축합니다.
-                </dd>
-                <dd data-pf-category-tag>
-                    <p class="portfolio-tag">인사관리</p>
-                    <p class="portfolio-tag">사업관리</p>
-                    <p class="portfolio-tag">프로젝트 관리</p>
-                </dd>
-            </dl>
+            <article class="portfolio-category">
+                <dl class="portfolio-description">
+                    <dd data-pf-category-subtext>전사적자원관리시스템</dd>
+                    <dt data-pf-category-name>
+                        <h2 data-main-headTitles>ERP</h2>
+                    </dt>
+                    <dd data-pf-category-maintext>
+                        조직이 최적의 능력을 발휘할 수 있는 체계화된 시스템을 구축합니다.
+                    </dd>
+                    <dd data-pf-category-tag>
+                        <p class="portfolio-tag">인사관리</p>
+                        <p class="portfolio-tag">사업관리</p>
+                        <p class="portfolio-tag">프로젝트 관리</p>
+                    </dd>
+                </dl>
 
                 <div class="portfolio-picture">
                     <img src="/src/assets/images/main-category-erp.jpg" alt="" data-pf-category-image>
                 </div>
             </article> <!-- 사업분야 아이템 -->
 
-        <article class="portfolio-category">
-            <dl class="portfolio-description">
-                <dd data-pf-category-subtext>온라인 사이트 및 서비스 구축</dd>
-                <dt data-pf-category-name>
-                    <h2 data-main-headTitles>WEB · APP</h2>
-                </dt>
-                <dd data-pf-category-maintext>
-                    보다 높은 접근성으로 고객에게 다가가는 웹 사이트를 제공합니다.
-                </dd>
-                <dd data-pf-category-tag>
-                    <p class="portfolio-tag">랜딩 페이지</p>
-                    <p class="portfolio-tag">웹 사이트</p>
-                    <p class="portfolio-tag">SaaS</p>
-                </dd>
-            </dl>
+            <article class="portfolio-category">
+                <dl class="portfolio-description">
+                    <dd data-pf-category-subtext>온라인 사이트 및 서비스 구축</dd>
+                    <dt data-pf-category-name>
+                        <h2 data-main-headTitles>WEB · APP</h2>
+                    </dt>
+                    <dd data-pf-category-maintext>
+                        보다 높은 접근성으로 고객에게 다가가는 웹 사이트를 제공합니다.
+                    </dd>
+                    <dd data-pf-category-tag>
+                        <p class="portfolio-tag">랜딩 페이지</p>
+                        <p class="portfolio-tag">웹 사이트</p>
+                        <p class="portfolio-tag">SaaS</p>
+                    </dd>
+                </dl>
 
                 <div class="portfolio-picture">
                     <img src="/src/assets/images/main-category-web.jpg" alt="" data-pf-category-image>
@@ -173,7 +173,6 @@
                             </dl>
                         </router-link>
                     </swiper-slide>
-
                 </swiper-container>
             </div>
         </section>
@@ -186,38 +185,38 @@
                         <h2 data-main-headTitles>소나무 소식</h2>
                     </div>
 
-                        <div class="recent-article-pagination">
-                            <button type="button">
-                                <i class="ri-arrow-left-s-line arr-left-news"></i>
-                            </button>
+                    <div class="recent-article-pagination">
+                        <button type="button">
+                            <i class="ri-arrow-left-s-line arr-left-news"></i>
+                        </button>
 
-                            <button type="button">
-                                <i class="ri-arrow-right-s-line arr-right-news"></i>
-                            </button>
-                        </div>
+                        <button type="button">
+                            <i class="ri-arrow-right-s-line arr-right-news"></i>
+                        </button>
                     </div>
-
-                    <swiper-container v-for="item in getNewsData" v-bind="swiperOptions01" class="recent-article-slider">
-                        <swiper-slide v-for="newsItem in item.children" class="recent-article-item">
-                            <router-link :to="{name: 'NewsDetail', params: {id:newsItem.number}}">
-                                <div class="recent-article-picture">
-                                    <img :src="newsItem.thumImg" alt="" data-recent-article-image-news>
-                                </div>
-
-                                <dl class="recent-article-post">
-                                    <dt data-recent-article-title>
-                                        <h4>{{ newsItem.title }}</h4>
-                                    </dt>
-                                    <dd data-recent-article-info>
-                                        <span data-recent-article-author>{{ newsItem.category }}</span>
-                                        <hr>
-                                        <span data-recent-article-date>{{ newsItem.date }}</span>
-                                    </dd>
-                                </dl>
-                            </router-link>
-                        </swiper-slide>
-                    </swiper-container>
                 </div>
+
+                <swiper-container v-for="item in getNewsData" v-bind="swiperOptions01" class="recent-article-slider">
+                    <swiper-slide v-for="newsItem in item.children" class="recent-article-item">
+                        <router-link :to="{name: 'NewsDetail', params: {id:newsItem.number}}">
+                            <div class="recent-article-picture">
+                                <img :src="newsItem.thumImg" alt="" data-recent-article-image-news>
+                            </div>
+
+                            <dl class="recent-article-post">
+                                <dt data-recent-article-title>
+                                    <h4>{{ newsItem.title }}</h4>
+                                </dt>
+                                <dd data-recent-article-info>
+                                    <span data-recent-article-author>{{ newsItem.category }}</span>
+                                    <hr>
+                                    <span data-recent-article-date>{{ newsItem.date }}</span>
+                                </dd>
+                            </dl>
+                        </router-link>
+                    </swiper-slide>
+                </swiper-container>
+            </div>
         </section>
 
         <Popup popupTitle="공지사항" :popupDuration="new Date('2023-08-02')">
@@ -300,7 +299,6 @@
     const getId = getParams.params.id
 
     //※주의 : 보도자료 = reportGroup, 소나무 소식 = newsGroup
-
 
     console.log(newsGroup.value)
 </script> <!-- Logic Ends -->

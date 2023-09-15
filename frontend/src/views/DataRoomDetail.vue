@@ -2,7 +2,6 @@
     <SubPageHero />
 
     <section class="container div-main-text">
-
         <!-- <div id="divSearchLine">
             <select data-totalsearch-select>
                 <option value="cd-total">전체</option>
@@ -15,7 +14,6 @@
             <button data-search-button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
-
         </div> -->
 
         <article v-if="dataGroup[getId]">
@@ -65,7 +63,7 @@
                             <p data-milestone-prev-date>{{ dataGroup[getId - 1]?.date }}</p>
                         </div>
                     </router-link>
-                    
+
                     <a href="#" v-if="dataAmount < nextArticle" ref="nextLink">
                         <div id="divMileNext">
                             <p>다음 글</p>
@@ -80,10 +78,8 @@
                             <p data-milestone-prev-date>{{ dataGroup[getId + 1]?.date }}</p>
                         </div>
                     </router-link>
-                    
                 </div>
             </div>
-
         </article>
         <div class="detail-btm-buttons"><!-- 목록 하단 버튼라인 -->
             <router-link to="/dataroom">
@@ -131,7 +127,6 @@
 
     const getParams = useRoute();
     const getId = parseInt(getParams.params.id)
-   
 
     const dataAmount = parseInt(dataGroup.value.length);
     const nextArticle = parseInt(getId + 2);
@@ -145,47 +140,40 @@
 
     onMounted(() => {
         let thisPw = dataGroup.value[getId].password
-        
+
         if ( thisPw != null ) {
-            checkModal.value.showModal()    
-            
+            checkModal.value.showModal()
+
         } else {
             pwChkComplete.value = true
         }
     })
- 
-    
+
     //비밀번호 체크 함수
 
     let pwAlert = ref(false)
     let plzInput = ref(false)
 
-    const inputValue = ref(null)  
+    const inputValue = ref(null)
 
     function chkPw(g) {
         let inputPass = inputValue.value.value
         let thisPassword = dataGroup.value[getId].password
 
-
         if ( thisPassword == inputPass ) {
-                pwChkComplete.value = true
-                checkModal.value.close()
-                
-
-            } else if ( inputPass == '' ) {
-                pwAlert.value = false
-                plzInput.value = true
-                
-            } else if ( inputPass != '' && thisPassword != inputPass ) {
-                plzInput.value = false
-                pwAlert.value = true
+            pwChkComplete.value = true
+            checkModal.value.close()
+        } else if ( inputPass == '' ) {
+            pwAlert.value = false
+            plzInput.value = true
+        } else if ( inputPass != '' && thisPassword != inputPass ) {
+            plzInput.value = false
+            pwAlert.value = true
         }
-
-    } 
+    }
 
     //비밀번호 확인창 닫기
     function initPw(e) {
-
         checkModal.value.close()
 
         //경고문구 초기화
@@ -195,12 +183,9 @@
         //입력한 비번 초기화
         inputValue.value.value = null
     }
-
-
 </script>
 
 <style lang="scss" scoped>
-
     *:focus {
         outline: 0;
     }
@@ -210,8 +195,6 @@
 
         margin-top: 2.5rem;
     }
-
-
 
 /* 본문 */
 
@@ -284,7 +267,7 @@
 
     //비밀번호 확인창
 
-       [data-pw-check-modal] {
+    [data-pw-check-modal] {
         @apply top-0 left-0;
 
         z-index: 999;

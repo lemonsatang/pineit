@@ -2,7 +2,6 @@
     <SubPageHero />
 
     <section class="container div-main-text">
-
         <div id="divSearchLine">
             <select data-totalsearch-select>
                 <option value="cd-total">전체</option>
@@ -15,7 +14,6 @@
             <button data-search-button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
-
         </div>
         <div id="divDataRoomDetail">
             <p class="text-write-top">
@@ -31,7 +29,6 @@
             </div>
 
             <div id="divUploadedFiles">
-
                 <div class="section-upload-drag" ref="uploadSection">
                     <div class="dotline-inner-drag">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 19h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7zm9-10v7h-2V9H6l6-6 6 6h-5z"/></svg>
@@ -53,12 +50,9 @@
                             <p data-uploaded-title><label ref="uploadedName">파일예시.xls</label><span data-uploaded-size ref="uploadedSize">324kb</span></p>
                             <svg class="button-trash-basket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 8h16v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8zm2 2v10h12V10H6zm3 2h2v6H9v-6zm4 0h2v6h-2v-6zM7 5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2h5v2H2V5h5zm2-1v1h6V4H9z"/></svg>
                         </li>
-
                     </ul>
                 </div>
-
             </div>
-
         </div>
         <div class="detail-btm-buttons"><!-- 목록 하단 버튼라인 -->
             <router-link to="/csnotice/자료실">
@@ -74,12 +68,10 @@
             </router-link>
         </div>
     </section>
-
 </template>
 
 <script setup>
     import SubPageHero from '@/components/SubPageHero.vue'
-
 </script>
 
 <script>
@@ -128,43 +120,41 @@
             const uploadedName = this.$refs.uploadedName;
             const uploadedSize = this.$refs.uploadedSize;
 
-
             /* 박스 안에 Drag 들어왔을 때 */
             uploadBox.addEventListener('dragenter', function(e) {
-                console.log('dragenter');
-            });
+                console.log('dragenter')
+            })
 
             /* 박스 안에 Drag를 하고 있을 때 */
             uploadBox.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                console.log('dragover');
+                e.preventDefault()
+                console.log('dragover')
 
-                this.style.backgroundColor = 'rgba(var(--clr-inter-shade), .15)';
-            });
+                this.style.backgroundColor = 'rgba(var(--clr-inter-shade), .15)'
+            })
 
             /* 박스 밖으로 Drag가 나갈 때 */
             uploadBox.addEventListener('dragleave', function(e) {
-                console.log('dragleave');
+                console.log('dragleave')
 
-                this.style.backgroundColor = 'rgba(var(--clr-inter-shade), .05)';
-            });
+                this.style.backgroundColor = 'rgba(var(--clr-inter-shade), .05)'
+            })
 
             /* 박스 안에서 Drag를 Drop했을 때 */
             uploadBox.addEventListener('drop', function(e) {
-                e.preventDefault();
+                e.preventDefault()
 
-                console.log('drop');
+                console.log('drop')
 
-                var data = e.dataTransfer.files[0];
-                console.dir(data);
+                var data = e.dataTransfer.files[0]
+                console.dir(data)
 
-                uploadedName.innerHTML = data.name;
-                uploadedSize.innerHTML = data.size + "kb";
-            });
+                uploadedName.innerHTML = data.name
+                uploadedSize.innerHTML = data.size + "kb"
+            })
         }
     }
 </script>
-
 
 <style lang="scss" scoped>
     #divDataRoomDetail {
@@ -226,8 +216,6 @@
 
     [data-title-input] {
         @apply ml-2;
-
-
     }
 
     #editorWr {
@@ -239,6 +227,4 @@
             font-size: var(--fnt-title-sm);
         }
     }
-
-
 </style>

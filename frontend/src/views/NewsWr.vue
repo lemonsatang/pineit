@@ -72,11 +72,11 @@
     import { QuillEditor } from '@vueup/vue-quill'
     import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
-        export default {
-            components: {
-                QuillEditor
-            },
-            data() {
+    export default {
+        components: {
+            QuillEditor
+        },
+        data() {
             return {
                 editorOption: {
                 placeholder: "place holder test",
@@ -104,90 +104,88 @@
                 placeholder: '내용을 입력해주세요...',
                 },
                 content: "",
-            };
-            },
-            mounted() {
-                /* 드래그 to 파일 업로드 */
-
-                const btnUpload = this.$refs.btnUpload;
-                const inputFile = this.$refs.inputFile;
-                const uploadBox = this.$refs.uploadSection;
-                const uploadedName = this.$refs.uploadedName;
-                const uploadedSize = this.$refs.uploadedSize;
-
-                /* 박스 안에 Drag 들어왔을 때 */
-                uploadBox.addEventListener('dragenter', function(e) {
-                    console.log('dragenter');
-                })
-
-                /* 박스 안에 Drag를 하고 있을 때 */
-                uploadBox.addEventListener('dragover', function(e) {
-                    e.preventDefault();
-                    console.log('dragover');
-
-                    this.style.backgroundColor = 'rgba(var(--clr-inter-shade), .15)';
-                })
-
-                /* 박스 밖으로 Drag가 나갈 때 */
-                uploadBox.addEventListener('dragleave', function(e) {
-                    console.log('dragleave');
-
-                    this.style.backgroundColor = 'rgba(var(--clr-inter-shade), .05)';
-                })
-
-                /* 박스 안에서 Drag를 Drop했을 때 */
-                uploadBox.addEventListener('drop', function(e) {
-                    e.preventDefault();
-
-                    console.log('drop');
-
-                    var data = e.dataTransfer.files[0];
-                    console.dir(data);
-
-                    uploadedName.innerHTML = data.name;
-                    uploadedSize.innerHTML = data.size + "kb";
-                })
-
-                /* 멀티파일 업로드 미리보기 */
-
-                const multipleContainer = this.$refs.multipleContainer;
-
-                function readMultipleImage(input) {
-                    if(input.files) {
-                        console.log(input.files)
-                        const fileArr = Array.from(input.files)
-                        const $colDiv1 = document.createElement('div')
-
-                        fileArr.forEach((file, index) => {
-                            const reader = new FileReader()
-                            const $imgDiv = document.createElement('div')
-                            const $img = document.createElement('img')
-                            $img.classList.add('image')
-                            const $label = document.createElement('label')
-                            $label.classList.add('image-label')
-                            $label.textContent = file.name
-                            $imgDiv.appendChild($img)
-                            $imgDiv.appendChild($label)
-
-                            reader.onload = e => {
-                                $img.src = e.target.result
-                            }
-
-                            multipleContainer.appendChild($img);
-                            reader.readAsDataURL(file)
-                            $img.style.height = "10rem";
-                            $img.style.objectFit = "cover";
-                            $img.style.width = "100%";
-                        })
-
-
-                    }
-                }
-                // 이벤트 리스너
-                document.getElementById('buttonUploadOrigin').addEventListener('change', (e) => {
-                    readMultipleImage(e.target);
-                })
             }
+        },
+        mounted() {
+            /* 드래그 to 파일 업로드 */
+
+            const btnUpload = this.$refs.btnUpload
+            const inputFile = this.$refs.inputFile
+            const uploadBox = this.$refs.uploadSection
+            const uploadedName = this.$refs.uploadedName
+            const uploadedSize = this.$refs.uploadedSize
+
+            /* 박스 안에 Drag 들어왔을 때 */
+            uploadBox.addEventListener('dragenter', function(e) {
+                console.log('dragenter')
+            })
+
+            /* 박스 안에 Drag를 하고 있을 때 */
+            uploadBox.addEventListener('dragover', function(e) {
+                e.preventDefault()
+                console.log('dragover')
+
+                this.style.backgroundColor = 'rgba(var(--clr-inter-shade), .15)'
+            })
+
+            /* 박스 밖으로 Drag가 나갈 때 */
+            uploadBox.addEventListener('dragleave', function(e) {
+                console.log('dragleave')
+
+                this.style.backgroundColor = 'rgba(var(--clr-inter-shade), .05)'
+            })
+
+            /* 박스 안에서 Drag를 Drop했을 때 */
+            uploadBox.addEventListener('drop', function(e) {
+                e.preventDefault()
+
+                console.log('drop')
+
+                var data = e.dataTransfer.files[0]
+                console.dir(data)
+
+                uploadedName.innerHTML = data.name
+                uploadedSize.innerHTML = data.size + "kb"
+            })
+
+            /* 멀티파일 업로드 미리보기 */
+
+            const multipleContainer = this.$refs.multipleContainer
+
+            function readMultipleImage(input) {
+                if(input.files) {
+                    console.log(input.files)
+                    const fileArr = Array.from(input.files)
+                    const $colDiv1 = document.createElement('div')
+
+                    fileArr.forEach((file, index) => {
+                        const reader = new FileReader()
+                        const $imgDiv = document.createElement('div')
+                        const $img = document.createElement('img')
+                        $img.classList.add('image')
+                        const $label = document.createElement('label')
+                        $label.classList.add('image-label')
+                        $label.textContent = file.name
+                        $imgDiv.appendChild($img)
+                        $imgDiv.appendChild($label)
+
+                        reader.onload = e => {
+                            $img.src = e.target.result
+                        }
+
+                        multipleContainer.appendChild($img)
+                        reader.readAsDataURL(file)
+                        $img.style.height = "10rem"
+                        $img.style.objectFit = "cover"
+                        $img.style.width = "100%"
+                    })
+                }
+            }
+            // 이벤트 리스너
+            document.getElementById('buttonUploadOrigin').addEventListener('change', (e) => {
+                readMultipleImage(e.target)
+            })
+        }
     }
 </script>
 

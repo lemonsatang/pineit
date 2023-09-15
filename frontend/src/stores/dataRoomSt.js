@@ -7,7 +7,6 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
     //상세페이지
 
     const dataGroup = ref([
-        
         {
             bindIndex: 0,
             title: '고객용 원격지원 설치파일 다운로드 ',
@@ -32,7 +31,7 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             ],
             password: 'db',
             lock: true,
-            modals: false            
+            modals: false
         },
         {
             bindIndex: 2,
@@ -102,7 +101,5 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
         },
     ])
 
-
     return { dataGroup }
 })
-

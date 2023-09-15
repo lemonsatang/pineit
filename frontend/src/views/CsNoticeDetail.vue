@@ -15,6 +15,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
         </div> -->
+
         <div>
             <div id="divNoticeDetail">
                 <div id="divDetailTitle"><!-- 제목영역 -->
@@ -30,7 +31,7 @@
                 <div id="divDetailText"><!-- 본문영역 -->
                     <img v-if="noticeGroup.children[getId]?.images" :src="noticeGroup.children[getId]?.images" />
                     <p v-html="noticeGroup.children[getId]?.textAll">
-                        
+
                     </p>
                 </div>
                 <div id="divMileStone">
@@ -63,11 +64,10 @@
                             <p data-milestone-next-date>{{ noticeGroup.children[getId + 1]?.date }}</p>
                         </div>
                     </a>
-                    
+
                 </div>
             </div>
         </div>
-
 
         <div class="detail-btm-buttons"><!-- 목록 하단 버튼라인 -->
             <router-link :to="noticeGroup.url">
@@ -82,9 +82,7 @@
                 </button>
             </router-link> -->
         </div>
-
     </section>
-
 </template>
 
 <script setup>
@@ -98,11 +96,9 @@
     const noticeStore = useNoticeStore()
     const { noticeGroup } = storeToRefs(noticeStore)
 
-
-
     const getParams = useRoute()
     const getId = parseInt(getParams.params.id)
-    
+
     const nextArticle = parseInt(getId + 2);
     const prevArticle = parseInt(getId - 1);
 
@@ -120,8 +116,6 @@
 
         margin-top: 2.5rem;
     }
-
-
 
 /* 본문 */
 
@@ -146,9 +140,9 @@
 
             grid-template-columns: 5rem 1fr 7rem;
             font-size: var(--fnt-md);
-            color :rgba(var(--clr-inter-shade), 1);
+            color: rgba(var(--clr-inter-shade), 1);
 
-            & + div{
+            & + div {
                 border-top: 1px solid rgba(var(--clr-inter-shade), .15);
             }
         }
@@ -164,7 +158,7 @@
         @media screen and (width < 1024px) {
             @apply font-bold;
 
-            font-size:var(--fnt-md);
+            font-size: var(--fnt-md);
         }
     }
 

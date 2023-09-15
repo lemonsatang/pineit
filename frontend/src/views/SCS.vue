@@ -33,7 +33,7 @@
                         <p>상태진단</p>
                         <p>모니터링</p>
                     </article>
-                </article>   
+                </article>
             </div>
 
             <div class="scs-mid-point ">
@@ -193,17 +193,15 @@
                     <p class="e-mail">spenguin@pineit.co.kr</p>
                 </div>
             </div>
-        </section>               
+        </section>
     </div>
 </template> <!-- Template Ends -->
 
 <script setup>
     import SubPageHero from '@/components/SubPageHero.vue'
-
 </script> <!-- Logic Ends -->
 
 <style lang="scss">
-
     .M-title {
         display: none;
     }
@@ -271,8 +269,8 @@
         font-size: var(--fnt-mlg);
         text-indent: -11px;
         padding-left: 11px;
-        
-       &::before{
+
+        &::before{
             content: "-  "
         }
     }
@@ -302,7 +300,6 @@
     /*scs 반응형*/
 
     @media screen and (max-width: 1550px) {
-
         .scs-mid-point,
         .scs-device,
         .scs-product {
@@ -313,22 +310,19 @@
 
         .scs-mid-box {
             @apply flex flex-col mx-auto;
-
         }
-
     }
 
     @media screen and (max-width: 1300px) {
         .scs-top-box {
             @apply flex-col;
-
         }
 
-        .D-title{
+        .D-title {
             display: none
         }
 
-        .M-title{
+        .M-title {
             display: block
         }
 
@@ -336,15 +330,12 @@
             aspect-ratio: 16/9;
             width: 100%;
         }
-            
     }
 
     @media screen and (max-width: 1023px) {
-        
         .scs-tag {
             flex-wrap: wrap;
         }
-
     }
 
     @media screen and (max-width: 720px) {
@@ -352,14 +343,12 @@
     }
 
     @media screen and (max-width: 425px) {
-
         .card {
             width: 310px;
             box-shadow: -10px 8px 19px 0 rgba(0, 0, 0, .4);
         }
 
         .scs-point-text{
-
             font-size: var(--fnt-mlg);
         }
 
@@ -367,7 +356,5 @@
         .scs-definition-text{
             font-size: var(--fnt-md);
         }
-
-
     }
 </style> <!-- Stylesheet Ends -->

@@ -16,7 +16,7 @@
                     </p>
                 </div>
                 <div v-html="item.TEXTS" class="spt-dt-text">
-                    
+
                 </div>
                 <div class="spt-dt-milestone">
                     <router-link :to="{name: 'SupportDt', params: { id: getIdx - 1}}" v-if="getIdx > 0" class="spt-dt-mile-line">
@@ -73,12 +73,13 @@
                     </li>
                 </ul>
             </section>
-            
+
         </div>
     </section>
 </template>
+
 <script setup>
-    import { useRoute, useRouter } from 'vue-router'    
+    import { useRoute, useRouter } from 'vue-router'
     import axios from 'axios'
 
     const router = useRouter()
@@ -99,10 +100,10 @@
 
     //현재 페이지의 데이터가 몇번째 데이터인지 구하기
     const getIdx = sptAdmGroup.value.findIndex((e) => e.bindIdx == getParams)
-    
+
     const prevFiltered = sptAdmGroup.value[getIdx - 1]
     const nextFiltered = sptAdmGroup.value[getIdx + 1]
-    
+
     const getReply = [...replyGroup.value.filter(x => x.NO === getData.value[0].NO )];
 
     //로긔인한 유저 정보
@@ -117,11 +118,11 @@
             console.log(usrData.value[0])
 
         })
-        .catch (error => { 
+        .catch (error => {
             toast.success('정보를 가져오던 도중 오류가 발생했습니다.')
             return
         })
-    
+
     function goList() {
         console.log(usrData.value)
 
@@ -135,8 +136,8 @@
             })
         }
     }
-
 </script>
+
 <style lang="scss" scoped>
     .common-button-container {
         margin-top: .5rem;

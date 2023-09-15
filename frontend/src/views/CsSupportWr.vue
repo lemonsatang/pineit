@@ -7,15 +7,18 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"/></svg>
                     <span>게시물 작성</span>
                 </p>
+
                 <input type="text" placeholder="이름을 입력해주세요." maxlength="25">
+
                 <div id="divTitleWrite">
                     <input data-title-input type="text" placeholder="제목을 입력하세요..." ref="titleEl" v-model="title" maxlength="25">
                 </div>
+
                 <div id="editorWr">
                     <QuillEditor ref="qe" :options="editorOption" theme="snow" content-type="html"/>
                 </div>
-                <div id="divUploadedFiles">
 
+                <div id="divUploadedFiles">
                     <div @dragenter="dragEnter" @dragover="dragOver" @dragleave="dragLeave" @drop="fileDragIn" class="section-upload-drag" ref="uploadSection">
                         <div class="dotline-inner-drag">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 19h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7zm9-10v7h-2V9H6l6-6 6 6h-5z"/></svg>
@@ -41,27 +44,22 @@
                                 </p>
                                 <svg @click="delThis(index)" class="button-trash-basket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 8h16v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8zm2 2v10h12V10H6zm3 2h2v6H9v-6zm4 0h2v6h-2v-6zM7 5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2h5v2H2V5h5zm2-1v1h6V4H9z"/></svg>
                             </li>
-
                         </ul>
                     </div>
-
                 </div>
-
             </div>
+
             <div class="common-button-container"><!-- 목록 하단 버튼라인 -->
                 <button @click="goBack">
                     <p>목 록</p>
                 </button>
-                
-                    <button @click="saveSupport">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="rgba(255,255,255,1)"/></svg>
-                        <p>작성완료</p>
-                    </button>
-                
-            </div>
 
+                <button @click="saveSupport">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="rgba(255,255,255,1)"/></svg>
+                    <p>작성완료</p>
+                </button>
+            </div>
         </div>
-        
     </section>
 </template>
 
@@ -99,16 +97,14 @@
                             highlight: (text) => hljs.highlightAuto(text).value,
                         },
                     },
-                    
                 },
                 content: "",
             }
         },
     }
-
 </script>
 
-<script setup>   
+<script setup>
     import { useRouter } from 'vue-router'
     import axios from 'axios'
     import { toast } from 'vue3-toastify'
@@ -152,24 +148,24 @@
 
         // e.style.backgroundColor = 'rgba(var(--clr-inter-shade), .05)';
         e.currentTarget.classList.remove('drag-color')
-    }            
+    }
 
     /* 박스 안에서 Drag를 Drop했을 때 */
     function fileDragIn(e) {
         e.preventDefault();
 
         var data = e.dataTransfer.files;
-        console.dir(data);        
+        console.dir(data);
 
         for (let i=0; i < data.length; i++) {
             tempUploaded.value.push({"uploadedName": data[i].name, "uploadedSize": data[i].size + "kb"})
         }
 
         console.log(tempUploaded)
-    }        
+    }
 
     //input type=file을 이용한 업로드
-    function inputFileUp(e) {        
+    function inputFileUp(e) {
         let data = e.currentTarget.files
 
         console.log(data)
@@ -192,16 +188,16 @@
     function wrComp() {
         //작성된 내용
         let getTexts = qe.value.getContents()
-        
+
         return getTexts;
     }
-    
+
 
     // 게시물 등록
     function saveSupport() {
         console.log(tempUploaded.value)
 
-        if(!!title.trim() === false) {
+        if (!!title.trim() === false) {
             toast.warning('제목을 입력해주세요.')
             titleEl.value.focus()
             return
@@ -209,27 +205,28 @@
 
         let jtext = wrComp(); // 작업내용
 
-        if(jtext.length < 20) {
+        if (jtext.length < 20) {
             toast.warning('작성 내용은 10글자 이상 써주세요.')
             return
         }
+
         let data = {}
+
         data['title'] = title
         data['jtext'] = jtext
 
-
         let formData = new FormData();
+
         formData.append('data',JSON.stringify(data))
-            formData.append('file', inputFile.value.value)
+        formData.append('file', inputFile.value.value)
         console.log(inputFile.value.value)
         console.log(formData.get('file'))
     }
-
 </script>
 
 <style lang="scss" scoped>
     #divUploadedFiles {
-        
+
     }
 
     .common-button-container {
@@ -237,7 +234,6 @@
             padding: .5rem 1rem;
         }
     }
-
 
     #divDataRoomDetail {
         @apply w-full border-black border-t-2;
@@ -297,7 +293,6 @@
 
     [data-title-input] {
         @apply w-full;
-
     }
 
     #editorWr {
@@ -311,6 +306,4 @@
             font-size: var(--fnt-title-sm);
         }
     }
-
-
 </style>

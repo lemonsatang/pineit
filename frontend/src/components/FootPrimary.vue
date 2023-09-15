@@ -82,11 +82,9 @@
 </template> <!-- Template Ends -->
 
 <script setup>
-    import { useRoute} from 'vue-router'
-    const currentYear = ref(new Date().getFullYear())
-    let chk = useRoute().path.split('/')[1]
-    console.log(chk)
+    import { useRoute } from 'vue-router'
 
+    const currentYear = ref(new Date().getFullYear())
 </script> <!-- Logic Ends -->
 
 <style lang="scss">
@@ -187,7 +185,6 @@
         }
 
         #bizContact {
-
             h4 {
                 @apply text-base break-keep text-center;
             }
