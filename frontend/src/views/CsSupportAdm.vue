@@ -109,7 +109,8 @@
                     <font-awesome-icon icon="fa-xmark" />
                 </button>
             </div>
-            <div class="spt-notice-manage-texts">
+            <!-- 리스트 -->
+            <div v-if="isShowNtList == true" class="spt-notice-manage-texts">
                 <div class="spt-search-line">
                     <div class="spt-input-container">
                         <p class="spt-input-title">고객사</p>
@@ -151,11 +152,45 @@
                     </div>
                 </div>
                 <div class="common-button-container">
+                    <button @click="isShowNtList = false" type="button">
+                        <font-awesome-icon icon="fa-pen" />
+                        글쓰기
+                    </button>
                     <button @click="isShowNm = false" type="button">
                         닫기
                     </button>
                 </div>
             </div>
+            <!-- 글쓰기 -->
+            <div v-if="isShowNtList == false" class="spt-notice-manage-texts">
+                <h1 class="nt-write-header">공지사항 글쓰기</h1>
+                <div class="nt-write-searchline">
+                    <p class="nt-write-subtitles">고객사 선택</p>
+                    <input type="text">
+                    <button type="button">
+                        <font-awesome-icon icon="fa-magnifying-glass" />
+                        검색
+                    </button>
+                </div>
+                <ul class="nt-write-customerlist">
+                    <li>
+                        롯데
+                        <button type="button">선택</button>
+                    </li>
+                    <li>
+                        해태
+                        <button type="button">선택</button>
+                    </li>
+                    <li>
+                        백설
+                        <button type="button">선택</button>
+                    </li>
+                </ul>
+                <div class="common-button-container">
+                    <button @click="isShowNtList = true" type="button">목록</button>
+                </div>
+            </div>
+            
         </div>
     </section>
     <section v-if="isShowSaved == true" id="ntInnerSaveAlarmContainer">
@@ -198,6 +233,7 @@
 
     const isShowNm = ref(false)
     const isShowSaved = ref(false)
+    const isShowNtList = ref(true)
 
     //현황 필터링
     function statChk() {
@@ -543,7 +579,7 @@
     .spt-notice-manage-body {
         background-color: rgb(var(--white));
         border-radius: .5rem;
-        padding-bottom: .5rem;
+        padding-bottom: 1rem;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -570,6 +606,13 @@
     
     .spt-notice-manage-texts {
         padding: 1rem .5rem 0 .5rem;
+        height: 80vh;
+
+        .common-button-container {
+            button {
+                gap: .25rem;
+            }
+        }
     }
 
     #sptNoticeManage .spt-item-line {
@@ -635,6 +678,69 @@
             justify-content: center;
         }
 
+    }
+
+    // 공지사항 글쓰기
+
+    .nt-write-header {
+        font-size: var(--fnt-title-md);
+        font-weight: 700;
+    }
+
+    .nt-write-searchline {
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+        border-radius: .5rem;
+        background-color: rgba(var(--deepblue), .15);
+        margin-top: 2rem;
+        margin-bottom: .5rem;
+
+        input[type=text] {
+            padding: .25rem;
+            background-color: rgba(var(--white), 1);
+            width: 15rem;
+        }
+
+        button {
+            background-color: rgba(var(--deepblue), 1);
+            border-radius: 2rem;
+            color: rgba(var(--white), 1);
+            padding: .25rem .5rem;
+            margin-left: .5rem;
+        }
+    }
+
+    .nt-write-customerlist {
+        border: 2px solid rgba(var(--deepblue), .35);
+        padding: .5rem;
+        border-radius: .5rem;
+
+        li {
+            padding: .25rem .5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+
+            button {
+                background-color: rgba(var(--deepblue), 1);
+                border-radius: 2rem;
+                color: rgba(var(--white), 1);
+                padding: .35rem 1rem;
+                
+            }
+
+            &:hover {
+                background-color: rgba(var(--deepblue), .15);
+            }
+        }
+
+    }
+
+    .nt-write-subtitles {
+        font-size: var(--fnt-title-sm);
+        margin-right: 1rem;
     }
 
 </style>
