@@ -42,7 +42,22 @@
 
             <!-- 버튼영역 -->
             <div class="common-button-container">
-                <button @click="goList" type="button">
+                <div class="spt-pro-input">
+                    <font-awesome-icon icon="fa-bars-progress" />
+                    <p class="spt-input-title">작업진행률</p>
+                    <div class="spt-pro-input-inner-container">
+                        <input @input="numChk" ref="progressInput" type="text" maxlength="3">
+                        <span class="spt-progress-unit">%</span>
+                    </div>
+                    <button @click="progressSave" type="button">
+                        <font-awesome-icon icon="floppy-disk" />
+                        저장
+                    </button>
+                </div>
+                <p class="prog-over-alert" v-if="overProg == true">
+                    <font-awesome-icon icon="fa-circle-xmark" />
+                    진행률은 100%를 초과할 수 없습니다.</p>
+                <button class="common-list-button" @click="goList" type="button">
                     목  록
                 </button>
                 <button type="button">
@@ -80,6 +95,7 @@
 
 <script setup>
     import { useRoute, useRouter } from 'vue-router'
+    import { toast } from 'vue3-toastify'
     import axios from 'axios'
 
     const router = useRouter()
@@ -105,6 +121,9 @@
     const nextFiltered = sptAdmGroup.value[getIdx + 1]
 
     const getReply = [...replyGroup.value.filter(x => x.NO === getData.value[0].NO )];
+
+    const progressInput = ref()
+    const overProg = ref(false)
 
     //로긔인한 유저 정보
     const usrData = ref([])
@@ -136,10 +155,31 @@
             })
         }
     }
+
+    function progressSave() {
+        console.log(progressInput.value.value)
+        //이 값을 악-시오스로 보내시오
+    }
+
+    function numChk(e) {
+        e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+
+        if (e.target.value > 100) {
+            overProg.value = true
+
+            setTimeout(function () {
+                overProg.value = false
+            }, 3000);
+
+        } else {
+
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
     .common-button-container {
         margin-top: .5rem;
+        justify-content: space-between;
     }
 </style>

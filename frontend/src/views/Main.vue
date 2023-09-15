@@ -5,7 +5,9 @@
                 <div class="container mx-auto">
                     <p class="hero-text-small">전문가들이 신뢰하는 IT 기업</p>
                     <h2 class="hero-text-large">
+                        <font-awesome-icon icon="fa-quote-left" />
                         <span>소나무</span><span>정보기술</span>
+                        <font-awesome-icon icon="fa-quote-right" />
                     </h2>
                 </div>
             </div>
@@ -305,7 +307,6 @@
 
 <style lang="scss" scoped>
     h2 {
-        font-size: var(--fnt-subt);
         margin-top: .5rem;
     }
     .recent-article-item {
@@ -327,5 +328,33 @@
 
     .overflow-hidden {
         padding-bottom: 7rem;
+    }
+
+    .hero-text-large {
+        svg {
+            width: 2rem;
+            height: fit-content;
+            color: rgba(var(--white), .75);
+            
+            &:first-child {
+                margin-bottom: 6rem;
+            }
+
+            &:last-child {
+                margin-top: 6rem;
+            }
+        }
+
+        animation: slideup .5s ease-in-out;
+    }
+
+    @keyframes slideup {
+        0% {
+            transform: translateY(50%);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
     }
 </style> <!-- Stylesheet Ends -->

@@ -7,8 +7,12 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"/></svg>
                     <span>게시물 작성</span>
                 </p>
-                <input type="text" placeholder="이름을 입력해주세요." maxlength="25" v-model="plnmm" ref="plnmmEl">
-                <div id="divTitleWrite">
+
+                <div class="div-write-titleline">
+                    <input type="text" placeholder="작성자명을 입력해주세요." maxlength="25" v-model="plnmm" ref="plnmmEl">
+                </div>
+                <div class="div-write-titleline">
+
                     <input data-title-input type="text" placeholder="제목을 입력하세요..." ref="titleEl" v-model="title" maxlength="25">
                 </div>
 
@@ -288,7 +292,7 @@
         }
     }
 
-    #divTitleWrite {
+    .div-titleline-write {
         @apply flex items-center;
 
         > p {

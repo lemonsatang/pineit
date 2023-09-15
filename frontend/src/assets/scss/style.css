@@ -395,6 +395,7 @@ video {
   justify-content: flex-end;
   gap: 0.5rem;
   margin-top: 3rem;
+  align-items: center;
 }
 .common-button-container button {
   border-radius: 2rem;
@@ -410,6 +411,9 @@ video {
 }
 .common-button-container button:hover {
   opacity: 0.8;
+}
+.common-button-container button.common-list-button {
+  margin-left: auto;
 }
 .common-button-container svg {
   margin-right: 0.35rem;
@@ -804,7 +808,7 @@ video {
 }
 
 .spt-reply-container {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 .spt-reply-container textarea {
   border: 1px solid rgb(var(--black), 1);
@@ -913,9 +917,13 @@ input[type=password] {
   border-radius: 0.5rem;
 }
 
-#divTitleWrite {
+.div-write-titleline {
   background-color: rgb(var(--white));
   border: 1px solid rgba(var(--black), 0.2);
+  margin-bottom: 0.25rem;
+}
+.div-write-titleline input {
+  width: 100%;
 }
 
 /* 파일 업로드 영역 */
@@ -1067,6 +1075,49 @@ input[type=password] {
   padding: 0 0.5rem 0 1rem;
 }
 
+.common-button-container .spt-pro-input {
+  display: flex;
+  align-items: center;
+  background-color: rgba(var(--deepblue), 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+}
+.common-button-container .spt-pro-input .spt-input-title {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.common-button-container .spt-pro-input button {
+  gap: 0;
+  min-width: 4rem;
+  padding: 0.45rem 0.75rem;
+  margin-left: 0.5rem;
+}
+
+.spt-pro-input-inner-container {
+  position: relative;
+}
+.spt-pro-input-inner-container input[type=text] {
+  background-color: rgba(var(--white), 0.75);
+  height: 1.5rem;
+  margin-left: 1rem;
+  width: 4rem;
+}
+
+.spt-progress-unit {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prog-over-alert {
+  color: rgba(var(--alertred));
+  margin-right: auto;
+}
+.prog-over-alert svg {
+  color: inherit;
+}
+
 /* _functions.scss */
 /* _functions.scss */
 /* _variables.scss */
@@ -1094,7 +1145,7 @@ input[type=password] {
 }
 
 .hero-text-large {
-  font-size: 15vmin;
+  font-size: 13vmin;
   font-weight: 800;
 }
 
