@@ -423,13 +423,41 @@ export const useSptStore = defineStore('support', () => {
 
     const onelineNotices = ref([
         {
-            customer: '테스트',
-            title: '"테스트" 고객사의 한줄 공지사항입니다.',
-            texts: `
-                고객사명 "테스트"의 공지사항입니다.
+            NO: '1',
+            CUSTOMER: '해태',
+            TITLE: '"테스트" 고객사의 한줄 공지사항입니다.',
+            TEXTS: `
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus voluptate, commodi deserunt dolor veritatis veniam recusandae cum accusamus assumenda consectetur corrupti quos eius voluptatum alias ab modi nesciunt distinctio reprehenderit?
             `,
-            date: '2023.09.10'
+            DATE: '2023.09.10',
+            isShowTexts: false,
+            isModify: false,
+            saveActive: false
+        },
+        {
+            NO: '2',
+            CUSTOMER: '롯데',
+            TITLE: '"테스트" 고객사의 한줄 공지사항입니다.',
+            TEXTS: `
+                테스트 공지사항입니다.
+            `,
+            DATE: '2023.09.10',
+            isShowTexts: false,
+            isModify: false,
+            saveActive: false
+        },
+        {
+            NO: '3',
+            CUSTOMER: '농심',
+            TITLE: '"테스트" 고객사의 한줄 공지사항입니다.',
+            TEXTS: `
+                테스트 공지사항입니다.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus voluptate, commodi deserunt dolor veritatis veniam recusandae cum accusamus assumenda consectetur corrupti quos eius voluptatum alias ab modi nesciunt distinctio reprehenderit?
+            `,
+            DATE: '2023.09.10',
+            isShowTexts: false,
+            isModify: false,
+            saveActive: false
         }
     ])
 
