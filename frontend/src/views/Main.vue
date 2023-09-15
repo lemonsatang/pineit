@@ -4,11 +4,14 @@
             <div class="hero-overlay">
                 <div class="container mx-auto">
                     <p class="hero-text-small">전문가들이 신뢰하는 IT 기업</p>
-                    <h2 class="hero-text-large">
-                        <font-awesome-icon icon="fa-quote-left" />
-                        <span>소나무</span><span>정보기술</span>
-                        <font-awesome-icon icon="fa-quote-right" />
-                    </h2>
+                    <div class="main-hero-container">
+                        <h2 class="hero-text-large">
+                            <font-awesome-icon icon="fa-quote-left" />
+                            <span>소나무</span><span>정보기술</span>
+                            <font-awesome-icon icon="fa-quote-right" />
+                        </h2>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -332,6 +335,11 @@
         padding-bottom: 7rem;
     }
 
+    .main-hero-container {
+        height: 8.5rem;
+        overflow: hidden;
+        margin-top: .5rem;
+    }
     .hero-text-large {
         svg {
             width: 2rem;
