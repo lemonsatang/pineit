@@ -146,6 +146,10 @@ function backButton() {
 
     .common-button-container {
         flex-direction: column;
+
+        button {
+            width: 100%;
+        }
     }
 
     .login-background:after {

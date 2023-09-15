@@ -3,7 +3,13 @@
     <section class="common-board-wrap div-main-text">
         <div class="common-board-container">
             <SptHeader />
-            <h1 class="spt-page-title">고객 문의</h1>
+            <div class="spt-page-title">
+                <h1 >고객 문의</h1>
+                <button type="button">
+                    
+                </button>
+            </div>
+            
             <!-- 검색영역 -->
             <div class="spt-search-line">
 
@@ -341,6 +347,11 @@
 <style lang="scss" scoped>
     .spt-texts-head, .spt-item-line {
         grid-template-columns: 3rem 5rem 3fr 8rem 5rem 4rem;
+    }
+
+    .spt-page-title {
+        display: flex;
+        justify-content: space-between;
     }
 
 </style>
