@@ -88,7 +88,6 @@
                     </li>
                 </ul>
             </section>
-
         </div>
     </section>
 </template>
@@ -106,7 +105,7 @@
     import { useSptStore } from '@/stores/sptSt'
     import { storeToRefs } from 'pinia';
 
-//    import router from '@/router:';
+    // import router from '@/router:';
 
     const sptStore = useSptStore()
     const { sptAdmGroup, replyGroup } = storeToRefs(sptStore)
@@ -162,15 +161,14 @@
     }
 
     function numChk(e) {
-        e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+        e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
 
         if (e.target.value > 100) {
             overProg.value = true
 
             setTimeout(function () {
                 overProg.value = false
-            }, 3000);
-
+            }, 3000)
         } else {
 
         }
