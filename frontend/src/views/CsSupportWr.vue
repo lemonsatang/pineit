@@ -7,9 +7,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"/></svg>
                     <span>게시물 작성</span>
                 </p>
-
-                <input type="text" placeholder="이름을 입력해주세요." maxlength="25">
-
+                <input type="text" placeholder="이름을 입력해주세요." maxlength="25" v-model="plnmm" ref="plnmmEl">
                 <div id="divTitleWrite">
                     <input data-title-input type="text" placeholder="제목을 입력하세요..." ref="titleEl" v-model="title" maxlength="25">
                 </div>
@@ -28,7 +26,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 21a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7.414l2 2H20a1 1 0 0 1 1 1v3h-2V7h-7.414l-2-2H4v11.998L5.5 11h17l-2.31 9.243a1 1 0 0 1-.97.757H3zm16.938-8H7.062l-1.5 6h12.876l1.5-6z" fill="rgba(255,255,255,1)"/></svg>
                                 <span>Browse</span>
                             </label>
-                            <input type="file" @change="inputFileUp" name="button-upload" id="buttonUploadOrigin" ref="inputFile" multiple>
+                            <input type="file" @change="inputFileUp" name="button-upload" id="buttonUploadOrigin" multiple>
                         </div>
                     </div>
 
@@ -114,14 +112,17 @@
     const uploadSection = ref()
     const btnUpload = ref()
     const tempUploaded = ref([])
+    const realUpload = ref()
 
-    const inputFile = ref()
-
+    const plnmmEl = ref()
+    let plnmm = ''
     const titleEl = ref()
     let title = ''
     const content = ref()
 
     const qe = ref()
+
+    const uploadFile = ref()
 
     /* 드래그 to 파일 업로드 */
 
@@ -170,9 +171,11 @@
 
         console.log(data)
 
-        for (let i=0; i < data.length; i++) {
+        realUpload.value = data
+
+        for (let i = 0; i < data.length; i ++) {
             console.log(data[i])
-            tempUploaded.value.push({"uploadedName": data[i].name, "uploadedSize": data[i].size + "kb", "file": data[i]})
+            tempUploaded.value.push({"uploadedName": data[i].name, "uploadedSize": data[i].size + "kb"})
         }
     }
 
@@ -182,7 +185,6 @@
 
     function delThis(e) {
         tempUploaded.value.splice(e, 1)
-
     }
 
     function wrComp() {
@@ -197,7 +199,13 @@
     function saveSupport() {
         console.log(tempUploaded.value)
 
-        if (!!title.trim() === false) {
+        if(!!plnmm.trim() === false) {
+            toast.warning('이름을 입력해주세요.')
+            plnmmEl.value.focus()
+            return
+        }
+
+        if(!!title.trim() === false) {
             toast.warning('제목을 입력해주세요.')
             titleEl.value.focus()
             return
@@ -211,15 +219,15 @@
         }
 
         let data = {}
-
+        data['plnmm'] = plnmm
         data['title'] = title
         data['jtext'] = jtext
 
         let formData = new FormData();
+        formData.append('data', JSON.stringify(data))
+        formData.append('file', realUpload.value)
 
-        formData.append('data',JSON.stringify(data))
-        formData.append('file', inputFile.value.value)
-        console.log(inputFile.value.value)
+        console.log(realUpload.value)
         console.log(formData.get('file'))
     }
 </script>
