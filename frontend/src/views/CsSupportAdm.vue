@@ -5,8 +5,9 @@
             <SptHeader />
             <div class="spt-page-title">
                 <h1 >고객 문의</h1>
-                <button type="button">
-                    
+                <button @click="isShowNm = true" class="oneline-note-manage-button" type="button">
+                    <font-awesome-icon icon="fa-comment-dots" />
+                    공지사항 관리
                 </button>
             </div>
             
@@ -99,6 +100,76 @@
         </div>
     </section>
 
+    <section v-if="isShowNm == true" id="sptNoticeManage">
+        <div class="spt-notice-manage-body">
+            <div class="spt-notice-manage-head">
+                <font-awesome-icon icon="fa-comment-dots" />
+                공지사항 관리
+                <button @click="isShowNm = false" type="button">
+                    <font-awesome-icon icon="fa-xmark" />
+                </button>
+            </div>
+            <div class="spt-notice-manage-texts">
+                <div class="spt-search-line">
+                    <div class="spt-input-container">
+                        <p class="spt-input-title">고객사</p>
+                        <input ref="noticeCust" type="text" @keyup.enter="noticeCustSearch">
+                        <button @click="noticeCustSearch" type="button">
+                            <font-awesome-icon icon="fa-magnifying-glass" />
+                        </button>
+                    </div>
+                </div>
+                <div class="spt-texts-container">
+                    <div class="spt-texts-head">
+                        <p>No</p>
+                        <p>고객사</p>
+                        <p>제목</p>
+                        <p>작성일자</p>
+                    </div>
+                    <div class="spt-texts-body">
+                        <router-link :to="{}" v-for="item in copyOfNotice" class="spt-item-line">
+                            <div class="spt-item-inner-line" @click="item.isShowTexts = !item.isShowTexts">
+                                <p>{{ item.NO }}</p>
+                                <p>{{ item.CUSTOMER }}</p>
+                                <p>{{ item.TITLE }}</p>
+                                <p>{{ item.DATE }}</p>
+                            </div>
+                            <div class="notice-inner-texts" v-if="item.isShowTexts == true" >
+                                <textarea v-if="item.isModify == false" readonly v-model="item.TEXTS"></textarea>
+                                <textarea v-else v-model="item.TEXTS">{{ item.TEXTS }}</textarea>
+                                <div class="common-button-container">
+                                    <button v-if="item.isModify == false" @click="[item.isModify = true, item.saveActive = true]" type="button">수정</button>
+                                    <button class="nt-inner-save" v-if="item.saveActive == true" @click="[item.saveActive = false, item.isModify = false, saveNtTexts()]" type="button">
+                                        <font-awesome-icon icon="fa-floppy-disk" />
+                                        저장
+                                    </button>
+                                    <button type="button" @click="[item.isShowTexts = !item.isShowTexts, item.isModify = false, item.saveActive = false]">닫기</button>
+                                </div>
+                                
+                            </div>
+                        </router-link>
+                    </div>
+                </div>
+                <div class="common-button-container">
+                    <button @click="isShowNm = false" type="button">
+                        닫기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section v-if="isShowSaved == true" id="ntInnerSaveAlarmContainer">
+        <div id="ntInnerSaveAlarm">
+            <p>
+                <font-awesome-icon icon="fa-circle-check" />
+                수정사항이 저장되었습니다.
+            </p>
+            <div class="common-button-container">
+                <button type="button" @click="isShowSaved = false">닫기</button>
+            </div>
+        </div>
+    </section>
+
 </template>
 <script setup>
     import SptHeader from '@/components/SptHeader.vue';
@@ -110,18 +181,23 @@
     import { storeToRefs } from 'pinia';
 
     const sptStore = useSptStore()
-    const { sptAdmGroup } = storeToRefs(sptStore)
+    const { sptAdmGroup, onelineNotices } = storeToRefs(sptStore)
 
     const usrData = ref([])
 
     const copyOfData = ref([...sptAdmGroup.value])
+    const copyOfNotice = ref([...onelineNotices.value])
 
     const stCheck = ref('st_all')
     const cstCorp = ref()
+    const noticeCust = ref()
     const isShowNotify = ref(true)
     const floatingNote = ref()
     const srchInput = ref()
     const srchOpt = ref()
+
+    const isShowNm = ref(false)
+    const isShowSaved = ref(false)
 
     //현황 필터링
     function statChk() {
@@ -343,6 +419,23 @@
             }
         }
 
+        //
+
+        function noticeCustSearch() {
+            console.log(noticeCust.value.value)
+            if (noticeCust.value.value != '') {
+                copyOfNotice.value = copyOfNotice.value.filter((x) => x.CUSTOMER.includes(noticeCust.value.value))
+            } else {
+                copyOfNotice.value = onelineNotices.value
+            }
+            
+        }
+
+        function saveNtTexts() {
+            isShowSaved.value = true
+            //저장된 내용을 여기서 전송하세요
+        }
+
 </script>
 <style lang="scss" scoped>
     .spt-texts-head, .spt-item-line {
@@ -352,6 +445,196 @@
     .spt-page-title {
         display: flex;
         justify-content: space-between;
+    }
+
+    .oneline-note-manage-button {
+        font-size: var(--fnt-title-sm);
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        background-color: rgba(var(--deepblue), .25);
+        padding: .25rem .75rem;
+        border-radius: 2rem;
+        color: rgb(var(--white));
+        filter: drop-shadow(0 0 12px rgba(var(--black), .25));
+
+        svg {
+            // opacity: .7;
+            font-size: var(--fnt-M);
+        }
+
+        &:hover {
+            background: linear-gradient(170deg, rgba(var(--coldblue), .85) 0%, rgba(var(--coldblue), .85) 20%, rgba(8, 241, 217, .7) 90%);
+            opacity: .7;
+        }
+    }
+
+    #sptNoticeManage {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(var(--black), .45);
+
+        .common-button-container {
+            margin-top: .5rem;
+        }
+
+        .spt-texts-container {
+            margin-bottom: .5rem;
+            overflow-y: scroll;
+            height: 70vh;
+        }
+
+        .spt-search-line {
+            background-color: rgba(var(--deepblue), 0.15);
+            margin-bottom: .5rem;
+        }
+
+        .spt-item-line {
+            min-height: 2.25rem;
+            height: fit-content;
+            cursor: default;
+        }
+    }
+
+    .notice-inner-texts {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        padding: .5rem .75rem 0 .75rem;
+
+        textarea {
+            border: 1px solid rgba(var(--deepblue), .45);
+            width: 100%;
+            min-height: 5rem;
+            outline: 0;
+            background-color: rgba(var(--black), .025);
+            padding: .5rem;
+        }
+
+        button {
+            background-color: rgb(var(--deepblue));
+            border-radius: 2rem;
+            padding: .35rem .5rem;
+            width: 4rem;
+            color: rgb(var(--white));
+        }
+
+        .common-button-container {
+            justify-content: flex-end;
+
+            svg {
+                margin-right: 0;
+            }
+
+            .nt-inner-save {
+                background-color: rgba(var(--soft-coldblue))
+            }
+
+        }
+    }
+
+    //팝업창 전체
+    .spt-notice-manage-body {
+        background-color: rgb(var(--white));
+        border-radius: .5rem;
+        padding-bottom: .5rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 50vw;
+        overflow: hidden;
+
+    }
+
+    .spt-notice-manage-head {
+        display: flex;
+        justify-content: flex-start;
+        font-size: var(--fnt-title-sm);
+        align-items: center;
+        gap: .5rem;
+        background-color: rgba(var(--deepblue), 1);
+        color: rgb(var(--white));
+        padding: .5rem;
+
+        button {
+            margin-left: auto;
+        }
+    }
+    
+    .spt-notice-manage-texts {
+        padding: 1rem .5rem 0 .5rem;
+    }
+
+    #sptNoticeManage .spt-item-line {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .spt-item-line .spt-item-inner-line {
+        display: grid;
+        grid-template-columns: 3rem 8rem 1fr 10rem;
+        align-items: center;
+        padding: 0.5rem 0;
+        cursor: pointer;
+
+        p:nth-child(2) {
+            
+        }
+
+        p:nth-child(3) {
+            text-align: left;
+            padding: 0 1rem;
+            font-weight: 800;
+        }
+    }
+
+    #sptNoticeManage .spt-texts-head {
+        grid-template-columns: 3rem 8rem 1fr 10rem;
+        background: transparent;
+        background-color: rgba(var(--black), .25);
+    }
+
+    #ntInnerSaveAlarmContainer {
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        background-color: rgba(var(--black), .45);
+        width: 100vw;
+        height: 100vh;
+
+    }
+
+    #ntInnerSaveAlarm {
+        position: absolute;
+        
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1rem;
+        background-color: rgb(var(--white));
+        display: flex;
+        flex-direction: column;
+        // border: 2px solid rgba(var(--deepblue), 1);
+        border-radius: .5rem;
+
+        p {
+            display: flex;
+            gap: .5rem;
+            font-size: var(--fnt-title-sm);
+        }
+
+        .common-button-container {
+            justify-content: center;
+        }
+
     }
 
 </style>

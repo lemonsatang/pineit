@@ -534,6 +534,7 @@ video {
   margin-top: 3rem;
   margin-bottom: 3.6rem;
   font-size: var(--fnt-spt-title);
+  font-weight: 700;
 }
 
 .spt-search-line {
