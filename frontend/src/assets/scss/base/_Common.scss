@@ -30,6 +30,7 @@
     justify-content: flex-end;
     gap: .5rem;
     margin-top: 3rem;
+    align-items: center;
 
     button {
         border-radius: 2rem;        
@@ -45,6 +46,10 @@
 
         &:hover {
             opacity: .8;
+        }
+
+        &.common-list-button {
+            margin-left: auto;
         }
     }
     
@@ -503,7 +508,7 @@
 //댓글영역 전체
 
 .spt-reply-container {
-    margin-top: 1rem;
+    margin-top: 2rem;
 
     textarea {
         border: 1px solid rgb(var(--black), 1);
@@ -630,9 +635,14 @@ input[type=password] {
 
 }
 
-#divTitleWrite {
+.div-write-titleline {
     background-color: rgb(var(--white));
     border: 1px solid rgba(var(--black), .2);
+    margin-bottom: .25rem;
+
+    input {
+        width: 100%;
+    }
 }
 
 
@@ -833,4 +843,56 @@ input[type=password] {
 
 .spt-one-notice p.spt-one-notice-title {
     padding: 0 .5rem 0 1rem;
+}
+
+//
+
+.common-button-container .spt-pro-input {   
+    // margin-right: auto;
+    display: flex;
+    align-items: center;
+    background-color: rgba(var(--deepblue), .1);
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+    // width: 14rem;
+
+    .spt-input-title {
+        width:fit-content;
+    }
+
+    button {
+        gap: 0;
+        min-width: 4rem;
+        padding: 0.45rem 0.75rem;
+        margin-left: .5rem;
+    }
+}
+
+
+
+.spt-pro-input-inner-container {
+    position: relative;
+
+    input[type=text] {
+        background-color: rgba(var(--white), .75);
+        height: 1.5rem;
+        margin-left: 1rem;
+        width: 4rem;
+    }
+}
+
+.spt-progress-unit {
+    position: absolute;
+    right: .75rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prog-over-alert {
+    color: rgba(var(--alertred));
+    margin-right: auto;
+
+    svg {
+        color: inherit;
+    }
 }
