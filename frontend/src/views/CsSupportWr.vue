@@ -162,6 +162,8 @@
         var data = e.dataTransfer.files;
         console.dir(data);
 
+        tempUploaded.value = []
+
         for (let i=0; i < data.length; i++) {
             tempUploaded.value.push({"uploadedName": data[i].name, "uploadedSize": data[i].size + "kb"})
         }
@@ -177,8 +179,9 @@
 
         realUpload.value = data
 
+        tempUploaded.value = []
+
         for (let i = 0; i < data.length; i ++) {
-            console.log(data[i])
             tempUploaded.value.push({"uploadedName": data[i].name, "uploadedSize": data[i].size + "kb"})
         }
     }
