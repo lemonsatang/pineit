@@ -11,8 +11,8 @@
                 <div class="div-write-titleline">
                     <input type="text" placeholder="작성자명을 입력해주세요." maxlength="25" v-model="plnmm" ref="plnmmEl">
                 </div>
-                <div class="div-write-titleline">
 
+                <div class="div-write-titleline">
                     <input data-title-input type="text" placeholder="제목을 입력하세요..." ref="titleEl" v-model="title" maxlength="25">
                 </div>
 

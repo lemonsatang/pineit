@@ -97,7 +97,7 @@
     const copyOfData = [ ... dataGroup.value ]
 
     //날짜별 정렬 sorting / date 예시 : '2022.11.12'
-    const sortedList = copyOfData.sort((x, y) => x.date < y.date ? 1 : -1);
+    const sortedList = copyOfData.sort((x, y) => x.bindIndex < y.bindIndex ? 1 : -1);
     console.log(sortedList)
 
     //검색기능 230621

@@ -14,7 +14,6 @@
             </div>
             <!-- 검색영역 -->
             <div class="spt-search-line">
-
                 <div data-spt-status-filter class="spt-input-container">
                     <p class="spt-input-title">현황</p>
                     <select v-model="stCheck" @change="statChk(this)" class="spt-select">
@@ -38,7 +37,6 @@
                     <button @click="totalSrch" type="button">
                         <font-awesome-icon icon="fa-magnifying-glass" />
                     </button>
-
                 </div>
             </div>
             <!-- 본문 -->

@@ -451,43 +451,6 @@
         }
     }
 
-    //이전 페이지리스트 버튼
-    function prevPgList() {
-        if ( recentListIndex <= 0) {
-            console.log(pagerList)
-        } else {
-            recentListIndex = recentListIndex - 1
-
-            recentViewPages.value = [...recentPagerList[recentListIndex]]
-        }
-    }
-
-    //////////////
-
-    //다음 페이지 버튼
-    function nextPg() {
-        if ( recentPage == totalPage) {
-            console.log(totalPage)
-        } else {
-            recentPage = recentPage + 1
-
-            recentPgData.value = [...dataArr[recentPage]]
-        }
-    }
-
-    //이전 페이지 버튼
-    function prevPg() {
-        if ( recentPage <= 0) {
-            console.log(totalPage)
-        } else {
-            recentPage = recentPage - 1
-
-            recentPgData.value = [...dataArr[recentPage]]
-        }
-    }
-
-    //
-
     function noticeCustSearch() {
         console.log(noticeCust.value.value)
         if (noticeCust.value.value != '') {
