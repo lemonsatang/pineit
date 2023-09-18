@@ -98,10 +98,9 @@
     import axios from 'axios'
 
     const router = useRouter()
-
     const getParams = useRoute().params.id
 
-    //store에서 영역별 데이터 import
+    // store에서 영역별 데이터 import
     import { useSptStore } from '@/stores/sptSt'
     import { storeToRefs } from 'pinia';
 
@@ -113,7 +112,7 @@
     const getData = ref([...sptAdmGroup.value.filter((x) => x.bindIdx == getParams)])
     const nextData = ref([...sptAdmGroup.value.filter((x) => x.bindIdx == getParams + 1)])
 
-    //현재 페이지의 데이터가 몇번째 데이터인지 구하기
+    // 현재 페이지의 데이터가 몇번째 데이터인지 구하기
     const getIdx = sptAdmGroup.value.findIndex((e) => e.bindIdx == getParams)
 
     const prevFiltered = sptAdmGroup.value[getIdx - 1]
@@ -124,7 +123,7 @@
     const progressInput = ref()
     const overProg = ref(false)
 
-    //로긔인한 유저 정보
+    // 로긔인한 유저 정보
     const usrData = ref([])
 
     axios.post('/api/login/getUserInfo')
@@ -157,7 +156,7 @@
 
     function progressSave() {
         console.log(progressInput.value.value)
-        //이 값을 악-시오스로 보내시오
+        // 이 값을 악-시오스로 보내시오
     }
 
     function numChk(e) {
