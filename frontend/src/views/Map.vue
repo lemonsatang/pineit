@@ -13,15 +13,14 @@
                     </div>
                     <div class="map-texts">
                         <h1 class="map-texts-title">연락처</h1>
-                        <p>051-714-0034</p>    
+                        <p>051-714-0034</p>
                     </div>
                     <div class="map-texts mt-3">
                         <h1 class="map-texts-title">오시는길</h1>
                         <p>지하철 2호선 동의대역 5번출구에서 도보 15분</p>
                     </div>
-                    
-                    
                 </div>
+
                 <div class="map-frame-box">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1831.057425623111!2d129.03536242275007!3d35.1423200459416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568ebb1648cdd27%3A0x25e803eecc5c3eff!2z64-Z7J2Y64yA7ZWZ6rWQIOqwgOyVvOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1673922104493!5m2!1sko!2skr" width="900" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
@@ -40,14 +39,14 @@
                     </div>
                     <div class="map-texts">
                         <h1 class="map-texts-title">연락처</h1>
-                        <p>051-714-0034</p>    
+                        <p>051-714-0034</p>
                     </div>
-                    
+
                     <div class="map-texts mt-3">
                         <h1 class="map-texts-title">오시는길</h1>
                         <p>지하철 2호선 감전역 3번출구에서 도보 10분</p>
                     </div>
-                    
+
                 </div>
             </article>
         </section> <!--map-box-->
@@ -59,7 +58,6 @@
 </script> <!-- Logic Ends -->
 
 <style lang="scss">
-
     #map-box {
         display: flex;
         flex-direction: column;

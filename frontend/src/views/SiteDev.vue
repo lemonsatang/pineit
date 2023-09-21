@@ -142,6 +142,7 @@
 
         font-size: var(--fnt-lg);
     }
+
     .site-definition-text {
         @apply leading-relaxed
     }

@@ -71,13 +71,13 @@
                     </div>
                 </div>
 
-               <div class="detail-btm-buttons">
+                <div class="detail-btm-buttons">
                     <router-link :to="{name: 'Portfolio'}">
                         <button class="button-white p-button-white">
                             <p>목 록</p>
                         </button>
                     </router-link>
-                </div> 
+                </div>
             </div>
         </section>
     </div>
@@ -829,7 +829,7 @@
                     ],
                     asIs: [
                         { text: '콜센터로 사이트 차단 해제신청의 불편함 '},
-                        
+
                     ],
                     toBe: [
                         { text: '사이트해제신청양식을 통한 관리의 편의성' },
@@ -1039,7 +1039,7 @@
             @apply leading-4 ml-4;
 
             text-indent: -14px;
-            
+
             &::before{
                 content: '- ';
             }
@@ -1071,7 +1071,7 @@
             @apply rounded-sm object-contain;
         }
     }
-    
+
     .p-button-white{
         @apply py-1.5 px-6 mt-10;
     }

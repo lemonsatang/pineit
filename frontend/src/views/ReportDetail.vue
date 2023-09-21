@@ -99,12 +99,8 @@
     const reportStore = useReportStore()
     const { reportGroup } = storeToRefs(reportStore)
 
-
-
     const getParams = useRoute()
     const getId = parseInt(getParams.params.id)
-
-
 
     const dataAmount = parseInt(reportGroup.value.length);
     const nextArticle = parseInt(getId + 2);

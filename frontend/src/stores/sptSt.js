@@ -20,7 +20,6 @@ export const useSptStore = defineStore('support', () => {
                 어 허야듸야 허야듸야
                 허야듸야
             `
-
         },
         {
             bindIdx: 1,
@@ -154,7 +153,6 @@ export const useSptStore = defineStore('support', () => {
                 전원코드를 꼭 꽂아야만 켤 수 있나요? 너무 번거로워요 사용자의 편의를 위해 수정바랍니다
             `
         },
-
         {
             bindIdx: 10,
             NO: '11', //글번호
@@ -233,7 +231,6 @@ export const useSptStore = defineStore('support', () => {
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias iusto esse dignissimos est sed, rem libero provident voluptatum voluptatibus illo sunt, dolor inventore maiores magnam, saepe debitis ipsa. Repudiandae, magni.
             `
         },
-
     ])
 
     const replyGroup = ref([
@@ -462,5 +459,4 @@ export const useSptStore = defineStore('support', () => {
     ])
 
     return { sptAdmGroup, replyGroup, onelineNotices }
-
 })

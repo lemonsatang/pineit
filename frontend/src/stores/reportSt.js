@@ -3,7 +3,6 @@
 import { defineStore } from 'pinia'
 
 export const useReportStore = defineStore('report', () => {
-
     const reportGroup = ref([
         {
             number: 0,

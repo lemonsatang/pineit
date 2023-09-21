@@ -7,7 +7,6 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
     //상세페이지
 
     const dataGroup = ref([
-        
         {
             bindIndex: 0,
             title: '고객용 원격지원 설치파일 다운로드 ',
@@ -32,7 +31,7 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             ],
             password: 'db',
             lock: true,
-            modals: false            
+            modals: false
         },
         {
             bindIndex: 2,
@@ -63,9 +62,9 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
         {
             bindIndex: 4,
             title: '한동산업 APK파일 다운로드',
-            date: '2023.08.22',
+            date: '2023.09.18',
             views: 11,
-            texts: '한동산업 APK파일 및 설치매뉴얼을 업로드하오니 업무에 활용바랍니다. (23.08.22 수정)',
+            texts: '한동산업 APK파일 및 설치매뉴얼입니다. 기존 APK 및 어플리케이션을 삭제한 후 재설치 바랍니다. (23.09.18 수정)',
             uploaded: [
                 {fileName:'/board/한동산업.apk', name:'한동산업.apk'},
                 {fileName:'/board/한동산업_APK_설치_매뉴얼_230419.pdf', name:'한동산업_APK_설치_매뉴얼_230419.pdf'},
@@ -102,7 +101,5 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
         },
     ])
 
-
     return { dataGroup }
 })
-

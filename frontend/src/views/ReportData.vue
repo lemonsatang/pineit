@@ -125,7 +125,7 @@
         const allWr = document.querySelector('.report-main-board');
 
         if ( srchValue != null ) {
-            
+
             resultList.value = reportGroup.value.filter((f) => f.title.toString().toUpperCase().includes(srchValue))
             allWr.style.display = "none";
         } else {
@@ -133,9 +133,6 @@
             resultList.value = null;
         }
     }
-    
-
-    
 </script>
 
 <style lang="scss" scoped>

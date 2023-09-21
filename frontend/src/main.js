@@ -6,15 +6,13 @@ import Vue3Toastify from 'vue3-toastify'
 
 // API
 import { createPinia } from 'pinia'
-import { createMachine } from 'xstate'
+import { register } from 'swiper/element/bundle'
 
 // Else
+import './assets/scss/style.css'
 import 'vue-global-api'
 import 'remixicon/fonts/remixicon.css'
-import './assets/scss/style.css'
 import 'vue3-toastify/dist/index.css'
-
-
 
 // Initializing
 const pinia = createPinia()
@@ -42,7 +40,4 @@ app.use(router)
 app.use(Vue3Toastify)
 app.mount('#app')
 
-// import function to register Swiper custom elements
-import { register } from 'swiper/element/bundle';
-// register Swiper custom elements
-register();
+register()

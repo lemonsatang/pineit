@@ -57,7 +57,7 @@
 </template> <!-- Template Ends -->
 
 <script setup>
-    import { useRoute} from 'vue-router'
+    import { useRoute } from 'vue-router'
 
     const menuOpen = ref(false)
     const navGroup = ref([

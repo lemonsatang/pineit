@@ -1,5 +1,4 @@
-<template>    
-
+<template>
     <section class="common-board-wrap div-main-text">
         <div class="common-board-container">
             <SptHeader />
@@ -15,7 +14,6 @@
             </div>
             <!-- 검색영역 -->
             <div class="spt-search-line">
-
                 <div data-spt-status-filter class="spt-input-container">
                     <p class="spt-input-title">현황</p>
                     <select v-model="stCheck" @change="statChk(this)" class="spt-select">
@@ -39,9 +37,8 @@
                     <button @click="totalSrch" type="button">
                         <font-awesome-icon icon="fa-magnifying-glass" />
                     </button>
-                    
                 </div>
-            </div>   
+            </div>
             <!-- 본문 -->
             <div class="spt-texts-container">
                 <div class="spt-texts-head">
@@ -61,7 +58,7 @@
                         <p>{{ item.COUNT }}</p>
                     </router-link>
                 </div>
-            </div> 
+            </div>
             <div class="common-button-container">
                 <button>
                     <router-link :to="{name: 'SupportWr'}">
@@ -103,10 +100,10 @@
         </div>
     </section>
     <p>
-        
-    </p>
 
+    </p>
 </template>
+
 <script setup>
     import SptHeader from '@/components/SptHeader.vue';
     import { toast } from 'vue3-toastify'
@@ -138,21 +135,21 @@
             //필터링
             let filteredData = copyOfData.value.filter((x) => x.STATUS === '확인예정')
             //필터링된 데이터로 리스트 리렌더링
-            copyOfData.value = [...filteredData]            
+            copyOfData.value = [...filteredData]
         } else if(this.stCheck == 'st_ing') {
             //일단 전체 데이터로 복귀후
             copyOfData.value = [...sptAdmGroup.value]
             //필터링
             let filteredData = copyOfData.value.filter((x) => x.STATUS === '진행중')
             //필터링된 데이터로 리스트 리렌더링
-            copyOfData.value = [...filteredData]            
+            copyOfData.value = [...filteredData]
         } else if(this.stCheck == 'st_ed') {
             //일단 전체 데이터로 복귀후
             copyOfData.value = [...sptAdmGroup.value]
             //필터링
             let filteredData = copyOfData.value.filter((x) => x.STATUS === '완료')
             //필터링된 데이터로 리스트 리렌더링
-            copyOfData.value = [...filteredData]            
+            copyOfData.value = [...filteredData]
         } else if(this.stCheck == 'st_all') {
             //전체 데이터로 복귀후
             copyOfData.value = [...sptAdmGroup.value]
@@ -162,16 +159,16 @@
     //알림 닫기
     function notifyClose() {
         floatingNote.value.animate(noteDisapper, 500)
-               
+
         setTimeout(() => {
-            isShowNotify.value = 'false' 
+            isShowNotify.value = 'false'
         }, 400)
     }
 
     const noteDisapper = [
         { transform: 'translateX(20rem)' }
     ]
-    
+
     //검색
     function totalSrch() {
         let srchOptValue = srchOpt.value.value
@@ -229,8 +226,6 @@
         }
     }
 
-
-
     axios.post('/api/login/getUserInfo')
         .then(res => {
 
@@ -238,105 +233,100 @@
 
             return
         })
-        .catch (error => { 
+        .catch (error => {
             toast.success('정보를 가져오던 도중 오류가 발생했습니다.')
             return
         })
 
-        const perPage = 10; //페이지당 글 수
-        const pageMax = 5; //한번에 보이는 페이지 갯수 제한
-        const totalPage = Math.ceil(copyOfData.value.length / perPage) // 총 몇 페이지 나올지 계산(max페이지)
-        
-        const allPages = Array.from({length: totalPage}, (v, i) => i + 1);  // 나올 페이지들 분리{ 예) < 1, 2, 3, 4, 5 > }
-        
-        const pagerList = Math.ceil(allPages.length / pageMax) // 현재 보이는 페이지번호 리스트(pageMax개씩 보이는 리스트가 이만큼 있다)
-        const dividedPgListNumber = Array.from({length: pagerList}, (v, i) => i + 1) // 보이는 페이지들 분리 { 예) 0: 1, 2, 3, 4, 5, 1: 6, 7, 8, 9, 10, 3: 11, 12, 13, 14, 15  }
+    const perPage = 10; //페이지당 글 수
+    const pageMax = 5; //한번에 보이는 페이지 갯수 제한
+    const totalPage = Math.ceil(copyOfData.value.length / perPage) // 총 몇 페이지 나올지 계산(max페이지)
 
-        let recentPage = reactive(Number(0)) //현재페이지
-        let recentListIndex = reactive(Number(0)) // 리스트 중 0번째 인덱스부터 보이게 해라(0번쨰 인덱스 : 1, 2, 3, 4, 5 / 1번째 인덱스 : 6, 7, 8, 9, 10)
+    const allPages = Array.from({length: totalPage}, (v, i) => i + 1);  // 나올 페이지들 분리{ 예) < 1, 2, 3, 4, 5 > }
 
-        const dataArr = reactive([])
+    const pagerList = Math.ceil(allPages.length / pageMax) // 현재 보이는 페이지번호 리스트(pageMax개씩 보이는 리스트가 이만큼 있다)
+    const dividedPgListNumber = Array.from({length: pagerList}, (v, i) => i + 1) // 보이는 페이지들 분리 { 예) 0: 1, 2, 3, 4, 5, 1: 6, 7, 8, 9, 10, 3: 11, 12, 13, 14, 15  }
 
-        const recentPagerList = reactive([])
+    let recentPage = reactive(Number(0)) //현재페이지
+    let recentListIndex = reactive(Number(0)) // 리스트 중 0번째 인덱스부터 보이게 해라(0번쨰 인덱스 : 1, 2, 3, 4, 5 / 1번째 인덱스 : 6, 7, 8, 9, 10)
 
-        //데이터 페이지별로 분리
-        function chunk() {
+    const dataArr = reactive([])
 
-            for (let i=0; i<copyOfData.value.length; i += perPage) {
-                dataArr.push(copyOfData.value.slice(i, i + perPage));
-            }
+    const recentPagerList = reactive([])
 
-            for (let j = 0; j < allPages.length; j += pageMax ) {
-                recentPagerList.push(allPages.slice(j, j + pageMax));
-            }
-                        
-            console.log(recentPagerList)
-            return dataArr, recentPagerList;
+    //데이터 페이지별로 분리
+    function chunk() {
+
+        for (let i=0; i<copyOfData.value.length; i += perPage) {
+            dataArr.push(copyOfData.value.slice(i, i + perPage));
         }
 
-        chunk()
+        for (let j = 0; j < allPages.length; j += pageMax ) {
+            recentPagerList.push(allPages.slice(j, j + pageMax));
+        }
 
-        //페이지 선택
-        function selectPgNumber(e) {
-            recentPage = e - 1
+        console.log(recentPagerList)
+        return dataArr, recentPagerList;
+    }
+
+    chunk()
+
+    //페이지 선택
+    function selectPgNumber(e) {
+        recentPage = e - 1
+
+        recentPgData.value = [...dataArr[recentPage]]
+    }
+
+    //최근 페이지 데이터 초기화 = 1페이지(인덱스 0)으로 시작
+    const recentPgData = ref([...dataArr[0]])
+
+    //지금 보이고있는 페이지리스트 초기화 = 1페이지(인덱스0)으로 시작{ 예) < 1, 2, 3, 4, 5 > }
+    const recentViewPages = ref([...recentPagerList[0]])
+
+    //다음 페이지리스트 버튼
+    function nextPgList() {
+        if ( recentListIndex = pagerList) {
+            console.log(pagerList)
+        } else {
+            recentListIndex = recentListIndex + 1
+
+            recentViewPages.value = [...recentPagerList[recentListIndex]]
+        }
+    }
+
+    //이전 페이지리스트 버튼
+    function prevPgList() {
+        if ( recentListIndex <= 0) {
+            console.log(pagerList)
+        } else {
+            recentListIndex = recentListIndex - 1
+
+            recentViewPages.value = [...recentPagerList[recentListIndex]]
+        }
+    }
+
+    //다음 페이지 버튼
+    function nextPg() {
+        if ( recentPage == totalPage) {
+            console.log(totalPage)
+        } else {
+            recentPage = recentPage + 1
 
             recentPgData.value = [...dataArr[recentPage]]
         }
+    }
 
-        //최근 페이지 데이터 초기화 = 1페이지(인덱스 0)으로 시작
-        const recentPgData = ref([...dataArr[0]])
+    //이전 페이지 버튼
+    function prevPg() {
+        if ( recentPage <= 0) {
+            console.log(totalPage)
+        } else {
+            recentPage = recentPage - 1
 
-        //지금 보이고있는 페이지리스트 초기화 = 1페이지(인덱스0)으로 시작{ 예) < 1, 2, 3, 4, 5 > }
-        const recentViewPages = ref([...recentPagerList[0]])
-
-        //다음 페이지리스트 버튼
-        function nextPgList() {
-            if ( recentListIndex = pagerList) {
-                console.log(pagerList)
-            } else {
-                recentListIndex = recentListIndex + 1
-
-                recentViewPages.value = [...recentPagerList[recentListIndex]]
-            }
+            recentPgData.value = [...dataArr[recentPage]]
         }
-
-        //이전 페이지리스트 버튼
-        function prevPgList() {
-            if ( recentListIndex <= 0) {
-                console.log(pagerList)
-            } else {
-                recentListIndex = recentListIndex - 1
-
-                recentViewPages.value = [...recentPagerList[recentListIndex]]
-            }
-        }
-
-        //////////////
-
-        //다음 페이지 버튼
-        function nextPg() {
-            if ( recentPage == totalPage) {
-                console.log(totalPage)
-            } else {
-                recentPage = recentPage + 1
-
-                recentPgData.value = [...dataArr[recentPage]]
-            }
-        }
-
-        //이전 페이지 버튼
-        function prevPg() {
-            if ( recentPage <= 0) {
-                console.log(totalPage)
-            } else {
-                recentPage = recentPage - 1
-
-                recentPgData.value = [...dataArr[recentPage]]
-            }
-        }
-       
-        
-
+    }
 </script>
 <style lang="scss" scoped>
     .spt-texts-head, .spt-item-line {
@@ -347,5 +337,4 @@
         margin-top: 0;
         margin-bottom: 2rem;
     }
-
 </style>

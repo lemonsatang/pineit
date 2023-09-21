@@ -3,12 +3,10 @@
 import { defineStore } from 'pinia'
 
 export const useNewsStore = defineStore('news', () => {
-
     const newsGroup = ref([
         {
             url: '/news/',
             children: [
-
                 {
                     number: 0,
                     thumImg: '/image/news/BTIS_02.jpg',
@@ -66,7 +64,7 @@ export const useNewsStore = defineStore('news', () => {
                     textAll: `
                         <p>동의대학교 산학협력단-주식회사 소나무정보기술 간의 기술교류회가 진행되었습니다.</p>
                         <p>그간 연구개발되어온 산학과제, R&D과제 등의 결과를 나누는 뜻깊은 시간이 되었습니다.</p>
-                    `                    
+                    `
                 },
                 {
                     number: 3,
@@ -204,9 +202,7 @@ export const useNewsStore = defineStore('news', () => {
                         <p>소나무인들이 함께한 즐거운 밤의 모습</p>
                     `
                 },
-                    
             ]
-            
         },
     ])
 

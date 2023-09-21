@@ -137,17 +137,17 @@
 <style lang="scss">
     /** SolutionDev.css*/
 
-    .M-title{
+    .M-title {
         display:none;
     }
 
-    .solution-definition-subTitle{
+    .solution-definition-subTitle {
         @apply inline-block py-3 ;
 
         font-size: var(--fnt-lg);
     }
 
-    .solution-definition-text{
+    .solution-definition-text {
         @apply leading-relaxed
     }
 
@@ -163,7 +163,7 @@
     .solution-tag {
         @apply flex mt-4;
 
-        > p{
+        > p {
             @apply p-2 m-2 ;
 
             background-color: rgb(var(--clr-id-02));
@@ -204,38 +204,38 @@
 
     /*SolutionDev 반응형*/
     @media screen and (max-width: 1024px) {
-        .D-title{
+        .D-title {
             display: none
         }
 
-        .M-title{
+        .M-title {
             display: block
         }
 
-        .solution-top-img{
+        .solution-top-img {
             @apply flex-col gap-3;
         }
     }
 
     @media screen and (max-width: 720px) {
-        .solution-result-text{
+        .solution-result-text {
             @apply py-4 px-3 gap-5;
 
             font-size: var(--fnt-md);
 
-            .result-explain{
+            .result-explain {
                 font-size: var(--fnt-md);
                 line-height: 1.4;
             }
         }
 
-        .solution-result-list{
+        .solution-result-list {
             grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
         }
     }
 
     @media screen and (max-width: 425px) {
-        .solution-tag{
+        .solution-tag {
 
             > p {
                 @apply p-1 m-1 ;

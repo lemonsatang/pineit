@@ -28,7 +28,6 @@
 </template> <!-- Template Ends -->
 
 <script setup>
-
     import SubPageHero from '@/components/SubPageHero.vue'
 
     const tempGroup = ref({
@@ -37,7 +36,6 @@
             linkTo: '/portfolio/solutions/',
             cate: 'solutions',
             children: [
-
                 {
                     bindIndex: 1,
                     name: '철스크랩 제조 D사',
@@ -209,7 +207,6 @@
             ]
         }
     })
-
 </script> <!-- Logic Ends -->
 
 <style lang="scss">

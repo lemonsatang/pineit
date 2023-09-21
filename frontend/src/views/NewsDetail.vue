@@ -30,12 +30,12 @@
 
             <div id="divDetailText"><!-- 본문영역 -->
                 <div id="imgContainers">
-                    <swiper-container ref="swiperEl" v-bind="swiperOptions01" class="recent-article-slider"> 
+                    <swiper-container ref="swiperEl" v-bind="swiperOptions01" class="recent-article-slider">
                         <swiper-slide v-for="subImg in newsGroup[0].children[getId]?.imgAll" class="div-work-ing">
                             <img :src="subImg.img" />
-                            
+
                         </swiper-slide>
-                        
+
                         <div class="arr-right-report"></div>
                         <div class="arr-left-report"></div>
                     </swiper-container>
@@ -57,9 +57,9 @@
                 </div> -->
 
                 <p v-html="newsGroup[0].children[getId]?.textAll">
-                    
+
                 </p>
-                
+
             </div>
 
             <div id="divMileStone">
@@ -114,7 +114,6 @@
 </template>
 
 <script setup>
-
     import SubPageHero from '@/components/SubPageHero.vue'
     import { useRoute } from 'vue-router'
 
@@ -162,44 +161,34 @@
         }
     }
 
-
     // const swiperEl = ref()
     // console.log(swiperEl)
-    
-    
 
     // const swiper = new Swiper(swiperEl, {
     //     slidesPerView: 3,
     // })
 
-    onMounted(() => {
-        
-    })
-    
-
-    
-
-    const thumbsSwiper = ref(null);
+    const thumbsSwiper = ref(null)
     const setThumbsSwiper = (swiper) => {
         // thumbsSwiper.value = swiper;
-    };
+    }
 
     const getParams = useRoute()
     const getId = parseInt(getParams.params.id)
-    
+
     console.log(newsGroup.value)
 
-    const nextArticle = parseInt(getId + 1);
-    const prevArticle = parseInt(getId - 1);
+    const nextArticle = parseInt(getId + 1)
+    const prevArticle = parseInt(getId - 1)
 
-    const currentArray = newsGroup.value[0].children;
+    const currentArray = newsGroup.value[0].children
     // const currentChildren = currentArray['children'];
-    const getValue = currentArray[getId];
-    const getNumber = parseInt(getValue.number);
+    const getValue = currentArray[getId]
+    const getNumber = parseInt(getValue.number)
 
     console.log(currentArray)
 
-    const dataAmount = currentArray.length;
+    const dataAmount = currentArray.length
 </script>
 
 <style lang="scss" scoped>
@@ -289,9 +278,8 @@
     #divDetailText {
         .swiper-slide {
             img {
-               max-width: 100%;
+                max-width: 100%;
             }
         }
-        
     }
 </style>
