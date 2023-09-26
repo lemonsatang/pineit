@@ -11,7 +11,7 @@
                             <font-awesome-icon icon="fa-quote-right" />
                         </h2>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -224,8 +224,8 @@
             </div>
         </section>
 
-        <Popup popupTitle="공지사항" :popupDuration="new Date('2023-08-02')">
-            <img src="/image/2023_vacation_summer.svg" alt="">
+        <Popup popupTitle="공지사항" :popupDuration="new Date('2023-10-04')">
+            <img src="/image/2023_vacation_fall.svg" alt="">
         </Popup>
     </div>
 </template> <!-- Template Ends -->
@@ -343,7 +343,7 @@
             width: 2rem;
             height: fit-content;
             color: rgba(var(--white), .75);
-            
+
             &:first-child {
                 margin-bottom: 6rem;
             }
