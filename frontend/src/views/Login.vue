@@ -182,6 +182,7 @@
     .login-input-body {
         display: flex;
         gap: .35rem;
+        flex-direction: column;
     }
 
     #loginBody input {

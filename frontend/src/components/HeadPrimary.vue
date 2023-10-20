@@ -89,7 +89,7 @@
             navText: '고객센터',
             childrens: [
                 { subTo: '/notice', subName: '공지사항' },
-                // { subTo: '/login', subName: '고객지원' },
+                { subTo: '/login', subName: '고객지원' },
                 { subTo: '/dataroom', subName: '자료실' },
                 { subTo: '/news', subName: '소식' }
             ]

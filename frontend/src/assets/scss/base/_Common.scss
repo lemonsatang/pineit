@@ -36,8 +36,8 @@
         border-radius: 2rem;        
         background-color: rgba(var(--down-midblue), 1);
         color: rgb(var(--white));
-        padding: .65rem .75rem;
-        font-size: var(--fnt-M);
+        padding: .5rem .75rem;
+        font-size: var(--fnt-md);
         min-width: 5rem;
         gap: .5rem;
         display: flex;
@@ -71,8 +71,8 @@
     gap: .75rem;
     margin-left: auto;
     margin-top: .5rem;
-    padding: .65rem .75rem;
-    font-size: var(--fnt-M);
+    padding: .5rem .75rem;
+    font-size: var(--fnt-md);
 
     &:hover {
         opacity: .8;
@@ -245,10 +245,7 @@
     }
 }
 
-.spt-input-title {
-    font-size: var(--fnt-md);
-    width: 2rem;
-}
+
 
 .spt-texts-container {
     border-top: 1px solid rgba(var(--black) 1);
@@ -283,6 +280,8 @@
     display: grid;
     // height: 22.5rem;
 }
+
+
 
 .spt-item-line {
     display: grid;
@@ -848,45 +847,82 @@ input[type=password] {
 
 //
 
+.spt-progress-header {
+    background-color: rgba(var(--darkblue), 1);
+    padding: .5rem .75rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: rgb(var(--white));
+    border-radius: .5rem;
+
+    &:hover {
+        opacity: .85;
+    }
+}
+
 .common-button-container .spt-pro-input {   
-    // margin-right: auto;
     display: flex;
     align-items: center;
-    background-color: rgba(var(--deepblue), .1);
-    padding: .25rem .5rem;
     border-radius: .5rem;
-    // width: 14rem;
-
-    .spt-input-title {
-        width:fit-content;
-    }
 
     button {
         gap: 0;
         min-width: 4rem;
         padding: 0.45rem 0.75rem;
         margin-left: .5rem;
+        background-color: rgba(var(--btnGreen), 1);
     }
 }
 
+//
 
+.spt-progress-container {
+    display: flex;
+    align-items: center;
+    
+}
+
+.spt-pro-item {
+    padding: .25rem .5rem;    
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+
+    .spt-input-title {
+        font-size: var(--fnt-md);
+        width: 4rem;
+        text-align: center;
+        background-color: rgba(var(--black), .05);
+        padding: .35rem 0;
+    }
+}
 
 .spt-pro-input-inner-container {
     position: relative;
+    display: flex;
+    align-items: center;
+
+    button {
+        margin-left: 1rem;
+    }
 
     input[type=text] {
-        background-color: rgba(var(--white), .75);
-        height: 1.5rem;
-        margin-left: 1rem;
-        width: 4rem;
+        border: 1px solid rgba(var(--black), .15);
+        width: 2.5rem;
+        padding: .25rem;
+    }
+
+    select {
+        border: 1px solid rgba(var(--black), .15);
+        border-radius: .25rem;
+        padding: .25rem;
+        outline: 0;
+        width: 5rem;
     }
 }
 
 .spt-progress-unit {
-    position: absolute;
-    right: .75rem;
-    top: 50%;
-    transform: translateY(-50%);
+    padding-left: .5rem;
 }
 
 .prog-over-alert {
@@ -896,4 +932,54 @@ input[type=password] {
     svg {
         color: inherit;
     }
+}
+
+#sptProgSetting {
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.35);
+        
+    }
+}
+
+#progMdContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    padding: 0  0 .5rem 0;
+    background-color: rgb(var(--white));
+    border-radius: .5rem;
+    width: 15rem;
+    overflow: hidden;
+
+    .spt-progress-header {
+        background-color: rgba(var(--darkblue), 1);
+        margin-bottom: .5rem;
+        border-radius: 0;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .common-button-container {
+        padding: 0 10px;
+        justify-content: flex-end;
+    }
+
+    .btn-save-green {
+        background-color: rgba(var(--btnGreen), 1);
+    }
+
+    .prog-over-alert {
+        margin-top: .25rem;
+    }
+    
+}
+
+.md-alert-container {
+    height: 1.5rem;
+    padding: 0 .5rem;
 }
