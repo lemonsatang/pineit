@@ -42,21 +42,11 @@
 
             <!-- 버튼영역 -->
             <div class="common-button-container">
-                <div class="spt-pro-input">
+                <h1 class="spt-progress-header" @click="showProgSetting">
                     <font-awesome-icon icon="fa-bars-progress" />
-                    <p class="spt-input-title">작업진행률</p>
-                    <div class="spt-pro-input-inner-container">
-                        <input @input="numChk" ref="progressInput" type="text" maxlength="3">
-                        <span class="spt-progress-unit">%</span>
-                    </div>
-                    <button @click="progressSave" type="button">
-                        <font-awesome-icon icon="floppy-disk" />
-                        저장
-                    </button>
-                </div>
-                <p class="prog-over-alert" v-if="overProg == true">
-                    <font-awesome-icon icon="fa-circle-xmark" />
-                    진행률은 100%를 초과할 수 없습니다.</p>
+                    진행현황 설정
+                </h1>
+                
                 <button class="common-list-button" @click="goList" type="button">
                     목  록
                 </button>
@@ -90,6 +80,54 @@
             </section>
         </div>
     </section>
+
+    <!-- 진행현황 설정 팝업창 -->
+    <dialog id="sptProgSetting" ref="showProgMd">
+        <section id="progMdContainer" ref="innerProgMd">
+            <h1 class="spt-progress-header">
+                <font-awesome-icon icon="fa-bars-progress" />
+                진행현황 설정
+            </h1>
+            <div class="spt-pro-input spt-pro-item">  
+                <p class="spt-input-title">작업진행률</p>
+                <div class="spt-pro-input-inner-container">
+                    <input @input="numChk" ref="progressInput" type="text" maxlength="3">
+                    <span class="spt-progress-unit">%</span>
+                </div>
+            </div>
+            <div class="spt-pro-item">
+                <p class="spt-input-title">진행상태</p>
+                <div class="spt-pro-input-inner-container">
+                    <select>
+                        <option value="pre">확인예정</option>
+                        <option value="assign">담당자배정</option>
+                        <option value="ing">진행중</option>
+                        <option value="comp">처리완료</option>
+                    </select>
+                </div>
+            </div>
+            <div class="md-alert-container">
+                <p class="prog-over-alert" v-if="overProg == true">
+                    <font-awesome-icon icon="fa-circle-xmark" />
+                    진행률은 100%를 초과할 수 없습니다.
+                </p> 
+                <p class="">
+
+                </p>
+            </div>
+            
+            <div class="common-button-container">
+                <button class="btn-save-green" @click="progressSave" type="button">
+                    <font-awesome-icon icon="floppy-disk" />
+                    저장
+                </button>
+                <button @click="closeProgMd" type="button">
+                    닫기
+                </button>
+            </div>
+        </section>
+        
+    </dialog>
 </template>
 
 <script setup>
@@ -122,6 +160,8 @@
 
     const progressInput = ref()
     const overProg = ref(false)
+    const showProgMd = ref();
+    const innerProgMd = ref();
 
     // 로긔인한 유저 정보
     const usrData = ref([])
@@ -171,6 +211,18 @@
         } else {
 
         }
+    }
+
+    //진행현황설정 팝업창
+    function showProgSetting() {
+        showProgMd.value.showModal()
+        console.log(showProgMd.value)
+    }
+
+    function closeProgMd(e) {
+        showProgMd.value.close();
+       
+        
     }
 </script>
 
