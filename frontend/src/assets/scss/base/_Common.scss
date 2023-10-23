@@ -333,10 +333,10 @@
     width: 15rem;
     z-index: 8;
     overflow: hidden;
-    filter: drop-shadow(0 0 12px rgba(var(--deepblue), .25));
+    filter: drop-shadow(0 0 12px rgba(var(--darkblue), .25));
     cursor: pointer;
     animation: note-appear .5s ease-in-out;
-    border: 1px solid rgba(var(--deepblue), .1);
+    // border: 1px solid rgba(var(--deepblue), .1);
 
     @keyframes note-appear {
         0% {
@@ -646,23 +646,29 @@ input[type=password] {
 }
 
 
-/* 파일 업로드 영역 */
+/* 파일 업로드 영역(글쓰기) */
 
-#divUploadedFiles {
+#divUploadedFiles.wr-uploaded {
     @apply grid;
 
-    grid-template-columns: 14rem 1fr;
+    grid-template-columns: 12rem 1fr;
     border: 1px solid rgba(var(--black), 0.2);
 
     .button-dark {
         margin-left: 0;
-        padding: .5rem .75rem;
+        padding: .35rem .5rem;
+    }
+
+    [data-uploaded-file] {
+        @apply border-b items-center;
+    
+        border-bottom: 1px solid rgba(var(--deepblue), .15);
     }
 }
 
 .section-upload-list {
     padding: 0 1rem;
-    height: 14.5rem;
+    height: 12.5rem;
     overflow-y: scroll;
 }
 
@@ -678,11 +684,7 @@ input[type=password] {
     }
 }
 
-[data-uploaded-file] {
-    @apply border-b items-center;
 
-    border-bottom: 1px solid rgba(var(--deepblue), .15);
-}
 
 .button-trash-basket {
     @apply ml-auto;
@@ -715,14 +717,15 @@ input[type=password] {
     @apply border-dashed border w-full flex flex-col items-center gap-0;
 
     border: 2px dashed rgba(var(--deepblue), .2);
-    gap: .5rem;
-    padding: 2rem 0 3rem;
+    gap: .25rem;
+    padding: 1.5rem 0 1.5rem;
     color: rgb(var(--deepblue));
 
     > svg {
         @apply my-1;
 
         color: rgb(var(--deepblue));
+        opacity: .25;;
     }
 
     > .button-dark {
@@ -750,6 +753,8 @@ input[type=password] {
     @apply py-2 px-2 mt-2 rounded;
 
     background-color: rgba(var(--white), 1);
+    display: flex;
+    flex-direction: column;
 
     li {
         display: flex;
