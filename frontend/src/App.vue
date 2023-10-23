@@ -36,11 +36,28 @@
         @apply flex flex-col gap-4 fixed bottom-4 right-4 z-50;
 
         > button {
-            @apply p-4 rounded-full shadow-xl;
+            @apply rounded-full;
 
+            padding: .75rem;
             background-color: rgb(var(--clr-inter-pane));
             font-size: var(--fnt-title-lg);
+            filter: drop-shadow(0 0 10px rgba(var(--darkblue), .5));
+
+            &:hover {
+              transform: scale(1.1);  
+              transform: rotate(360deg);
+              transition: ease-in 1s;
+            }
         }
+
+        i {
+            font-size: var(--fnt-title-md);
+        }
+    }
+
+    #btnRemote {
+        background: linear-gradient(300deg, rgba(var(--deepblue), 1), rgba(var(--midblue), 1));
+        color: rgb(var(--white));
     }
 
     @media screen and (width < 720px) {

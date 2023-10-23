@@ -479,12 +479,12 @@
     }
 
     .oneline-note-manage-button {
-        font-size: var(--fnt-title-sm);
+        font-size: var(--fnt-M);
         font-weight: 400;
         display: flex;
         align-items: center;
         gap: .5rem;
-        background-color: rgba(var(--deepblue), .25);
+        background-color: rgba(var(--darkblue), 1);
         padding: .25rem .75rem;
         border-radius: 2rem;
         color: rgb(var(--white));
