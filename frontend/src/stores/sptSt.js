@@ -11,6 +11,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 0,
             NO: '1', //글번호
             STATUS: '진행중', //현황
+            PROGRESS: '20%',
             TITLE: '출고조회 중 오류가 발생합니다', //제목
             WRITER: '농심', //작성자
             DATE: '2023.09.04', //작성일자
@@ -25,6 +26,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 1,
             NO: '2', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '현장의 서버 연결이 원활하지 않은것 같습니다', //제목
             WRITER: '해태', //작성자
             DATE: '2023.09.04', //작성일자
@@ -40,6 +42,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 2,
             NO: '3', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '월요일에 문의드린 수정 건 관련하여......', //제목
             WRITER: '부라보', //작성자
             DATE: '2023.09.04', //작성일자
@@ -55,6 +58,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 3,
             NO: '4', //글번호
             STATUS: '진행중', //현황
+            PROGRESS: '50%',
             TITLE: '와이파이 신호가 바람에 날아가는거 같아요', //제목
             WRITER: '백설', //작성자
             DATE: '2023.09.04', //작성일자
@@ -71,6 +75,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 4,
             NO: '5', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '전산상에 재고가 맞지를 않네요', //제목
             WRITER: '양조', //작성자
             DATE: '2023.09.04', //작성일자
@@ -84,6 +89,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 5,
             NO: '6', //글번호
             STATUS: '완료', //현황
+            PROGRESS: '100%',
             TITLE: '업데이트 이후로 프로그램이 불안정해요', //제목
             WRITER: 'CJ', //작성자
             DATE: '2023.09.04', //작성일자
@@ -99,6 +105,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 6,
             NO: '7', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '요청주신 오류 스크린샷 전달드립니다', //제목
             WRITER: '오뚜기', //작성자
             DATE: '2023.09.04', //작성일자
@@ -114,6 +121,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 7,
             NO: '8', //글번호
             STATUS: '진행중', //현황
+            PROGRESS: '35%',
             TITLE: '네트워크 확인차 방문주신다는 일정 조율관련하여', //제목
             WRITER: '금성', //작성자
             DATE: '2023.09.04', //작성일자
@@ -129,6 +137,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 8,
             NO: '9', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: 'DB 백업 자료가 비어있네요', //제목
             WRITER: 'KBS', //작성자
             DATE: '2023.09.04', //작성일자
@@ -144,6 +153,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 9,
             NO: '10', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '컴퓨터가 안켜져요', //제목
             WRITER: 'SBS', //작성자
             DATE: '2023.09.04', //작성일자
@@ -157,6 +167,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 10,
             NO: '11', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '테스트용 타이틀11', //제목
             WRITER: 'SBS', //작성자
             DATE: '2023.09.10', //작성일자
@@ -169,7 +180,8 @@ export const useSptStore = defineStore('support', () => {
         {
             bindIdx: 11,
             NO: '12', //글번호
-            STATUS: '확인예정', //현황
+            STATUS: '진행중', //현황
+            PROGRESS: '20%',
             TITLE: '테스트용 타이틀12', //제목
             WRITER: 'SBS', //작성자
             DATE: '2023.09.10', //작성일자
@@ -182,7 +194,8 @@ export const useSptStore = defineStore('support', () => {
         {
             bindIdx: 12,
             NO: '13', //글번호
-            STATUS: '확인예정', //현황
+            STATUS: '진행중', //현황
+            PROGRESS: '70%',
             TITLE: '테스트용 타이틀13', //제목
             WRITER: 'SBS', //작성자
             DATE: '2023.09.10', //작성일자
@@ -196,6 +209,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 13,
             NO: '14', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '테스트용 타이틀14', //제목
             WRITER: 'SBS', //작성자
             DATE: '2023.09.10', //작성일자
@@ -209,6 +223,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 14,
             NO: '15', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '테스트용 타이틀15', //제목
             WRITER: 'SBS', //작성자
             DATE: '2023.09.10', //작성일자
@@ -222,6 +237,7 @@ export const useSptStore = defineStore('support', () => {
             bindIdx: 15,
             NO: '16', //글번호
             STATUS: '확인예정', //현황
+            PROGRESS: '0%',
             TITLE: '테스트용 타이틀16', //제목
             WRITER: 'SBS', //작성자
             DATE: '2023.09.10', //작성일자
