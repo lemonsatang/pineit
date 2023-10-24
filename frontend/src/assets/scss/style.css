@@ -423,6 +423,10 @@ video {
   opacity: 0.75;
 }
 
+.common-button-container button.reply-comp-button {
+  background-color: rgba(var(--soft-coldblue), 1);
+}
+
 .spt-white-back {
   background-color: rgba(var(--white), 1);
 }
@@ -430,7 +434,7 @@ video {
 .common-single-button {
   border-radius: 2rem;
   min-width: 4rem;
-  background-color: rgba(var(--coldblue), 1);
+  background-color: rgba(var(--btnGreen), 1);
   color: rgba(var(--white), 1);
   gap: 0.75rem;
   margin-left: auto;
@@ -535,8 +539,9 @@ video {
 .spt-page-title {
   margin-top: 3rem;
   margin-bottom: 3.6rem;
-  font-size: var(--fnt-spt-title);
-  font-weight: 700;
+  font-size: var(--fnt-title-lg);
+  font-weight: 600;
+  color: rgba(var(--darkblue), 1);
 }
 
 .spt-search-line {
@@ -726,14 +731,15 @@ video {
   flex-direction: column;
   gap: 0.5rem;
   border-top: 2px solid rgba(var(--black), 1);
-  border-bottom: 1px solid rgba(var(--deepblue), 0.15);
+  border-bottom: 1px solid rgba(var(--deepblue), 0.25);
   padding: 0.5rem 0;
 }
 
 .spt-dt-title {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
-  font-size: var(--fnt-title-sm);
+  font-size: var(--fnt-lg);
   font-weight: 700;
   color: rgba(var(--black), 0.75);
 }
@@ -747,7 +753,7 @@ video {
 
 .spt-dt-text {
   padding: 1rem 0.5rem;
-  font-size: var(--fnt-M);
+  font-size: var(--fnt-md);
   min-height: 30vh;
   color: rgba(var(--black), 0.85);
 }
@@ -778,6 +784,10 @@ video {
   -webkit-box-orient: vertical;
   word-break: break-all;
   white-space: nowrap;
+}
+
+.spt-dt-mile-subtitle {
+  font-weight: 700;
 }
 
 .spt-dt-mile-date {
@@ -843,27 +853,27 @@ video {
 
 .spt-reply-username {
   display: flex;
-  font-size: var(--fnt-lg);
+  align-items: center;
+  color: rgba(var(--darkblue), 1);
   font-weight: 700;
 }
 
 .spt-reply-date {
   font-weight: 400;
-  font-size: var(--fnt-M);
-  opacity: 0.5;
+  opacity: 0.75;
   margin-left: 1rem;
 }
 
 .spt-reply-time {
   font-weight: 400;
-  font-size: var(--fnt-M);
-  opacity: 0.5;
+  opacity: 0.75;
   margin-left: 0.5rem;
 }
 
 .spt-reply-texts {
   padding: 0.25rem 0.5rem;
   font-size: var(--fnt-M);
+  color: rgba(var(--black), 1);
 }
 
 input[type=password] {
@@ -900,7 +910,7 @@ input[type=password] {
 }
 
 .spt-header-usrname {
-  color: rgba(var(--deepblue), 0.5);
+  color: rgba(var(--deepblue), 0.75);
   font-weight: 700;
 }
 
@@ -1147,9 +1157,21 @@ input[type=password] {
 .prog-over-alert {
   color: rgba(var(--alertred));
   margin-right: auto;
+  margin-top: 0.25rem;
 }
 .prog-over-alert svg {
   color: inherit;
+  margin-right: 0.1rem;
+}
+
+.prog-save-alert {
+  color: rgba(var(--btnGreen));
+  margin-right: auto;
+  margin-top: 0.25rem;
+}
+.prog-save-alert svg {
+  color: inherit;
+  margin-right: 0.1rem;
 }
 
 #sptProgSetting::backdrop {
@@ -1183,9 +1205,6 @@ input[type=password] {
 }
 #progMdContainer .btn-save-green {
   background-color: rgba(var(--btnGreen), 1);
-}
-#progMdContainer .prog-over-alert {
-  margin-top: 0.25rem;
 }
 
 .md-alert-container {
