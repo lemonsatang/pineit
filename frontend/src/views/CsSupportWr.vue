@@ -235,7 +235,17 @@
         formData.append('file', realUpload.value)
 
         console.log(realUpload.value)
-        console.log(formData.get('file'))
+        console.log(formData.get('file').length)
+
+        axios.post('/api/addCs', formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                }
+            })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(error => { toast.error('게시물 저장도중 오류가 발생했습니다.') })
     }
 </script>
 

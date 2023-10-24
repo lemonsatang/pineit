@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserDTO {
+public class UserDTO { // jpa 쓰기 위해 소문자로 해둠(대문자 인식불가)
     private String usrcd;
     private String usrid;
     private String usrnm;

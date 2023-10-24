@@ -9,8 +9,8 @@
                     <font-awesome-icon icon="fa-bullhorn" />
                     공지사항
                 </p>
-                <p class="spt-one-notice-title">{{ item.title }}</p>
-                <p class="spt-one-notice-date">{{ item.date }}</p>
+                <p class="spt-one-notice-title">{{ item.TITLE }}</p>
+                <p class="spt-one-notice-date">{{ item.DATE }}</p>
             </div>
             <!-- 검색영역 -->
             <div class="spt-search-line">

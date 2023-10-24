@@ -26,6 +26,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	implementation 'net.sf.json-lib:json-lib:2.4:jdk15'
+	implementation 'commons-net:commons-net:3.3'
 
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

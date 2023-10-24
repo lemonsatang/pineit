@@ -442,7 +442,7 @@ export const useSptStore = defineStore('support', () => {
             TEXTS: `
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus voluptate, commodi deserunt dolor veritatis veniam recusandae cum accusamus assumenda consectetur corrupti quos eius voluptatum alias ab modi nesciunt distinctio reprehenderit?
             `,
-            DATE: '2023.09.10',
+            DATE: '2023.09.12',
             isShowTexts: false,
             isModify: false,
             saveActive: false
@@ -454,7 +454,7 @@ export const useSptStore = defineStore('support', () => {
             TEXTS: `
                 테스트 공지사항입니다.
             `,
-            DATE: '2023.09.10',
+            DATE: '2023.09.11',
             isShowTexts: false,
             isModify: false,
             saveActive: false
