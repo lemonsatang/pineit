@@ -7,7 +7,7 @@
             <section v-for="item in getData" class="spt-dt-mainbody">
                 <div class="spt-dt-head">
                     <h1 class="spt-dt-title">
-                        <span class="spt-dt-status">{{ item.STATUS }}</span>
+                        <span class="spt-dt-status">{{ item.STATUS }} <label>[{{ item.PROGRESS }}]</label></span>
                         {{ item.TITLE }}
                     </h1>
                     <p class="spt-dt-wrinfo">
@@ -115,6 +115,10 @@
                     <font-awesome-icon icon="fa-exclamation" />
                     저장되었습니다.
                 </p>
+                <p class="prog-over-alert" v-if="emptyProg == true">
+                    <font-awesome-icon icon="fa-circle-xmark" />
+                    작업진행률을 입력해주세요.
+                </p>
             </div>
             
             <div class="common-button-container">
@@ -162,6 +166,7 @@
     const progressInput = ref()
     const overProg = ref(false)
     const saveProg = ref(false)
+    const emptyProg = ref(false)
     const showProgMd = ref();
     const innerProgMd = ref();
 
@@ -205,13 +210,23 @@
 
         if (progressInput.value.value > 100) {
             saveProg.value = false
+            emptyProg.value = false
             overProg.value = true
 
             setTimeout(function () {
                 overProg.value = false
             }, 3000)
+        } else if ( progressInput.value.value == '' ) {
+            saveProg.value = false
+            overProg.value = false
+            emptyProg.value = true
+            setTimeout(function () {
+                emptyProg.value = false
+            }, 3000)
+
         } else {
             overProg.value = false
+            emptyProg.value = false
             saveProg.value = true
             setTimeout(function () {
                 saveProg.value = false

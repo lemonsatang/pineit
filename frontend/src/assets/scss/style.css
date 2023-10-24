@@ -731,7 +731,7 @@ video {
   flex-direction: column;
   gap: 0.5rem;
   border-top: 2px solid rgba(var(--black), 1);
-  border-bottom: 1px solid rgba(var(--deepblue), 0.25);
+  border-bottom: 1px solid rgba(var(--deepblue), 0.35);
   padding: 0.5rem 0;
 }
 
@@ -749,6 +749,12 @@ video {
   padding: 0.25rem 0.45rem;
   border-radius: 0.5rem;
   background-color: rgba(var(--deepblue), 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.spt-dt-title .spt-dt-status > label {
+  font-size: var(--fnt-sm);
 }
 
 .spt-dt-text {
@@ -774,7 +780,7 @@ video {
 }
 
 .spt-dt-mile-line + .spt-dt-mile-line {
-  border-top: 1px solid rgb(var(--deepblue), 0.1);
+  border-top: 1px solid rgb(var(--deepblue), 0.25);
 }
 
 .spt-dt-mile-title {
@@ -1205,6 +1211,9 @@ input[type=password] {
 }
 #progMdContainer .btn-save-green {
   background-color: rgba(var(--btnGreen), 1);
+  outline: 0;
+  color: rgb(var(--white));
+  font-weight: 400;
 }
 
 .md-alert-container {
