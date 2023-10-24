@@ -50,7 +50,6 @@
 
         try {
             loginMsg.value = ''
-
             const response = await axios({
                 method: 'post',
                 url: '/api/loginChk',

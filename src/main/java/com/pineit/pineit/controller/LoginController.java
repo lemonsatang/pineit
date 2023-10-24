@@ -3,7 +3,6 @@ package com.pineit.pineit.controller;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pineit.pineit.dto.UserDTO;
-import com.pineit.pineit.entity.USRLST;
-import com.pineit.pineit.service.UserService;
+import com.pineit.pineit.service.LoginService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
@@ -23,18 +21,16 @@ import lombok.extern.log4j.Log4j2;
 @RestController
 @RequestMapping("/login")
 @Log4j2
-public class LoginController {
+public class LoginController { // 로그인
 
     @Autowired
-    UserService userService;
+    LoginService loginService;
 
     // 성공
     @GetMapping("/success")
     public Map<String, Object> successHandler(HttpServletRequest req) {
         log.info("successHandler..........");
         Map<String, Object> result = new HashMap<>();
-
-        System.out.println("=========Login USRID: " + req.getParameter("Usrid"));
 
         result.put("result", "Success");
 
@@ -60,7 +56,7 @@ public class LoginController {
         System.out.println("principal: " + principal.getName());
         System.out.println("Login info: " + user.getUsername());
 
-        UserDTO info = userService.getUserInfo(principal.getName());
+        UserDTO info = loginService.getUserInfo(principal.getName());
 
         result.put("info", info);
 

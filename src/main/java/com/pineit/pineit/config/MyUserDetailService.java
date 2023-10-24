@@ -1,6 +1,7 @@
 package com.pineit.pineit.config;
 
 import com.pineit.pineit.entity.USRLST;
+import com.pineit.pineit.service.LoginService;
 import com.pineit.pineit.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.userdetails.User;
@@ -15,15 +16,15 @@ import java.util.Optional;
 @Service
 public class MyUserDetailService implements UserDetailsService {
 
-    private final UserService userService;
+    private final LoginService LoginService;
 
-    public MyUserDetailService(UserService userService) {
-        this.userService = userService;
+    public MyUserDetailService(LoginService LoginService) {
+        this.LoginService = LoginService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String insertedUserId) throws UsernameNotFoundException {
-        Optional<USRLST> findOne = userService.findOne(insertedUserId);
+        Optional<USRLST> findOne = LoginService.findOne(insertedUserId);
 
         USRLST user = findOne.orElseThrow(() -> new UsernameNotFoundException("존재하지 않는 회원입니다."));
 
