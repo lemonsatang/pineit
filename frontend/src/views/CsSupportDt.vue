@@ -50,7 +50,7 @@
                 <button class="common-list-button" @click="goList" type="button">
                     목  록
                 </button>
-                <button type="button">
+                <button type="button" class="reply-comp-button">
                     <router-link :to="{name: 'SupportWr'}">
                         <font-awesome-icon icon="fa-pen" />
                         답변글 작성
@@ -111,8 +111,9 @@
                     <font-awesome-icon icon="fa-circle-xmark" />
                     진행률은 100%를 초과할 수 없습니다.
                 </p> 
-                <p class="">
-
+                <p class="prog-save-alert" v-if="saveProg == true">
+                    <font-awesome-icon icon="fa-exclamation" />
+                    저장되었습니다.
                 </p>
             </div>
             
@@ -160,6 +161,7 @@
 
     const progressInput = ref()
     const overProg = ref(false)
+    const saveProg = ref(false)
     const showProgMd = ref();
     const innerProgMd = ref();
 
@@ -197,12 +199,35 @@
     function progressSave() {
         console.log(progressInput.value.value)
         // 이 값을 악-시오스로 보내시오
+
+
+        progressInput.value.value = progressInput.value.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+
+        if (progressInput.value.value > 100) {
+            saveProg.value = false
+            overProg.value = true
+
+            setTimeout(function () {
+                overProg.value = false
+            }, 3000)
+        } else {
+            overProg.value = false
+            saveProg.value = true
+            setTimeout(function () {
+                saveProg.value = false
+            }, 3000)
+        }
+
+        
+        
+        
     }
 
     function numChk(e) {
         e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
 
         if (e.target.value > 100) {
+            saveProg.value = false
             overProg.value = true
 
             setTimeout(function () {
@@ -230,5 +255,21 @@
     .common-button-container {
         margin-top: .5rem;
         justify-content: space-between;
+
+        button {
+            background-color: transparent;
+            font-weight: 700;
+            outline: 2px solid rgb(var(--darkblue));
+            outline-offset: -2px;
+            color: rgba(var(--darkblue), 1);
+
+            &.reply-comp-button {
+                background-color: rgba(var(--darkblue), 1);
+                outline: 0;
+                color: rgba(var(--white), 1);
+                font-weight: normal;
+            }
+        }
     }
+
 </style>
