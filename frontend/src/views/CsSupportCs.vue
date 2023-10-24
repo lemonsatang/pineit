@@ -5,12 +5,14 @@
             <h1 class="spt-page-title">고객 문의</h1>
             <!-- 한줄공지 -->
             <div v-for="item in onelineNotices" class="spt-one-notice">
-                <p class="spt-one-notice-head">
+                <div v-if="item.CUSTOMER == usrNames.value">
+                    <p class="spt-one-notice-head">
                     <font-awesome-icon icon="fa-bullhorn" />
-                    공지사항
-                </p>
-                <p class="spt-one-notice-title">{{ item.title }}</p>
-                <p class="spt-one-notice-date">{{ item.date }}</p>
+                        공지사항
+                    </p>
+                    <p class="spt-one-notice-title">{{ item.title }}</p>
+                    <p class="spt-one-notice-date">{{ item.date }}</p>
+                </div>
             </div>
             <!-- 검색영역 -->
             <div class="spt-search-line">
@@ -226,10 +228,13 @@
         }
     }
 
+    const usrNames = ref()
+
     axios.post('/api/login/getUserInfo')
         .then(res => {
 
             usrData.value.push(res.data.info)// let userData = ({...res.data.info})
+            usrNames.value = res.data.info.usrnm
 
             return
         })

@@ -136,9 +136,11 @@
                             </div>
                             <div class="notice-inner-texts" v-if="item.isShowTexts == true" >
                                 <textarea v-if="item.isModify == false" readonly v-model="item.TEXTS"></textarea>
-                                <textarea v-else v-model="item.TEXTS">{{ item.TEXTS }}</textarea>
+                                <textarea class="textarea-mod-write" v-else v-model="item.TEXTS" autofocus>{{ item.TEXTS }}</textarea>
                                 <div class="common-button-container">
-                                    <button v-if="item.isModify == false" @click="[item.isModify = true, item.saveActive = true]" type="button">수정</button>
+                                    <button class="nt-inner-modify" v-if="item.isModify == false" @click="[item.isModify = true, item.saveActive = true]" type="button">
+                                        수정
+                                    </button>
                                     <button class="nt-inner-save" v-if="item.saveActive == true" @click="[item.saveActive = false, item.isModify = false, saveNtTexts()]" type="button">
                                         <font-awesome-icon icon="fa-floppy-disk" />
                                         저장
@@ -151,7 +153,7 @@
                     </div>
                 </div>
                 <div class="common-button-container">
-                    <button @click="isShowNtList = false" type="button">
+                    <button class="write-button" @click="isShowNtList = false" type="button">
                         <font-awesome-icon icon="fa-pen" />
                         글쓰기
                     </button>
@@ -496,8 +498,8 @@
         }
 
         &:hover {
-            background: linear-gradient(170deg, rgba(var(--coldblue), .85) 0%, rgba(var(--coldblue), .85) 20%, rgba(8, 241, 217, .7) 90%);
-            opacity: .7;
+            // background: linear-gradient(170deg, rgba(var(--coldblue), .85) 0%, rgba(var(--coldblue), .85) 20%, rgba(8, 241, 217, .7) 90%);
+            opacity: .85;
         }
     }
 
@@ -517,7 +519,22 @@
         .spt-texts-container {
             margin-bottom: .5rem;
             overflow-y: scroll;
-            height: 70vh;
+            height: 60vh;
+        }
+
+        .common-button-container button {
+            outline: 2px solid rgb(var(--darkblue));
+            outline-offset: -2px;
+            color: rgb(Var(--darkblue));
+            font-weight: 600;
+            background: transparent;
+
+            &.write-button, &.nt-inner-save, &.nt-inner-modify {
+                color: rgb(var(--white));
+                background-color: rgb(var(--darkblue));
+                outline: 0;
+                font-weight: 400;
+            }
         }
 
         .spt-search-line {
@@ -546,6 +563,10 @@
             outline: 0;
             background-color: rgba(var(--black), .025);
             padding: .5rem;
+
+            &.textarea-mod-write {
+                outline: 2px solid rgba(var(--darkblue), 1);
+            }
         }
 
         button {
@@ -652,25 +673,29 @@
 
     #ntInnerSaveAlarm {
         position: absolute;
-
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding: 1rem;
+        padding: 2rem 1rem 1rem 1rem;
         background-color: rgb(var(--white));
         display: flex;
         flex-direction: column;
         // border: 2px solid rgba(var(--deepblue), 1);
-        border-radius: .5rem;
+        border-radius: .25rem;
 
         p {
             display: flex;
             gap: .5rem;
-            font-size: var(--fnt-title-sm);
+            font-weight: 600;
         }
 
         .common-button-container {
             justify-content: center;
+            margin-top: 1.25rem;
+
+            button {
+                padding: .35rem .5rem;
+            }
         }
 
     }
