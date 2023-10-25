@@ -257,7 +257,6 @@
     border-top: 1px solid rgba(var(--black) 1);
     border-bottom: 2px solid rgba(var(--black), 1);
     width: 100%;
-    height: 24.75rem;
     margin-bottom: 1rem;
 }
 
@@ -375,6 +374,10 @@
         background-repeat: no-repeat;
         opacity: .06;
     }
+
+    &:hover {
+        filter: drop-shadow(0 0 12px rgba(var(--darkblue), .5));
+    }
 }
 
 .notify-texts {
@@ -385,6 +388,7 @@
 
 .notify-texts-head {
     font-weight: 700;
+    color: rgb(var(--darkblue));
     
     svg {
         margin-right: .15rem;
@@ -423,7 +427,7 @@
     flex-direction: column;
     gap: .5rem;
     border-top: 2px solid rgba(var(--black), 1);
-    border-bottom: 1px solid rgba(var(--deepblue), .35);
+    border-bottom: 1px solid rgba(var(--darkblue), .35);
     padding: .5rem 0;
 }
 
@@ -440,7 +444,7 @@
         font-weight: 400;
         padding: .25rem .45rem;
         border-radius: .5rem;
-        background-color: rgba(var(--deepblue), .25);
+        background-color: rgba(var(--darkblue), .25);
         display: flex;
         align-items: center;
         gap: .25rem;
@@ -481,7 +485,7 @@
 }
 
 .spt-dt-mile-line + .spt-dt-mile-line {
-    border-top: 1px solid rgb(var(--deepblue), .25);
+    border-top: 1px solid rgb(var(--darkblue), .35);
 }
 
 .spt-dt-mile-title {
